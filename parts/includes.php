@@ -1,4 +1,6 @@
-<?php /* ////////////////////////////////////////////////////////////////////////////////
+<?php 
+
+/* ////////////////////////////////////////////////////////////////////////////////
 **    Copyright 2010 Matthew Burton, http://matthewburton.org
 **    Code by Burton and Joshua Knowles, http://auscillate.com 
 **
@@ -20,6 +22,7 @@
 **    You should have received a copy of the GNU General Public License
 **    along with Open Source ACH. If not, see <http://www.gnu.org/licenses/>.
 //////////////////////////////////////////////////////////////////////////////// */
+
 ?>
 
 <base href="">
@@ -109,10 +112,6 @@ function insertMessage() {
 	oXmlHttp.send(null);
 }
 
-
-
-<?php if( $is_firefox || !$is_firefox) { ?>
-
 function reloadConversation() {
 	if( chatActive == "y" ) {
 		var date = new Date();
@@ -133,9 +132,6 @@ function reloadConversation() {
 		setTimeout("reloadConversation()", 3000);
 	}
 }
-
-<?php } ?>
-
 
 
 function reloadActiveUsers() {
@@ -192,9 +188,9 @@ function getReturn(e) {
 	}
 }
 
-<?php } ?>
+<?php }
 
-<?php } ?>
+} ?>
 
 
 
@@ -259,22 +255,12 @@ function scrollingDetector(){
 
 
 </script>
-<?php if( $is_ie ) { ?>
-<link rel="stylesheet" type="text/css" href="css/chat_ie.css" />
-<?php } else { ?>
-<link rel="stylesheet" type="text/css" href="css/chat.css" />
-<?php } ?>
+<?php 
 
+if( $is_ie ) {
+	echo '<link rel="stylesheet" type="text/css" href="css/chat_ie.css" />';
+} else {
+	echo '<link rel="stylesheet" type="text/css" href="css/chat.css" />';
+} 
 
-
-
-
-
-
-
-
-
-
-
-
-
+?>
