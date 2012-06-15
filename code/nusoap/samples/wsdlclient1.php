@@ -14,15 +14,15 @@ $proxyhost = isset($_POST['proxyhost']) ? $_POST['proxyhost'] : '';
 $proxyport = isset($_POST['proxyport']) ? $_POST['proxyport'] : '';
 $proxyusername = isset($_POST['proxyusername']) ? $_POST['proxyusername'] : '';
 $proxypassword = isset($_POST['proxypassword']) ? $_POST['proxypassword'] : '';
-$client = new nusoap_client('http://ncompass1.oculusinfo.com/authentication-2.0.0/auth?wsdl', 'wsdl',
+$client = new nusoap_client('http://www.xignite.com/xquotes.asmx?WSDL', 'wsdl',
 						$proxyhost, $proxyport, $proxyusername, $proxypassword);
 $err = $client->getError();
 if ($err) {
 	echo '<h2>Constructor error</h2><pre>' . $err . '</pre>';
 }
 // Doc/lit parameters get wrapped
-$param = array('userName' => 'cach1');
-$result = $client->call('LookupUserDataByName', array('parameters' => $param), '', '', false, true);
+$param = array('Symbol' => 'IBM');
+$result = $client->call('GetQuickQuotes', array('parameters' => $param), '', '', false, true);
 // Check for a fault
 if ($client->fault) {
 	echo '<h2>Fault</h2><pre>';
