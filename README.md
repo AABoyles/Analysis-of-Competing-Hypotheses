@@ -4,11 +4,7 @@ This software is an open source platform for conducting the methodology with sev
 
 For information about installation, usage, contributions, etc., see the project site at http://competinghypotheses.org.
 
-Authors:
-Copyright Matthew Burton 2010, [http://matthewburton.org][1]
-Code by Joshua Knowles, [http://auscillate.com][2]
-Fork by Tony Boyles, [http://nortalktoowise.com][3]
-
-[1] http://matthewburton.org
-[2] http://auscillate.com
-[3] http://nortalktoowise.com
+Authors:<br />
+  *  Copyright [Matthew Burton](http://matthewburton.org) 2010<br />
+  *  Code by [Joshua Knowles](http://auscillate.com)<br />
+  *  Fork by [Tony Boyles](http://nortalktoowise.com)
