@@ -28,7 +28,7 @@ echo '<div class="container">';
 if (!$print_mode) {
 
 	echo '<div class="header">
-	  <p class="menu">';
+	      <p class="menu">';
 
 	if ($active_user -> logged_in_full_account) {
 		echo('<span class="tab">Hello, <a href="' . $base_URL . 'profile/' . $active_user -> username . '"> ' . $active_user -> name . '</a> ');
