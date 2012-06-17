@@ -1,6 +1,3 @@
-<!DOCTYPE html>
-<html><head>
-
 <?php
 /* ////////////////////////////////////////////////////////////////////////////////
 **    Copyright 2010 Matthew Burton, http://matthewburton.org
@@ -26,7 +23,11 @@
 **    along with Open Source ACH. If not, see <http://www.gnu.org/licenses/>.
 //////////////////////////////////////////////////////////////////////////////// */
 
+echo '<!DOCTYPE html>
+	  <html><head>';
+
 include("code/includes.php");
+
 $is_index = TRUE;
 
 if( $active_user->logged_in ) { 
