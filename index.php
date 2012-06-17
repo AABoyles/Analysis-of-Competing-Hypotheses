@@ -26,6 +26,7 @@
 echo '<!DOCTYPE html>
 	  <html><head>';
 
+include("LocalSettings.php");
 include("code/includes.php");
 
 $is_index = TRUE;
