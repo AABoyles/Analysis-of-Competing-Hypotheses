@@ -46,8 +46,8 @@ if( $active_user->logged_in ) {
 			<div class='ydsf left'>
 				<div class='inner'>
 					<div class='main'>
-		<div class='mainProjectList'>
-		<h2>Your Projects</h2>";
+						<div class='mainProjectList'>
+							<h2>Your Projects</h2>";
 
 	$active_user->getProjects();
 	if( count($active_user->projects) == 0) {
@@ -211,43 +211,41 @@ if( $active_user->logged_in ) {
 } else {
 	include ("parts/login_sidebar.php");
 }
-?>
 
-<div class="mainContainer">
-	<div class="ydsf left">
-		<div class="inner">
-			<div class="main welcome">
-				<p class="welcome">Welcome to ACH.</p>
-				<div class="introBoxes">
+echo '<div class="mainContainer">
+		<div class="ydsf left">
+			<div class="inner">
+				<div class="main welcome">
+					<p class="welcome">Welcome to ACH.</p>
+					<div class="introBoxes">
 
-					<div class="analyse">					
-						<h2>Analyze</h2>
-						<p class="subtitle">multiple hypotheses against large bodies of evidence.</p>
-						<p>ACH helps you track how many data points affect the validity of various outcomes, and compares your assessments with your teammates'.</p> 
-						<p><a href="help">Read more about ACH &raquo;</a></p>
-					</div>
+						<div class="analyse">					
+							<h2>Analyze</h2>
+							<p class="subtitle">multiple hypotheses against large bodies of evidence.</p>
+							<p>ACH helps you track how many data points affect the validity of various outcomes, and compares your assessments with your teammates\'.</p> 
+							<p><a href="help">Read more about ACH &raquo;</a></p>
+						</div>
 					
-					<div class="manage">
-						<h2>Manage</h2>
-						<p class="subtitle">your data in one place.</p>
-						<p>Store all of your working knowledge. Find out what it means to the issues you're working on.</p>					
-					</div>
-
-					<div class="organize">
-						<h2>Organize</h2>
-						<p class="subtitle">a Community-wide team of analysts.</p>
-						<p>Find out who is using the same data you are. Or e-mail your counterparts directly and get them to join.</p>
-						<p>Keep in touch with your team throughout the day with live chat and message boards.</p>
-					</div>
+						<div class="manage">
+							<h2>Manage</h2>
+							<p class="subtitle">your data in one place.</p>
+							<p>Store all of your working knowledge. Find out what it means to the issues you\'re working on.</p>					
+						</div>
 	
+						<div class="organize">
+							<h2>Organize</h2>
+							<p class="subtitle">a Community-wide team of analysts.</p>
+							<p>Find out who is using the same data you are. Or e-mail your counterparts directly and get them to join.</p>
+							<p>Keep in touch with your team throughout the day with live chat and message boards.</p>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>
-	</div>
-</div>
+	</div>';
 
-<?php
 include("parts/footer.php");
+
 ?>
 
 </body>
