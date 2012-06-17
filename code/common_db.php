@@ -22,12 +22,8 @@
 **    along with Open Source ACH. If not, see <http://www.gnu.org/licenses/>.
 //////////////////////////////////////////////////////////////////////////////// */
 
-
-
 $SQL_CACHING_ACTIVE = TRUE; // Set this to FALSE to turn off SQL caching.
 $SPEED_REPORTING = TRUE; // Set this to FALSE to turn off the speed display at the bottom of the pages.
-
-
 
 $DB_QUERIES = 0; // Total number of times the database is accessed.
 
@@ -36,8 +32,6 @@ $SQL_STATEMENTS_CACHE = array();
 $SQL_CACHE = array();
 $SQL_DUPES = 0;
 $SQL_SELECTS = 0;
-
-include('database.php');
 
 $MYSQL_ERRNO = '';
 
