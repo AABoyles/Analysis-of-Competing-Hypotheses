@@ -37,10 +37,8 @@ $SQL_CACHE = array();
 $SQL_DUPES = 0;
 $SQL_SELECTS = 0;
 
-$dbhost = '';
-$dbusername = '';
-$dbuserpassword = '';
-$default_dbname = '';
+include('database.php');
+
 $MYSQL_ERRNO = '';
 
 function db_connect() {
