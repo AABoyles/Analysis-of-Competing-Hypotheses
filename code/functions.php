@@ -49,8 +49,6 @@ function getGroupRating($ratingStDev) { // Takes the standard deviation. Determi
 	return 4; // Extreme Disagreement
 }
 
-
-
 function setStatusMessage($message) {
 	setcookie("campaign_status_message", $message, time()+5, "/" );
 }
@@ -59,39 +57,30 @@ function getStatusMessage() {
 	return $_COOKIE['campaign_status_message'];
 }
 
-
-
+#TODO: Migrate to MySQLi
 function get_tag_data() {
-	$arr = Array();
-	
+	$arr = Array();	
 	$result = mysql_do("SELECT tags FROM classes");
 	while($query_data = mysql_fetch_array($result)) {
 		$all_tags .= $query_data['tags'];
 	}
-	
 	$tags = explode(" ", substr($all_tags, 0, -1));
-	
 	for( $i = 0; $i < count($tags); $i++ ) {
 		$arr[$tags[$i]] += 1;
 	}
-
     return $arr;
 }
 
 function get_tag_cloud() {
 	$min_font_size = 14;
 	$max_font_size = 18;
-	
-	$tags = get_tag_data();
-	
+	$tags = get_tag_data();	
 	$minimum_count = min(array_values($tags));
 	$maximum_count = max(array_values($tags));
 	$spread = $maximum_count - $minimum_count;
-	
 	if($spread == 0) {
 		$spread = 1;
 	}
-	
 	$cloud_html = '';
 	$cloud_tags = array(); // create an array to hold tag code
 	foreach ($tags as $tag => $count) {
@@ -125,33 +114,24 @@ function showType($type_code) {
 }
 
 function getStDev($numbers){ // Gets standard deviation. Takes an array called $numbers.
-
-	if( count($numbers) <= 1 ) {
+	$n = count($numbers); 
+	if( $n <= 1 ) {
 		return 0;
 	} else {
-	
-		// Get n (total)
 		$sum_n = array_sum($numbers); 
-		$n = count($numbers); 
 		$mean = $sum_n / $n; // avg or mean
-		
-		// Get x^2 
-		$i = 0; 
-		while(count($numbers) > $i) { 
+		$i = 0;
+		while($i < $n) { 
 			$x_minus_mean = $numbers[$i] - $mean; // x - Xbar
 			$x2[$i] = $x_minus_mean * $x_minus_mean; // square above
 			$i++; 
 		} 
-	
 		$x2_total_sum = array_sum($x2); // sum up all x - Xbar square
-		
 		$x2_div_n = $x2_total_sum/($n); // divide above by number of elements
 		$stdDev = sqrt($x2_div_n);  // get square root for standard deviation
 		$stdDev = round($stdDev,4);
 		return $stdDev; // return the standard deviation
-	
 	}
-	
 }
 
 function cleanForDisplay($text) {
@@ -173,98 +153,66 @@ function getCellComments($evidence_id, $hypothesis_id, $thread_id) {
 function showCellComments($evidence_id, $hypothesis_id, $thread_id) {
 	global $base_URL;
 	global $reply_depth;
-
+	
 	$comments = Array();
 	$comments = getCellComments($evidence_id, $hypothesis_id, $thread_id);
-
 	$to_return = FALSE;
-
 	if( count($comments) > 0 ) {
-	
 		$to_return = TRUE;
-	
+		$left_margin = $reply_depth*50;
 		foreach( $comments as $comment_id ) {
 			$this_comment = new Comment();
 			$this_comment->populateFromId($comment_id);
 			$commenter = new User();
 			$commenter->populateFromId($this_comment->user_id);
-			?>
+			echo "<div class='comment' style='margin-left:$left_margin);'>
+				  <p class='by'><a href='/profile/$commenter->username?'>$commenter->name</a>"; 
+			if( $thread_id == 0 ) { 
+				echo 'writes:';
+			} else {
+				echo 'replies:'; 
+			}
+			echo "</p><p class='comment'>".nl2br($this_comment->comment)."</p>
+				  <p class='time'><b>Time:</b> $this_comment->created</p>
+				  <p class='classification'><b>Classification:</b> $this_comment->classification</p>
+				  <p class='caveat'><b>Caveat:</b> $this_comment->caveat</p>";
+
+	#TODO: Holy shit, this is wrong.  Vividly unscalable.
+	$reply_id = rand(0, 10000000000);
+	echo "<p class='replyTo'><a style='cursor: pointer;' onclick='new Effect.BlindDown(reply_$reply_id);'>Reply</a></p>
+		  <div class='replyToThis' id='reply_$reply_id' style='display: none;'>
+		  <form method='post' class='edit' action='add_comment_action.php'>
+		  <input type='hidden' name='this_url' value='".$_SERVER['REQUEST_URI']."' />
+		  <input type='hidden' name='user_id' value='".$active_user->id."' />
+		  <input type='hidden' name='evidence_id' value='$evidence_id' />
+		  <input type='hidden' name='hypothesis_id' value='$hypothesis_id' />
+		  <input type='hidden' name='reply_to_id' value='$this_comment->id' />
+		  <p><textarea rows='8' name='comment' cols='60'></textarea></p>";
+	echo '<p><b>Classification</b> <select name="classification">
+			<option value="U">Unclassified</option>
+			<option value="C">Confidential</option>
+			<option value="S">Secret</option>
+			<option value="TS">Top Secret</option>
+		</select> <b style="padding-left: 15px;">Caveat</b> <select name="caveat">
+			<option value="">(No caveat)</option>
+			<option value="FOUO">FOUO/AIUO</option>		
+			<option value="SI">SI</option>
+			<option value="TK">TK</option>
+			<option value="HCS">HCS</option>
+			<option value="G">G</option>
+		</select></p>
+		<p class="submit"><input class="button" type="submit" value="Add Reply" /></p>
+		</form>	
+		</div>
+		</div>';
 		
-	<div class="comment" style="margin-left: <?php echo($reply_depth*50); ?>">
-	
-	<p class="by"><a href="<?=$base_URL?>profile/<?=$commenter->username?>"><?=$commenter->name?></a> <?php if( $thread_id == 0 ) { ?>writes<?php } else { ?>replies<?php } ?>:</p>
-	
-	<p class="comment"><?=nl2br($this_comment->comment)?></p>
-	
-	<p class="time"><b>Time:</b> <?=$this_comment->created?></p>
-	
-	<p class="classification"><b>Classification:</b> <?=$this_comment->classification?></p>
-	
-	<p class="caveat"><b>Caveat:</b> <?=$this_comment->caveat?></p>
-	
-	
-	
-	<?php $reply_id = rand(0, 10000000000); ?>
-	
-	<p class="replyTo"><a style="cursor: pointer;" onclick="new Effect.BlindDown(reply<?=$reply_id?>);">Reply</a></p>
-	
-	<div class="replyToThis" id="reply<?=$reply_id?>" style="display: none;">
-	
-	<form method="post" class="edit" action="add_comment_action.php">
-
-	<input type="hidden" name="this_url" value="<?=$_SERVER['REQUEST_URI']?>" />
-	
-	<input type="hidden" name="user_id" value="<?=$active_user->id?>" />
-	
-	<input type="hidden" name="evidence_id" value="<?=$evidence_id?>" />
-	
-	<input type="hidden" name="hypothesis_id" value="<?=$hypothesis_id?>" />
-	
-	<input type="hidden" name="reply_to_id" value="<?=$this_comment->id?>" />
-	
-	<p><textarea rows="8" name="comment" cols="60"></textarea></p>
-	
-	<p><b>Classification</b> <select name="classification">
-		<option value="U">Unclassified</option>
-		<option value="C">Confidential</option>
-		<option value="S">Secret</option>
-		<option value="TS">Top Secret</option>
-	</select> <b style="padding-left: 15px;">Caveat</b> <select name="caveat">
-		<option value="">(No caveat)</option>
-		<option value="FOUO">FOUO/AIUO</option>		
-		<option value="SI">SI</option>
-		<option value="TK">TK</option>
-		<option value="HCS">HCS</option>
-		<option value="G">G</option>
-	</select></p>
-	
-	<p class="submit"><input class="button" type="submit" value="Add Reply" /></p>
-	
-	</form>
-	
-	</div>
-
-
-	
-	</div>
-		
-		<?php
-			
 			$reply_depth++;
-			
 			showCellComments($evidence_id, $hypothesis_id, $this_comment->id);
-			
-			$reply_depth--;
-			
-		}
-		
+			$reply_depth--;	
+		}	
 	}
-
-	return $to_return;
-	
+	return $to_return;	
 }
-
-
 
 function getActiveUsers($project_id) {
 	$ten_minutes_ago = date('Y-m-d H:i:s', strtotime('-10 minutes'));	
@@ -278,8 +226,6 @@ function getActiveUsers($project_id) {
 	}
 	return $active_users;
 }
-
-
 
 function showChat($project_id) {
 	global $base_URL;
@@ -302,8 +248,6 @@ function showChat($project_id) {
 function average($array){
   return array_sum($array)/count($array) ;
 }
-
-
 
 function utf16_to_utf8($str) {
     $c0 = ord($str[0]);
@@ -337,8 +281,6 @@ function utf16_to_utf8($str) {
     return $dec;
 }
 
-
-
 function sendMail($to, $subject, $message, $headers) {
 	global $email_domain;
 	$headers = 'From: ACH System <noreply@' . $email_domain . ">\r\n" . 'Reply-To: noreply@' . $email_domain;	
@@ -349,21 +291,16 @@ function sendMail($to, $subject, $message, $headers) {
 function helpLink($helpSubject) {
 	global $base_URL;
 	echo "<a href='" . $base_URL . "help/$helpSubject' onClick=\"window.open('" . $base_URL . "help/" . $helpSubject . "', 'Help', 'toolbar=yes,directories=no,location=no,status=yes,menubar=no,resizable=yes,scrollbars=yes,width=1000,height=500');  return false\"><img src=\"images/icons/help_red.png\" width=\"16\" height=\"16\" border=\"0\" alt='Help' /></a>";
-	
 }
 
 function helpTextLink($helpSubject, $linktext) {
 	global $base_URL;
 	echo "<a href='" . $base_URL . "help/$helpSubject' onClick=\"window.open('" . $base_URL . "help/" . $helpSubject . "', 'Help', 'toolbar=yes,directories=no,location=no,status=yes,menubar=no,resizable=yes,scrollbars=yes,width=1000,height=500'); return false\">" . $linktext . "</a>";
-	
 }
 
 function condenseComment($text) {
-	
 	$num_words_to_show = 10;
-	
 	$words = explode(" ", $text);
-	
 	if( count($words) > $num_words_to_show ) {
 		$is_long = true;
 		$comment = "";
@@ -374,9 +311,5 @@ function condenseComment($text) {
 	} else {
 		$comment = $text;
 	}
-	
 	return $comment;
-
 }
-
-?>

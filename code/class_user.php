@@ -22,28 +22,20 @@
 **    along with Open Source ACH. If not, see <http://www.gnu.org/licenses/>.
 //////////////////////////////////////////////////////////////////////////////// */
 
-
-
 class User extends FrameworkDatabase {
-
-
-
 	public $database_table_name = "users"; // This is the table that this class interacts with.
 	public $insert_fields_to_ignore = array("created"); // These are tables fields that will be IGNORED when inserts happen.
 
-
-	
 	// These are other extra variables that don't need to be matched in the DB table.
 	public $projects = Array();
 	public $owner_of_projects = Array();
 	public $member_of_projects = Array(); // But not the owner.
 	public $member_of_projects_view_only = Array();
 
-
-
 	public function __construct() { // Populates all of the varibles in this object from the DB.
 		$this->logged_in = FALSE;
 		$this->found = FALSE;
+		$this->logged_in_full_account = FALSE;
 	}
 	
 	public function setCookies() { // Sets cookies when the User logs in.
@@ -98,7 +90,8 @@ class User extends FrameworkDatabase {
 		$result = mysql_do("SELECT * FROM users_in_projects_view_only WHERE user_id='$this->id'");
 		while($query_data = mysql_fetch_array($result)) {
 			$this->projects[] = $query_data['project_id'];
-			if( !in_array($query_data['project_id'], $this->owner_of_projects) && !in_array($query_data['project_id'], $this->member_of_projects) ) {
+			if( !in_array($query_data['project_id'], $this->owner_of_projects) && 
+				!in_array($query_data['project_id'], $this->member_of_projects) ) {
 				$this->member_of_projects_view_only[] = $query_data['project_id'];
 			}
 		}
@@ -205,7 +198,7 @@ class User extends FrameworkDatabase {
 			return $query_data['rating'];
 		}
 	}
-	
+
 	public function display() { // Just prints out some basic user data for testing.
 		if( $this->logged_in ) {
 			$this_logged_in = "Logged in.";
@@ -214,8 +207,6 @@ class User extends FrameworkDatabase {
 		}
 		echo('<p><b>' . $this->id . '. ' . $this->username . '</b> is  ' . $this->first_name . ' ' . $this->last_name . ' &mdash; ' . $this_logged_in . '</p>');
 	}
-	
-	
 	
 	public function displayInvitationNotices() {
 		echo('<div class="invitationNotices">');
@@ -242,12 +233,7 @@ class User extends FrameworkDatabase {
 			echo('<p>Still waiting on approval to join project <a href="' . $base_URL . 'project/' . $this_project->id . '">' . $this_project->title . '</a>.</p>');
 		}
 	}
-	
-	
-	
-	
-	
-	
+		
 	public function sendPasswordReset() {
 		global $base_URL;
 		global $email_domain;
@@ -255,9 +241,4 @@ class User extends FrameworkDatabase {
 		$headers = 'From: ACH System <noreply@' . $email_domain . ">\r\n" . 'Reply-To: noreply@' . $email_domain;
 		mail($this->email, "[ACH] Password Reset Link", $message, $headers);
 	}	
-
 }
-
-
-
-?>

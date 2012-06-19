@@ -24,74 +24,52 @@
 
 include("code/includes.php");
 
-$username = $_REQUEST['username'];
+if(isset($_REQUEST['username'])){
+	$username = $_REQUEST['username'];
+	$display_user = new User();
+	$display_user->populateFromAttribute($username, "username");
+}
 
-$display_user = new User();
-$display_user->populateFromAttribute($username, "username");
+echo '<!DOCTYPE html>
+	  <html><head>
+	  <title>ACH: Sign Up</title>';
 
-?>
+include("parts/includes.php");
 
-<html>
-<head>
-	<title>ACH: Sign Up</title>
-	<?php include("parts/includes.php"); ?>
-</head>
+echo '</head><body>';
 
-<body onload="setTimeout('Effect.Fade(\'statusMessage\')',2500); setTimeout('Effect.Fade(\'statusMessage2\')',2500);">
+#TODO: what is this for and is it worth it?
+#<body onload="setTimeout('Effect.Fade(\'statusMessage\')',2500); setTimeout('Effect.Fade(\'statusMessage2\')',2500);">
 
 
-<?php include("parts/header.php"); ?>
-<?php include("parts/login_sidebar.php"); ?>
+include("parts/header.php");
+include("parts/login_sidebar.php");
 
-<div class="mainContainer">
-
-	<div class="ydsf left">
-		<div class="inner">
-
-			<div class="main">
-
-				<?php if( !$active_user->logged_in ) { ?>
-				
-					<h2>Sign Up</h2>
-					
-					<form class="signUp" method="post" class="edit" action="make_new_account.php">
-					
-						<p><b>Username:</b> <input type="text" name="username" size="20" /></p>
-						
-						<p><b>Password:</b> <input type="password" name="password" size="20" /></p>
-						
-						<p><b>Confirm Password:</b> <input type="password" name="password2" size="20" /></p>
-						
-						<p><b>Real name:</b> <input type="text" name="name" size="40" /></p>
-						
-						<p><b>E-mail address:</b> <input type="text" name="email" size="40" /></p>
-						
-						<p><b>Phone:</b> <input type="text" name="unclassified_phone" size="40" /></p>
-												
-						<p><b>Office:</b> <input type="text" name="office" size="40" /></p>
-						
-						<p><b>Office Description:</b><br /><textarea rows="4" name="office_desc" cols="30"></textarea></p>
-												
-						<p><input type="submit" value="Sign Up" /></p>
-					
-					</form>
-				
-				<?php } ?>
-			
-			</div>
-
+echo "
+<div class='mainContainer'>
+	<div class='ydsf left'>
+		<div class='inner'>
+			<div class='main'>";
+				if( !$active_user->logged_in ) {
+					echo "<h2>Sign Up</h2>
+					<form class='signUp' method='post' class='edit' action='make_new_account.php'>		
+						<p><b>Username:</b> <input type='text' name='username' size='20' /></p>
+						<p><b>Password:</b> <input type='password' name='password' size='20'/></p>
+						<p><b>Confirm Password:</b> <input type='password' name='password2' size='20' /></p>
+						<p><b>Real name:</b> <input type='text' name='name' size='40' /></p>
+						<p><b>E-mail address:</b> <input type='text' name='email' size='40' /></p>
+						<p><b>Phone:</b> <input type='text' name='unclassified_phone' size='40' /></p>
+						<p><b>Office:</b> <input type='text' name='office' size='40' /></p>
+						<p><b>Office Description:</b><br /><textarea rows='4' name='office_desc' cols='30'></textarea></p>
+						<p><input type='submit' value='Sign Up' /></p>
+					</form>";
+				}
+echo		"</div>
 		</div>
 	</div>
+</div>";
 
-</div>
+include("parts/footer.php");
 
-
-
-<?php include("parts/footer.php"); ?>
-
-
-
-
-
-</body>
-</html>
+echo "</body>
+</html>";
