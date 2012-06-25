@@ -35,6 +35,9 @@ $SQL_SELECTS = 0;
 
 $MYSQL_ERRNO = '';
 
+#For the love of God,
+#TODO: UPDATE THIS TO MYSQLI
+
 function db_connect() {
 	global $dbhost, $dbusername, $dbuserpassword, $default_dbname;
 	global $MYSQL_ERRNO, $MYSQL_ERROR;
@@ -87,7 +90,6 @@ function mysql_do($sql) {
 
 function mysql_fast($sql) { // Cached SQL statements, DOESN'T RESULT RESULT RESOURCE, RETURNS $query_data ARRAY. FOR NOW, limit to QUERIES WITH ONE RESULT.
 	global $SQL_CACHING_ACTIVE, $SQL_STATEMENTS_CACHE, $SQL_DUPES, $SQL_CACHE;
-
 	$results = array();
 
 	if( $SQL_CACHING_ACTIVE && strtolower(substr($sql, 0, 6)) == "select" ) {
@@ -107,31 +109,18 @@ function mysql_fast($sql) { // Cached SQL statements, DOESN'T RESULT RESULT RESO
 		while( $query_data = mysql_fetch_array($result) ) {
 			$results[] = $query_data;
 		}
-	}
-	
+	}	
 	//echo("<i>" . $sql . "</i><br />");
-		
 	return $results;
 }
 
 function getFieldList($table) { //updated for PHP5.3, contributed by Chris Snow of ISW Corp
-
         $fldlist = mysql_query("SHOW COLUMNS FROM ".$table);
-
         $colCount = mysql_num_rows($fldlist);
 
- 
-
         for ($i = 0; $i < $colCount; $i++) {
-
             $fieldNames = mysql_fetch_row($fldlist);
-
             $listing[] = $fieldNames[0];
-
         }
-
         return($listing);
-
 }
-
-?>
