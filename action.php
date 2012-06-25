@@ -35,19 +35,4 @@ $outgoing_message = $_REQUEST['outgoing_message'];
 
 mysql_do("UPDATE campaigns SET name='$name', campaign_id='$campaign_id', outgoing_message='$outgoing_message', email_address='$email_address' WHERE id='$id';");
 
-?>
-
-<html>
-<head>
-	<title>Updating...</title>
-	<meta http-equiv=Refresh content="0; url=campaign/<?=$id?>">
-</head>
-
-
-
-<body>
-
-
-
-</body>
-</html>
+echo "<!DOCTYPE html><html><head><title>Updating...</title><meta http-equiv=Refresh content='0; url=campaign/$id'></head></html>";

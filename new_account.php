@@ -71,5 +71,4 @@ echo		"</div>
 
 include("parts/footer.php");
 
-echo "</body>
-</html>";
+echo "</body></html>";
