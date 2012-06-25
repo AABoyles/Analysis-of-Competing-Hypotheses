@@ -15,6 +15,4 @@ echo "<p class='label'>User Name: <input class='login' type='text' size='15' nam
 	  <p><input type='submit' value='Sign in' /></p>
 	  <p class='forgot'><a href='$base_URL/password_reset/'>Forget your password?</a></p>
 	  <p class='signUp'><a href='$base_URL/signup/'>Sign Up for an Account...</a></p>
-	  </div>
-	  </form>
-	  </div>";
+	  </div></form></div>";
