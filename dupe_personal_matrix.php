@@ -96,19 +96,6 @@ while($query_data = mysql_fetch_array($result)) {
 
 
 //AFTER ALL THE DATA IS DUPLICATED, THE USER IS SENT TO THE PROJECT EDIT PAGE...
-?>
 
-<html>
-<head>
-	<title>Updating...</title>
-	<meta http-equiv=Refresh content="0; url=<?=$base_URL?>project/<?=$active_project->id?>/edit">
-</head>
-
-
-
-<body>
-
-
-
-</body>
-</html>
+$redirectURL = $base_URL . 'project/' . $active_project->id . '/edit';
+require ('redirect.php');

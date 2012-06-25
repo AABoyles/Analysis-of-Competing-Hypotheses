@@ -50,19 +50,5 @@ if( $_REQUEST['reply_to_id'] > 0 ) {
 
 }
 
-?>
-
-<html>
-<head>
-	<title>Updating...</title>
-	<meta http-equiv=Refresh content="0; url=<?=$previous_page?>#comment_<?=$this_comment->id?>">
-</head>
-
-
-
-<body>
-
-
-
-</body>
-</html>
+$redirectURL = $previous_page . '#comment_' . $this_comment->id;
+require('redirect.php');

@@ -39,19 +39,5 @@ $active_project->insertNew();
 
 setStatusMessage("Added!");
 
-?>
-
-<html>
-<head>
-	<title>Updating...</title>
-	<meta http-equiv=Refresh content="0; url=project/<?=$active_project->id?>/hypothesis/new/multiple">
-</head>
-
-
-
-<body>
-
-
-
-</body>
-</html>
+$redirectURL = 'project/' . $active_project->id . '/hypothesis/new/multiple';
+require('redirect.php');

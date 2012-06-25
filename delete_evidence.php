@@ -26,30 +26,12 @@ include("code/includes.php");
 include("parts/includes.php");
 
 $active_evidence = new Evidence();
-
 $active_evidence->populateFromId($_REQUEST['evidence_id']);
-
 $active_evidence->id = $_REQUEST['evidence_id'];
-
 $active_evidence->deleted = "y";
-
 $active_evidence->update();
 
 setStatusMessage("Updated!");
 
-?>
-
-<html>
-<head>
-	<title>Updating...</title>
-	<meta http-equiv=Refresh content="0; url=<?=$base_URL?>project/<?=$active_evidence->project_id?>">
-</head>
-
-
-
-<body>
-
-
-
-</body>
-</html>
+$redirectURL = $base_URL . 'project/' . $active_evidence->project_id;
+require('redirect.php');

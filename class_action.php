@@ -35,19 +35,5 @@ $active_campaign->update();
 
 Campaign::setStatusMessage("Saved!");
 
-?>
-
-<html>
-<head>
-	<title>Updating...</title>
-	<meta http-equiv=Refresh content="0; url=campaign/<?=$active_campaign->keyword?>">
-</head>
-
-
-
-<body>
-
-
-
-</body>
-</html>
+$redirectURL = 'campaign/'.$active_campaign->keyword;
+require 'redirect.php';
