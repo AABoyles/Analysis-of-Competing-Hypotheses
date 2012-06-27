@@ -53,19 +53,5 @@ $active_project->populateFromId[$_REQUEST['project_id']];
 
 //}
 
-?>
-
-<html>
-<head>
-	<title>Updating...</title>
-	<meta http-equiv=Refresh content="0; url=project/<?=$_REQUEST['project_id']?>/">
-</head>
-
-
-
-<body>
-
-
-
-</body>
-</html>
+$redirectURL = 'project/' . $_REQUEST['project_id'];
+require ('redirect.php');

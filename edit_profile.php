@@ -25,101 +25,54 @@
 include("code/includes.php");
 
 $username = $_REQUEST['username'];
-
 $display_user = new User();
 $display_user->populateFromAttribute($username, "username");
 
-?>
+echo '<!DOCTYPE html><html><head><title>ACH: Edit Profile</title>';
 
-<html>
-<head>
-	<title>ACH: Edit Profile</title>
-	<?php include("parts/includes.php"); ?>
-</head>
+include("parts/includes.php");
 
-<body onload="setTimeout('Effect.Fade(\'statusMessage\')',2500); setTimeout('Effect.Fade(\'statusMessage2\')',2500);">
+echo '</head>';
+$script = "setTimeout('Effect.Fade(\'statusMessage\')',2500); setTimeout('Effect.Fade(\'statusMessage2\')',2500);";
+echo "<body onload=$script>";
 
-
-
-<?php include("parts/header.php"); ?>
-
-
-
-
-
-
-<?php
+include("parts/header.php"); 
 	
-if( $active_user->logged_in ) { ?>
-	
+if( $active_user->logged_in ) {
+	include("parts/menu_sidebar.php");
 
-
-<?php include("parts/menu_sidebar.php"); ?>
-
-
-
+	echo '
 <div class="mainContainer">
-
 	<div class="ydsf left">
 		<div class="inner">
-
 			<div class="main">
-
 				<h2>Edit Your Profile</h2>
-				
 				<form method="POST" action="edit_profile_action.php" enctype="multipart/form-data">
-				
 					<p><b>Add or change your profile image (must be .jpg):</b></p>
-					
 					<p><input type="file" name="image"></p>
-					
 					<p><input type="Submit" value="Save Changes" class="button"></p>
-				
 				</form>
-
 			</div>
-
 		</div>
 	</div>
+</div>';
 
-</div>
+} else {
+	include("parts/login_sidebar.php");
 
-
-
-<?php } else { ?>
-
-
-
-<?php include("parts/login_sidebar.php"); ?>
-
-
-
+	echo '
 <div class="mainContainer">
 	<div class="ydsf left">
 		<div class="inner">
-
 			<div class="main">
-
 				<h2>Access Denied</h2>
-				
 				<p>You are not authorized to view this page.</p>
-
 			</div>
-
 		</div>
 	</div>
+</div>';
+}
 
-</div>
+include("parts/footer.php");
 
-<?php } ?>
-
-
-
-<?php include("parts/footer.php"); ?>
-
-
-
-
-
-</body>
-</html>
+echo '</body></html>';

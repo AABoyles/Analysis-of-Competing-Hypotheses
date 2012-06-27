@@ -35,7 +35,6 @@ $active_project->title .= " (Copy)"; //DEFAULT TITLE FOR DUPLICATED PROJECTS IS 
 $active_project->user_id = $active_user->id;
 
 $active_project->insertNew();
-
 $new_project_id = $active_project->id;
 
 $old_evidence = Array();

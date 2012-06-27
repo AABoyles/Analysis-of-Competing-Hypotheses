@@ -24,10 +24,6 @@
 
 include("code/includes.php");
 
-
-
-
-
 $size = 200; // the thumbnail width
 
 $filedir = 'images/user/'; // the directory for the original image
@@ -73,33 +69,11 @@ if (isset($_FILES['image']['name']))
 	imagedestroy($destimg);
 }
 
-
-
-
-
-
-
 foreach ($_REQUEST as $field => $value) {
 	$active_campaign->$field = addslashes($value);
 }
 
-
-
 setStatusMessage("Added!");
 
-?>
-
-<html>
-<head>
-	<title>Updating...</title>
-	<meta http-equiv=Refresh content="0; url=profile/<?=$active_user->username?>">
-</head>
-
-
-
-<body>
-
-
-
-</body>
-</html>
+$redirectURL = 'profile/' . $active_user->username;
+require('redirect.php');
