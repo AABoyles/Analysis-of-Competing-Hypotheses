@@ -2,7 +2,8 @@
 
 #This File is where all administrative settings should be configured.
 
-$base_URL="/ACH/";
+$domain="localhost";
+$base_URL="$domain/ACH";
 $email_domain="localhost";
 
 # You are configuring Analysis of Competing Hypotheses

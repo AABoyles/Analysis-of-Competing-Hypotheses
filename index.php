@@ -23,8 +23,7 @@
 **    along with Open Source ACH. If not, see <http://www.gnu.org/licenses/>.
 //////////////////////////////////////////////////////////////////////////////// */
 
-echo '<!DOCTYPE html>
-	  <html><head>';
+echo '<!DOCTYPE html><html><head>';
 
 include("LocalSettings.php");
 include("code/includes.php");
