@@ -49,10 +49,15 @@
 <script src="js/misc.js" type="text/javascript"></script>
 <script src="js/cookies.js" type="text/javascript"></script>
 
+<!--TODO: Turn this into an external Javascript file:-->
 <script language="JavaScript">
 
 isIE = "n";
-if( navigator.appName == "Microsoft Internet Explorer" ) { isIE = "y"; }
+<?php $is_ie = false; ?>
+if( navigator.appName == "Microsoft Internet Explorer" ) { 
+	isIE = "y";
+	<?php $is_ie = true; ?> 
+}
 
 <?php
 
@@ -84,7 +89,7 @@ function confirm_delete_hypothesis(id) {
 	}
 }
 
-var thisProjectId = <?=$active_project_id?>;
+var thisProjectId = <?php $active_project_id ?>;
 
 
 
@@ -252,7 +257,7 @@ function scrollingDetector(){
 
 
 </script>
-<?php 
+<?php
 
 if( $is_ie ) {
 	echo '<link rel="stylesheet" type="text/css" href="css/chat_ie.css" />';

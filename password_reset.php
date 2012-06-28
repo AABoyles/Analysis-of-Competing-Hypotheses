@@ -2,84 +2,38 @@
 include("parts/includes.php");
 include("code/includes.php");
 
+$user_found = false;
 if( isset($_REQUEST['submit']) ) {
 	$this_user = new User();
 	$this_user->getAttr($_REQUEST['email'], "email");
 	if( $this_user->id > 0 ) {
 		$user_found = true;
-	} else {
-		$user_found = false;
-	}
-	if( $user_found ) {
 		$this_user->sendPasswordReset();
 		//sendMail($this_user->email, "[CACH] Password reset request", "Please reset your password by visiting this URL:\r\n\r\n " . $base_URL . "password_reset/" . $this_user->username . "/" . md5($this_user->password) . "\r\n\r\nThanks!\r\n\r\n - The ACH Bot");
-
 	}
 }
 
-?>
+echo '<!DOCTYPE html><html><head><title>ACH: Reset Your Password</title>';
+include("parts/includes.php");
+echo '</head><body>';
+include("parts/header.php");
+echo '<div class="mainContainer"><h2>Forgotten Password Recovery</h2>';
 
-<html>
-<head>
-	<title>ACH: Reset Your Password</title>
-	<?php include("parts/includes.php"); ?>
-</head>
-
-<body>
-
-
-
-<?php include("parts/header.php"); ?>
-
-
-
-
-
-
-
-<div class="mainContainer">
-
-
-
-<h2>Forgotten Password Recovery</h2>
-
-<?php
-
-if( $user_found ) { ?>
-<p>Okay &mdash; we've sent you an e-mail with instructions for reseting your password.</p>
-<?php } else {
-	if( isset($_REQUEST['submit']) ) { ?>
-<p class="error">Oops. We can't find that e-mail address in our system.</p>
-	<?php } ?>
-
-<p>Please enter your e-mail address and we'll send you instructions for resetting your password.</p>
-
+if( $user_found ) {
+	echo '<p>Okay &mdash; we\'ve sent you an e-mail with instructions for reseting your password.</p>';
+} else {
+	if( isset($_REQUEST['submit']) ) {
+		echo '<p class="error">Oops. We can\'t find that e-mail address in our system.</p>';
+	}
+	echo '<p>Please enter your e-mail address and we\'ll send you instructions for resetting your password.</p>
 <form method="post" action="/password_reset/">
-
 <p><b>E-mail address:</b> <input type="text" size="30" name="email" / ></p>
-
 <p><input type="submit" name="submit" value="Send instructions..." />
+</form>';
+}
 
-</form>
-<?php }
+echo '</div>';
 
-?>
+include("parts/footer.php");
 
-
-
-</div>
-
-
-
-
-
-
-
-<?php include("parts/footer.php"); ?>
-
-
-
-
-
-</body>
-</html>
+echo '</body></html>';
