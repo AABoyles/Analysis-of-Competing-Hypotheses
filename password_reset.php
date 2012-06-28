@@ -3,9 +3,9 @@ include("parts/includes.php");
 include("code/includes.php");
 
 $user_found = false;
-if( isset($_REQUEST['submit']) ) {
+if( isset($_POST['submit']) ) {
 	$this_user = new User();
-	$this_user->getAttr($_REQUEST['email'], "email");
+	$this_user->getAttr($_POST['email'], "email");
 	if( $this_user->id > 0 ) {
 		$user_found = true;
 		$this_user->sendPasswordReset();
@@ -22,18 +22,16 @@ echo '<div class="mainContainer"><h2>Forgotten Password Recovery</h2>';
 if( $user_found ) {
 	echo '<p>Okay &mdash; we\'ve sent you an e-mail with instructions for reseting your password.</p>';
 } else {
-	if( isset($_REQUEST['submit']) ) {
+	if( isset($_POST['submit']) ) {
 		echo '<p class="error">Oops. We can\'t find that e-mail address in our system.</p>';
 	}
 	echo '<p>Please enter your e-mail address and we\'ll send you instructions for resetting your password.</p>
-<form method="post" action="/password_reset/">
+<form method="post" action="password_reset_change.php">
 <p><b>E-mail address:</b> <input type="text" size="30" name="email" / ></p>
 <p><input type="submit" name="submit" value="Send instructions..." />
 </form>';
 }
 
 echo '</div>';
-
 include("parts/footer.php");
-
 echo '</body></html>';
