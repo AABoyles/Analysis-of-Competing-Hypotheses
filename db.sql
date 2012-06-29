@@ -1,23 +1,4 @@
--- phpMyAdmin SQL Dump
--- version 2.10.0.1
--- http://www.phpmyadmin.net
--- 
--- Host: localhost
--- Generation Time: Aug 16, 2010 at 02:38 PM
--- Server version: 5.0.51
--- PHP Version: 5.2.4-2ubuntu5.10
-
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
-
--- 
--- Database: `ach`
--- 
-
--- --------------------------------------------------------
-
--- 
--- Table structure for table `chat_log`
--- 
 
 CREATE TABLE `chat_log` (
   `id` int(11) NOT NULL auto_increment,
@@ -27,12 +8,6 @@ CREATE TABLE `chat_log` (
   `created` timestamp NOT NULL default CURRENT_TIMESTAMP,
   PRIMARY KEY  (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=238 ;
-
--- --------------------------------------------------------
-
--- 
--- Table structure for table `comments`
--- 
 
 CREATE TABLE `comments` (
   `id` int(11) NOT NULL auto_increment,
@@ -48,12 +23,6 @@ CREATE TABLE `comments` (
   PRIMARY KEY  (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=89 ;
 
--- --------------------------------------------------------
-
--- 
--- Table structure for table `credibility`
--- 
-
 CREATE TABLE `credibility` (
   `id` int(11) NOT NULL auto_increment,
   `user_id` int(11) default NULL,
@@ -63,12 +32,6 @@ CREATE TABLE `credibility` (
   `weight` float default '1',
   PRIMARY KEY  (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2628 ;
-
--- --------------------------------------------------------
-
--- 
--- Table structure for table `evidence`
--- 
 
 CREATE TABLE `evidence` (
   `id` int(11) NOT NULL auto_increment,
@@ -89,12 +52,6 @@ CREATE TABLE `evidence` (
   PRIMARY KEY  (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2176 ;
 
--- --------------------------------------------------------
-
--- 
--- Table structure for table `hypotheses`
--- 
-
 CREATE TABLE `hypotheses` (
   `id` int(11) NOT NULL auto_increment,
   `label` varchar(255) NOT NULL,
@@ -105,12 +62,6 @@ CREATE TABLE `hypotheses` (
   `deleted` enum('n','y') NOT NULL default 'n',
   PRIMARY KEY  (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=855 ;
-
--- --------------------------------------------------------
-
--- 
--- Table structure for table `invitation_notices`
--- 
 
 CREATE TABLE `invitation_notices` (
   `id` int(11) NOT NULL auto_increment,
@@ -124,12 +75,6 @@ CREATE TABLE `invitation_notices` (
   PRIMARY KEY  (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=35 ;
 
--- --------------------------------------------------------
-
--- 
--- Table structure for table `join_requests`
--- 
-
 CREATE TABLE `join_requests` (
   `id` int(11) NOT NULL auto_increment,
   `user_id` int(11) NOT NULL,
@@ -137,12 +82,6 @@ CREATE TABLE `join_requests` (
   `created` timestamp NOT NULL default CURRENT_TIMESTAMP,
   PRIMARY KEY  (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=52 ;
-
--- --------------------------------------------------------
-
--- 
--- Table structure for table `load_times`
--- 
 
 CREATE TABLE `load_times` (
   `id` int(11) NOT NULL auto_increment,
@@ -154,12 +93,6 @@ CREATE TABLE `load_times` (
   `user_id` int(11) default NULL,
   PRIMARY KEY  (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=23569 ;
-
--- --------------------------------------------------------
-
--- 
--- Table structure for table `projects`
--- 
 
 CREATE TABLE `projects` (
   `id` int(11) NOT NULL auto_increment,
@@ -175,12 +108,6 @@ CREATE TABLE `projects` (
   PRIMARY KEY  (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=233 ;
 
--- --------------------------------------------------------
-
--- 
--- Table structure for table `ratings`
--- 
-
 CREATE TABLE `ratings` (
   `id` int(11) NOT NULL auto_increment,
   `hypothesis_id` int(11) NOT NULL,
@@ -191,12 +118,6 @@ CREATE TABLE `ratings` (
   `created` timestamp NOT NULL default CURRENT_TIMESTAMP,
   PRIMARY KEY  (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=17887 ;
-
--- --------------------------------------------------------
-
--- 
--- Table structure for table `users`
--- 
 
 CREATE TABLE `users` (
   `id` int(11) NOT NULL auto_increment,
@@ -213,12 +134,6 @@ CREATE TABLE `users` (
   PRIMARY KEY  (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=77 ;
 
--- --------------------------------------------------------
-
--- 
--- Table structure for table `users_active`
--- 
-
 CREATE TABLE `users_active` (
   `id` int(11) NOT NULL auto_increment,
   `user_id` int(11) NOT NULL,
@@ -228,12 +143,6 @@ CREATE TABLE `users_active` (
   PRIMARY KEY  (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=72 ;
 
--- --------------------------------------------------------
-
--- 
--- Table structure for table `users_in_projects`
--- 
-
 CREATE TABLE `users_in_projects` (
   `id` int(11) NOT NULL auto_increment,
   `user_id` int(11) NOT NULL,
@@ -241,12 +150,6 @@ CREATE TABLE `users_in_projects` (
   `created` timestamp NOT NULL default CURRENT_TIMESTAMP,
   PRIMARY KEY  (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=185 ;
-
--- --------------------------------------------------------
-
--- 
--- Table structure for table `users_in_projects_view_only`
--- 
 
 CREATE TABLE `users_in_projects_view_only` (
   `id` int(11) NOT NULL auto_increment,
