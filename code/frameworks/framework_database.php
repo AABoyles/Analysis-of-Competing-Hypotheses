@@ -1,40 +1,26 @@
 <?php
 
-
-
 // THIS IS NOT INTENDED TO BE USED ALONE. IT'S A FRAMEWORK FOR OTHER CLASSES.
 
-
-
 class FrameworkDatabase {
-
-
 	
 	// These are other extra variables that don't need to be matched in the DB table.
 	public $database_table_name; // This is the table that this class interacts with.
 	public $insert_fields_to_ignore = Array(); // These are tables fields that will be IGNORED when inserts happen.
-
-
 
 	public function __construct() { // Populates all of the varibles in this object from the DB.
 		$this->found = FALSE;
 	}
 
 	public function populateFromId($id) { // Populates all of the varibles in this object from the DB. Maybe this and the next functions can be merged.
-		$return_value = FALSE;
 		$results = mysql_fast("SELECT * FROM $this->database_table_name WHERE id='$id' LIMIT 1");
-		$this_results = Array();
-		if( count($results) > 0 ) {
-			$this_result = $results[0]; // Since only one results comes back.
-		}
-		$badchars = array("\"", "\\");
-		$goodchars = array("''", "");
-		foreach ($this_result as $field => $value) {
-			$this->$field = str_replace($badchars, $goodchars, $value); //stripslashes($value);
+		if( count($results) == 0 ) { return false; }
+		foreach ($results as $field => $value) {
+			$this->$field = str_replace(array("\"", "\\"), array("''", ""), $value); //stripslashes($value);
 			$return_value = TRUE;
 		}
-		$this->found = $return_value;
-		return $return_value;
+		$this->found = true;
+		return true;
 	}
 
 	public function populateFromAttribute($value, $kind) { // Populates all of the varibles in this object from the DB.
@@ -113,7 +99,3 @@ class FrameworkDatabase {
 	}
 
 }
-
-
-
-?>
