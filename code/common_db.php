@@ -22,6 +22,8 @@
 **    along with Open Source ACH. If not, see <http://www.gnu.org/licenses/>.
 //////////////////////////////////////////////////////////////////////////////// */
 
+include ("LocalSettings.php");
+
 $SQL_CACHING_ACTIVE = TRUE; // Set this to FALSE to turn off SQL caching.
 $SPEED_REPORTING = TRUE; // Set this to FALSE to turn off the speed display at the bottom of the pages.
 
@@ -39,24 +41,23 @@ $MYSQL_ERRNO = '';
 #TODO: UPDATE THIS TO MYSQLI
 
 function db_connect() {
-	global $dbhost, $dbusername, $dbuserpassword, $default_dbname;
+	global $dbhost, $dbusername, $dbuserpassword, $dbname, $default_dbname;
 	global $MYSQL_ERRNO, $MYSQL_ERROR;
 	global $DB_QUERIES;
 	
 	$DB_QUERIES++;
 	
-	$link_id = mysql_connect($dbhost, $dbusername, $dbuserpassword);
-	if(!$link_id) {
-		$MYSQL_ERRNO = 0;
-		$MYSQL_ERROR = "Connection failed to the host $dbhost.";
-		return 0;
-	}
-	else if(empty($dbname) && !mysql_select_db($default_dbname)) {
-		// MYSQL_ERRNO = mysql_errno();
-		// MYSQL_ERROR = mysql_error();
-		return 0;
-	}
-	else return $link_id;
+	if(empty($dbhost)){ $dbhost = 'localhost'; }
+	if(empty($dbusername)){ $dbusername = 'root'; }
+	if(empty($dbname)){ $dbname = 'ach'; }
+
+	$mysqli = new mysqli($dbhost, $dbusername, $dbuserpassword, $dbname);
+	
+	if ($mysqli->connect_errno) {
+    	echo("Failed to connect to Database: ".$mysqli->connect_error);
+    	exit();
+	}	
+	else return $mysqli;
 }
 
 function sql_error() {
@@ -78,17 +79,15 @@ function mysql_do($sql) {
 		$SQL_SELECTS++;
 	}
 
-	$link_id = db_connect();
-	$result = mysql_query($sql, $link_id);
+	$link = db_connect();
+	$result = $link->query($sql);
 	
-	//if( strpos($sql, "hypotheses") > 0 ) {
-		//echo($sql . "<br />\r\n");
-	//}
-
 	return $result;
 }
 
-function mysql_fast($sql) { // Cached SQL statements, DOESN'T RESULT RESULT RESOURCE, RETURNS $query_data ARRAY. FOR NOW, limit to QUERIES WITH ONE RESULT.
+function mysql_fast($sql) {
+	// Cached SQL statements, DOESN'T RESULT RESULT RESOURCE, RETURNS $query_data ARRAY. 
+	//  FOR NOW, limit to QUERIES WITH ONE RESULT.
 	global $SQL_CACHING_ACTIVE, $SQL_STATEMENTS_CACHE, $SQL_DUPES, $SQL_CACHE;
 	$results = array();
 
@@ -98,7 +97,7 @@ function mysql_fast($sql) { // Cached SQL statements, DOESN'T RESULT RESULT RESO
 			$results = $SQL_CACHE[$sql];
 		} else {
 			$result = mysql_do($sql);
-			while( $query_data = mysql_fetch_array($result) ) {
+			while( $query_data = mysqli_fetch_array($result) ) {
 				$results[] = $query_data;
 			}
 			$SQL_CACHE[$sql] = $results;
