@@ -58,7 +58,9 @@ class User extends FrameworkDatabase {
 	}
 		
 	public function checkLoggedIn() { // Returns a boolean as to whether the current User object is the User that's logged in.
-		return $this->id > 0;
+		if(isset ($this->id)){
+			return $this->id > 0;
+		} else return false;
 		
 		/*global $cookie_user_id;
 		global $cookie_user_password;
@@ -144,8 +146,9 @@ class User extends FrameworkDatabase {
 		}
 		$this->logged_in = $this->checkLoggedIn();
 		$this->found = $return_value;
-		if( $this->password != "" ) {
-			$this->logged_in_full_account = TRUE;
+		if(isset($this->password)){
+			if( $this->password != "" ) {
+				$this->logged_in_full_account = TRUE; }
 		} else {
 			$this->logged_in_full_account = FALSE;
 		}
