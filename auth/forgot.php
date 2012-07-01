@@ -48,9 +48,7 @@ if ($_POST['Submit']){
 	}
 }
 
-echo "<!DOCTYPE html>
-<html>
-<head>
+echo "<!DOCTYPE html><html><head>
 <meta http-equiv = 'Content-Type' content = 'text/html'; charset = 'iso-8859-1'>
 <title>Forgot Username/Password</title>
 <style type = 'text/css'>
@@ -114,7 +112,7 @@ div.error p {
  <h3>Lost username/password?</h3>";
   if ($hasEmail == true)
 	{
-	echo "<div class = 'message'><p>You will receive your username and password via email shortly.</p><a href = 'javascript:window.close();'>Close this window...</a></p></div>";
+	echo "<div class='message'><p>You will receive your username and password via email shortly.</p><a href = 'javascript:window.close();'>Close this window...</a></p></div>";
 	}
   else {
 	if ($error) {
@@ -126,8 +124,8 @@ echo "<p>Enter your email address, and your username and password will automatic
      <b>Email:</b>
      <input name='email' type='text' id='email' value='".$_POST["email"]."' size='30'>
      <input class='submit' type='submit' name='Submit' value='Get it'>
-</p>
-   </form>
+   </p>
+</form>
 </div>
 </body>
 </html>";
