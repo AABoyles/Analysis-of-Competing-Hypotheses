@@ -44,7 +44,7 @@ if (!$print_mode) {
 
 } else {
 	echo "<div class='printHeader'>
-		  <p>Page printed by <b>$active_user->name</b> on <b>" . date("F j, Y, g:ia") . "(EST)</b>.</p></div>";
+		  <p>Page printed by <b>".$active_user->name."</b> on <b>" . date("F j, Y, g:ia") . "(EST)</b>.</p></div>";
 	switch($active_project -> classification){
 		case 'secret':
 			$classificationBannerStyle = "secretPrintBanner";
