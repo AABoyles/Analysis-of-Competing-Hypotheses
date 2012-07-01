@@ -30,9 +30,7 @@ if(isset($_REQUEST['username'])){
 	$display_user->populateFromAttribute($username, "username");
 }
 
-echo '<!DOCTYPE html>
-	  <html><head>
-	  <title>ACH: Sign Up</title>';
+echo '<!DOCTYPE html><html><head><title>ACH: Sign Up</title>';
 
 include("parts/includes.php");
 
@@ -53,15 +51,17 @@ echo "
 				if( !$active_user->logged_in ) {
 					echo "<h2>Sign Up</h2>
 					<form class='signUp' method='post' class='edit' action='make_new_account.php'>		
-						<p><b>Username:</b> <input type='text' name='username' size='20' /></p>
-						<p><b>Password:</b> <input type='password' name='password' size='20'/></p>
-						<p><b>Confirm Password:</b> <input type='password' name='password2' size='20' /></p>
-						<p><b>Real name:</b> <input type='text' name='name' size='40' /></p>
-						<p><b>E-mail address:</b> <input type='text' name='email' size='40' /></p>
-						<p><b>Phone:</b> <input type='text' name='unclassified_phone' size='40' /></p>
-						<p><b>Office:</b> <input type='text' name='office' size='40' /></p>
-						<p><b>Office Description:</b><br /><textarea rows='4' name='office_desc' cols='30'></textarea></p>
-						<p><input type='submit' value='Sign Up' /></p>
+						<table>
+						<tr><td><b>Username:</b></td><td><input type='text' name='username' size='40' /></td></tr>
+						<tr><td><b>Password:</b></td><td><input type='password' name='password' size='40'/></td></tr>
+						<tr><td><b>Confirm Password:</b></td><td><input type='password' name='password2' size='40' /></td></tr>
+						<tr><td><b>Real name:</b></td><td><input type='text' name='name' size='40' /></td></tr>
+						<tr><td><b>E-mail address:</b></td><td><input type='text' name='email' size='40' /></td></tr>
+						<tr><td><b>Phone:</b></td><td><input type='text' name='unclassified_phone' size='40' /></td></tr>
+						<tr><td><b>Office:</b></td><td><input type='text' name='office' size='40' /></td></tr>
+						<tr><td colspan='2'><b>Office Description:</b><br /><textarea rows='4' name='office_desc' cols='66'></textarea></td></tr>
+						<tr><td colspan='2' style='text-align:center;'><input type='submit' value='Sign Up' /></td></tr>
+						</table>
 					</form>";
 				}
 echo		"</div>
