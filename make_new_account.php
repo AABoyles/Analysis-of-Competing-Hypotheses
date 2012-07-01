@@ -36,7 +36,7 @@ foreach ($_REQUEST as $field => $value) {
 
 if( $_REQUEST['username'] ) {
 	$result = mysql_do("SELECT * FROM users WHERE username = '".$_REQUEST['username']."'");
-	$rows = mysql_num_rows($result);
+	$rows = mysqli_num_rows($result);
 	if ($rows==0) {
 	} else {
 		$success = FALSE;
@@ -79,77 +79,44 @@ if( $success == TRUE ) {
 	$active_user->setCookies();
 }
 
-?>
 
+echo '<!DOCTYPE html><html><head><title>ACH</title>';
+include("parts/includes.php");
 
+echo '</head><body>';
 
-<html>
-<head>
-	<title>ACH</title>
-	<?php include("parts/includes.php"); ?>
-</head>
+//<body onload="setTimeout('Effect.Fade(\'statusMessage\')',2500); setTimeout('Effect.Fade(\'statusMessage2\')',2500); bridge.replaceHeader('BridgeHeader', '1');">
 
-<body onload="setTimeout('Effect.Fade(\'statusMessage\')',2500); setTimeout('Effect.Fade(\'statusMessage2\')',2500); bridge.replaceHeader('BridgeHeader', '1');">
+include("parts/header.php");
+include("parts/login_sidebar.php");
 
-
-
-<?php include("parts/header.php"); ?>
-
-
-
-
-	
-
-
-<?php include("parts/login_sidebar.php"); ?>
-
-
-
+echo '
 <div class="mainContainer">
 	<div class="ydsf left">
 		<div class="inner">
-			<div class="main">
+			<div class="main">';
 
+if( $success == TRUE ) {
 
-
-			<?php if( $success == TRUE ) { ?>
+				echo '				<h2>Created!</h2>
+				<p>Your account has been made.</p>';
 				
-				<h2>Created!</h2>
-				
-				<p>Your account has been made.</p>
-				
-				
-				
-				
-				<?php include('intro.php');?>
+				include('intro.php');
 			
-			
-			<?php } else { ?>
-				
-				<h2>Oops</h2>
-				
+} else {
+				echo "
+				<h2>Oops</h2>				
 				<p>There has been a problem:</p>
-				
-				<ul><?=$fail_text?></ul>
-				
-				<p>Please use your browser's back button to go back and fix these.</p>
-			
-			<?php } ?>
+				<ul>$fail_text</ul>
+				<p>Please use your browser's back button to go back and fix these.</p>";
+}
 
-
-
+echo '
 			</div>
 		</div>
 	</div>
-</div>
+</div>';
 
+include("parts/footer.php");
 
-
-<?php include("parts/footer.php"); ?>
-
-
-
-
-
-</body>
-</html>
+echo '</body></html>';
