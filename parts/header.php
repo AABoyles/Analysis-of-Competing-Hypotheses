@@ -31,8 +31,8 @@ if (!$print_mode) {
 	      <p class="menu">';
 
 	if ($active_user -> logged_in_full_account) {
-		echo '<span class="tab">Hello, <a href=\'profile/'.$active_user->username.'>'.$active_user->name.'</a>
-</span> <span class="tab"><a href="auth/log_out.php">Logout</a></span>';
+		echo "<span class='tab'>Hello, <a href='profile/".$active_user->username."'>".$active_user->name."</a>
+</span> <span class='tab'><a href='auth/log_out.php'>Logout</a></span>";
 	}
 
 	echo '</p></div>
@@ -46,10 +46,10 @@ if (!$print_mode) {
 	echo "<div class='printHeader'>
 		  <p>Page printed by <b>$active_user->name</b> on <b>" . date("F j, Y, g:ia") . "(EST)</b>.</p></div>";
 	switch($active_project -> classification){
-		case 'S':
+		case 'secret':
 			$classificationBannerStyle = "secretPrintBanner";
 			break;
-		case 'TS':
+		case 'top_secret':
 			$classificationBannerStyle = "topSecretPrintBanner";
 			break;
 		default:
