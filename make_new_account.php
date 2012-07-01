@@ -29,16 +29,16 @@ $active_user = new User();
 $success = TRUE;
 $fail_text = "";
 
-foreach ($_REQUEST as $field => $value) {
+foreach ($_POST as $field => $value) {
 	$active_user->$field = addslashes($value);
 }
 
 
-if( $_REQUEST['username'] ) {
-	$result = mysql_do("SELECT * FROM users WHERE username = '".$_REQUEST['username']."'");
+if( $_POST['username'] ) {
+	$escaped = mysqli_real_escape_string(db_connect(), $_POST['username']);
+	$result = mysql_do("SELECT * FROM users WHERE username = '".$escaped."'");
 	$rows = mysqli_num_rows($result);
-	if ($rows==0) {
-	} else {
+	if ($rows>0) {
 		$success = FALSE;
 		$fail_text .= "<li>That username is already taken. Please try a different username.</li>";
 	}
@@ -49,14 +49,14 @@ if( $_REQUEST['username'] ) {
 
 
 
-if( strpos( $_REQUEST['username'], " " ) == FALSE ) {
+if( strpos( $_POST['username'], " " ) == FALSE ) {
 } else {
 	$success = FALSE;
 	$fail_text .= "<li>Your username may not contain spaces.</li>";
 }
 
-if( $_REQUEST['password'] == $_REQUEST['password2'] ) {
-	if( $_REQUEST['password'] ) {
+if( $_POST['password'] == $_POST['password2'] ) {
+	if( $_POST['password'] ) {
 	} else {
 		$success = FALSE;
 		$fail_text .= "<li>You must enter a password.</li>";
@@ -67,14 +67,13 @@ if( $_REQUEST['password'] == $_REQUEST['password2'] ) {
 	$fail_text .= "<li>Your passwords do not match.</li>";
 }
 
-if( strpos( $_REQUEST['email'], "@" ) != FALSE ) {
-} else {
+if( strpos( $_POST['email'], "@" ) === FALSE ) {
 	$success = FALSE;
 	$fail_text .= "<li>Your e-mail address does not contain a '@' and is not valid.</li>";
 }
 
 if( $success == TRUE ) {
-	$active_user->password = md5($active_user->password);
+	$active_user->password = crypt($active_user->password);
 	$active_user->insertNew();
 	$active_user->setCookies();
 }
@@ -97,11 +96,9 @@ echo '
 			<div class="main">';
 
 if( $success == TRUE ) {
-
-				echo '				<h2>Created!</h2>
-				<p>Your account has been made.</p>';
-				
-				include('intro.php');
+	echo '				<h2>Created!</h2>
+				<p>Your account has been made.</p>';			
+	include('intro.php');
 			
 } else {
 				echo "
