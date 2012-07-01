@@ -49,6 +49,7 @@ echo "
 		<div class='inner'>
 			<div class='main'>";
 				if( !$active_user->logged_in ) {
+				#TODO: Need to revamp this, update database scheme
 					echo "<h2>Sign Up</h2>
 					<form class='signUp' method='post' class='edit' action='make_new_account.php'>		
 						<table>
@@ -58,6 +59,14 @@ echo "
 						<tr><td><b>Real name:</b></td><td><input type='text' name='name' size='40' /></td></tr>
 						<tr><td><b>E-mail address:</b></td><td><input type='text' name='email' size='40' /></td></tr>
 						<tr><td><b>Phone:</b></td><td><input type='text' name='unclassified_phone' size='40' /></td></tr>
+						<tr><td><b>Secure Phone:</b></td><td><input type='text' name='secure_phone' size='40' /></td></tr>
+						<tr><td><b>Classification:</b></td><td>
+							<input type='radio' name='classification' value='unclassified'>Unclassified</option><br />
+							<input type='radio' name='classification' value='classified'>Classified</option><br />
+							<input type='radio' name='classification' value='secret'>Secret</option><br />
+							<input type='radio' name='classification' value='top_secret'>Top Secret</option><br />
+							<input type='radio' name='classification' value='top_secret_sci'>TS-SCI</option><br />
+							<input type='radio' name='classification' value='private'>Private</option></td></tr>
 						<tr><td><b>Office:</b></td><td><input type='text' name='office' size='40' /></td></tr>
 						<tr><td colspan='2'><b>Office Description:</b><br /><textarea rows='4' name='office_desc' cols='66'></textarea></td></tr>
 						<tr><td colspan='2' style='text-align:center;'><input type='submit' value='Sign Up' /></td></tr>
