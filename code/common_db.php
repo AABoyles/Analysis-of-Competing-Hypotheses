@@ -111,12 +111,12 @@ function mysql_fast($sql) {
 }
 
 function getFieldList($table) { //updated for PHP5.3, contributed by Chris Snow of ISW Corp
-        $fldlist = mysql_query("SHOW COLUMNS FROM ".$table);
-        $colCount = mysql_num_rows($fldlist);
-
-        for ($i = 0; $i < $colCount; $i++) {
-            $fieldNames = mysql_fetch_row($fldlist);
-            $listing[] = $fieldNames[0];
+        
+        $fldlist = mysql_do("SHOW COLUMNS FROM ".$table);				
+        
+        while (($field = mysqli_fetch_row($fldlist)) !== NULL ){
+        	$listing[] = $field[0];
         }
+		
         return($listing);
 }
