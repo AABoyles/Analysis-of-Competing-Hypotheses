@@ -8,6 +8,7 @@ if (isset($_COOKIE['failed_login'])){
 	if ($_COOKIE['failed_login'] ) {
 		echo "<div class='loginFail'><p>You provided an incorrect username/password combination. Please try again.</p></div>";
 	}
+	unset($_COOKIE['failed_login']);
 }
 
 echo "<p class='label'>User Name: <input class='login' type='text' size='15' name='cookie_user_username' /></p>
