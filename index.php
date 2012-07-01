@@ -219,20 +219,17 @@ echo '<div class="mainContainer">
 				<div class="main welcome">
 					<p class="welcome">Welcome to ACH.</p>
 					<div class="introBoxes">
-
 						<div class="analyse">					
 							<h2>Analyze</h2>
 							<p class="subtitle">multiple hypotheses against large bodies of evidence.</p>
 							<p>ACH helps you track how many data points affect the validity of various outcomes, and compares your assessments with your teammates\'.</p> 
 							<p><a href="help">Read more about ACH &raquo;</a></p>
 						</div>
-					
 						<div class="manage">
 							<h2>Manage</h2>
 							<p class="subtitle">your data in one place.</p>
 							<p>Store all of your working knowledge. Find out what it means to the issues you\'re working on.</p>					
 						</div>
-	
 						<div class="organize">
 							<h2>Organize</h2>
 							<p class="subtitle">a Community-wide team of analysts.</p>
@@ -247,7 +244,4 @@ echo '<div class="mainContainer">
 
 include("parts/footer.php");
 
-?>
-
-</body>
-</html>
+echo '</body></html>';
