@@ -37,9 +37,6 @@ $SQL_SELECTS = 0;
 
 $MYSQL_ERRNO = '';
 
-#For the love of God,
-#TODO: UPDATE THIS TO MYSQLI
-
 function db_connect() {
 	global $dbhost, $dbusername, $dbuserpassword, $dbname, $default_dbname;
 	global $MYSQL_ERRNO, $MYSQL_ERROR;
