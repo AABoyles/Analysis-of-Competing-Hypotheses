@@ -561,7 +561,7 @@ class Project extends FrameworkDatabase {
 
 			$this_rating_style = strtolower(str_replace(" ", "_", str_replace("/", "", $this_rating)));
 			
-			echo("<td class='colgroup_" . $sort . "' id='"); ?>td_rating_<?=$evidence->id?>-<?=$this_hypothesis->id?>_<?=$sort?><?php echo("' ");
+			echo("<td class='colgroup_" . $sort . "' id='"); ?>td_rating_<?php $evidence->id?>-<?php $this_hypothesis->id?>_<?php $sort?><?php echo("' ");
 			if( !$display ) { echo('style="display: none;" '); }
 			echo(" >");
 			
@@ -569,7 +569,7 @@ class Project extends FrameworkDatabase {
 				
 			?>				
 		
-		<select onChange="saveCellRating('rating_<?=$evidence->id?>-<?=$this_hypothesis->id?>_<?=$sort?>');" class="table" id="rating_<?=$evidence->id?>-<?=$this_hypothesis->id?>_<?=$sort?>" name="rating_<?=$evidence->id?>-<?=$this_hypothesis->id?>_<?=$sort?>">
+		<select onChange="saveCellRating('rating_<?php $evidence->id?>-<?php $this_hypothesis->id?>_<?php $sort?>');" class="table" id="rating_<?php $evidence->id?>-<?php $this_hypothesis->id?>_<?php $sort?>" name="rating_<?php $evidence->id?>-<?php $this_hypothesis->id?>_<?php $sort?>">
 			<option value="">Select:</option>
 			<option <?php if($this_rating=="Very Inconsistent") { echo("selected"); }?> value="Very Inconsistent">Very Incons't</option>
 			<option <?php if($this_rating=="Inconsistent") { echo("selected"); }?> value="Inconsistent">Inconsistent</option>

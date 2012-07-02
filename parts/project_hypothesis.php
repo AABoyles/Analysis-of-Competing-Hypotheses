@@ -35,14 +35,14 @@ $this_user->populateFromId($active_hypothesis->user_id);
 <div id="nonEdit">
 
 <?php if( $active_project->user_id == $active_user->id ) { ?><p><a onClick="document.getElementById('edit').style.display='block'; document.getElementById('nonEdit').style.display='none';">Edit hypothesis information</a> | <?php } ?>
-<?php if( $active_project->user_id == $active_user->id ) { ?><a style="color: #FF0000;" onclick="javascript:confirm_delete_hypothesis(<?=$active_hypothesis->id?>);">Delete hypothesis</a></p><?php } ?>
+<?php if( $active_project->user_id == $active_user->id ) { ?><a style="color: #FF0000;" onclick="javascript:confirm_delete_hypothesis(<?php $active_hypothesis->id?>);">Delete hypothesis</a></p><?php } ?>
 
-<h3>Hypothesis: <?=$active_hypothesis->label?></h3>
-<h4>Description: <?=$active_hypothesis->description?></h4>
+<h3>Hypothesis: <?php $active_hypothesis->label?></h3>
+<h4>Description: <?php $active_hypothesis->description?></h4>
 
-<p class="info">Added by <a href="<?=$base_URL?>profile/<?=$this_user->username?>"><?=$this_user->name?></a> on <b><?=$active_hypothesis->created?></b>.</p>
+<p class="info">Added by <a href="<?php $base_URL?>profile/<?php $this_user->username?>"><?php $this_user->name?></a> on <b><?php $active_hypothesis->created?></b>.</p>
 
-<p class="xml"><a href="<?=$base_URL?>project/<?=$active_project->id?>/hypothesis/<?=$active_hypothesis->id?>/xml">XML</a></p>
+<p class="xml"><a href="<?php $base_URL?>project/<?php $active_project->id?>/hypothesis/<?php $active_hypothesis->id?>/xml">XML</a></p>
 
 
 </div>
@@ -56,17 +56,17 @@ $this_user->populateFromId($active_hypothesis->user_id);
 
 <form method="post" class="edit" action="project_edit_hypothesis_action.php">
 
-<input type="hidden" name="hypothesis_id" value="<?=$active_hypothesis->id?>" />
+<input type="hidden" name="hypothesis_id" value="<?php $active_hypothesis->id?>" />
 
-<input type="hidden" name="project_id" value="<?=$active_project->id?>" />
+<input type="hidden" name="project_id" value="<?php $active_project->id?>" />
 
-<input type="hidden" name="user_id" value="<?=$active_hypothesis->user_id?>" />
+<input type="hidden" name="user_id" value="<?php $active_hypothesis->user_id?>" />
 
-<h3>Hypothesis Name: <input type="text" name="label" value="<?=$active_hypothesis->label?>" size="40" /></h3>
+<h3>Hypothesis Name: <input type="text" name="label" value="<?php $active_hypothesis->label?>" size="40" /></h3>
 
 <h4>Description:</h4>
 
-<p><textarea rows="4" name="description" cols="60"><?=$active_hypothesis->description?></textarea></p>
+<p><textarea rows="4" name="description" cols="60"><?php $active_hypothesis->description?></textarea></p>
 
 </div>
 </form>
@@ -92,15 +92,15 @@ if( $active_hypothesis->showComments(0) ) {
 
 <form method="post" class="edit" action="add_comment_action.php">
 
-<input type="hidden" name="this_url" value="<?=$_SERVER['REQUEST_URI']?>" />
+<input type="hidden" name="this_url" value="<?php $_SERVER['REQUEST_URI']?>" />
 
-<input type="hidden" name="user_id" value="<?=$active_user->id?>" />
+<input type="hidden" name="user_id" value="<?php $active_user->id?>" />
 
 <input type="hidden" name="evidence_id" value="0" />
 
-<input type="hidden" name="project_id" value="<?=$active_project->id?>" />
+<input type="hidden" name="project_id" value="<?php $active_project->id?>" />
 
-<input type="hidden" name="hypothesis_id" value="<?=$active_hypothesis->id?>" />
+<input type="hidden" name="hypothesis_id" value="<?php $active_hypothesis->id?>" />
 
 <input type="hidden" name="reply_to_id" value="0" />
 

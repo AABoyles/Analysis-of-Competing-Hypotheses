@@ -52,7 +52,7 @@ setStatusMessage("Done!");
 <html>
 <head>
 	<title>Updating...</title>
-	<meta http-equiv=Refresh content="0; url=project/<?=$_REQUEST['project_id']?>">
+	<meta http-equiv=Refresh content="0; url=project/<?php $_REQUEST['project_id']?>">
 </head>
 
 

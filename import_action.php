@@ -194,7 +194,7 @@ if( $success ) {
 <html>
 <head>
 	<title>Updating...</title>
-	<meta http-equiv=Refresh content="0; url=project/<?=$this_project->id?>/edit">
+	<meta http-equiv=Refresh content="0; url=project/<?php $this_project->id?>/edit">
 </head>
 
 

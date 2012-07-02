@@ -21,7 +21,7 @@
 **    along with Open Source ACH. If not, see <http://www.gnu.org/licenses/>.
 //////////////////////////////////////////////////////////////////////////////// */
 ?>
-<h3>Compare User Matrices <a onclick="goToPrintPage();"><img class="icon" src="<?=$base_URL?>images/icons/printer.png" alt="Print this page" border="0" /></a></h3>
+<h3>Compare User Matrices <a onclick="goToPrintPage();"><img class="icon" src="<?php $base_URL?>images/icons/printer.png" alt="Print this page" border="0" /></a></h3>
 
 <?php
 
@@ -33,12 +33,12 @@ $compare_user_2 = new User();
 if( $_REQUEST['compare_user_id_2'] ) {
 	$compare_user_2->populateFromId($_REQUEST['compare_user_id_2']);
 	?>
-	<p>Comparing the ratings of <b><?=$compare_user->name?></b> with <b><?=$compare_user_2->name?></b>.</p>
+	<p>Comparing the ratings of <b><?php $compare_user->name?></b> with <b><?php $compare_user_2->name?></b>.</p>
 	<?php
 } else {
 	$compare_user_2->populateFromId($active_user->id);
 	?>
-	<p>Comparing your ratings with <b><?=$compare_user->name?></b>.</p>
+	<p>Comparing your ratings with <b><?php $compare_user->name?></b>.</p>
 	<?php
 }
 
@@ -46,7 +46,7 @@ if( $_REQUEST['compare_user_id_2'] ) {
 
 <form style="margin: 0px;" method="post" class="edit" action="project_compare_two_users_action.php">
 
-<input type="hidden" name="project_id" value="<?=$active_project->id?>">
+<input type="hidden" name="project_id" value="<?php $active_project->id?>">
 
 <p style="margin-bottom: 0px;">Compare the ratings of <select name="compare_user_id"><?php
 
@@ -78,7 +78,7 @@ for( $j = 0; $j < count($active_project->users); $j++ ) {
 
 </form>
 
-<p><img src="<?=$base_URL?>images/consensusgauge.gif"></p>
+<p><img src="<?php $base_URL?>images/consensusgauge.gif"></p>
 
 
 
@@ -223,7 +223,7 @@ $sort_field_2_dir = "asc";
 
 <form style="margin: 0px;" method="post" class="edit" action="project_compare_two_users_action.php">
 
-<input type="hidden" name="project_id" value="<?=$active_project->id?>">
+<input type="hidden" name="project_id" value="<?php $active_project->id?>">
 
 <p style="margin-bottom: 0px;">Compare the ratings of <select name="compare_user_id"><?php
 

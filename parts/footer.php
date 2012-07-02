@@ -71,9 +71,9 @@ if( $SPEED_REPORTING ) { */
 
 <div style="color: #999999;">
 
-<p>(<?=round($LOAD_TIME, 3)?> seconds to load.)</p>
+<p>(<?php round($LOAD_TIME, 3)?> seconds to load.)</p>
 
-<p>(<?=$DB_QUERIES-1?> database queries, <?=$SQL_DUPES?> dupes, <?=$SQL_SELECTS?> selects)</p>
+<p>(<?php $DB_QUERIES-1?> database queries, <?php $SQL_DUPES?> dupes, <?php $SQL_SELECTS?> selects)</p>
 
 </div>
 

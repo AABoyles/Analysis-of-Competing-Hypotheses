@@ -33,35 +33,35 @@ $this_user->populateFromId($active_evidence->user_id);
 ?>
 
 <div id="nonEdit">
-<p><a onClick="document.getElementById('edit').style.display='block'; document.getElementById('nonEdit').style.display='none';">Edit evidence information</a><?php if( $active_project->user_id == $active_user->id ) { ?> |<a style="color: #FF0000; padding-left: 10px;" onclick="javascript:confirm_delete_evidence(<?=$active_evidence->id?>);">Delete evidence record</a><?php } ?></p>
+<p><a onClick="document.getElementById('edit').style.display='block'; document.getElementById('nonEdit').style.display='none';">Edit evidence information</a><?php if( $active_project->user_id == $active_user->id ) { ?> |<a style="color: #FF0000; padding-left: 10px;" onclick="javascript:confirm_delete_evidence(<?php $active_evidence->id?>);">Delete evidence record</a><?php } ?></p>
 
 
-<h3>Evidence: <?=$active_evidence->name?></h3>
+<h3>Evidence: <?php $active_evidence->name?></h3>
 
-<h4>Details: <?=$active_evidence->details?></h4><br>
-
-
+<h4>Details: <?php $active_evidence->details?></h4><br>
 
 
 
-<p class="classification"><b>Classification:</b> <?=showClassification($active_evidence->classification)?></p>
 
-<p class="caveat"><b>Caveat: </b><?=showCaveat($active_evidence->caveat)?></p>
 
-<p class="type"><b>Type: </b><?=$active_evidence->type?></p>
+<p class="classification"><b>Classification:</b> <?php showClassification($active_evidence->classification)?></p>
 
-<p class="serial"><b>Serial Number: </b><?=$active_evidence->serial_number?>
+<p class="caveat"><b>Caveat: </b><?php showCaveat($active_evidence->caveat)?></p>
+
+<p class="type"><b>Type: </b><?php $active_evidence->type?></p>
+
+<p class="serial"><b>Serial Number: </b><?php $active_evidence->serial_number?>
 <?php if ($active_evidence->serial_number != NULL) { ?>
-<a href="<?=$base_URL?>evidence/<?=$active_evidence->serial_number?>"><em> Who else is using this?</em></a></p>
+<a href="<?php $base_URL?>evidence/<?php $active_evidence->serial_number?>"><em> Who else is using this?</em></a></p>
 <?php } ?>
 
-<p class="caveat"><b>Date and Time of Source: </b><?=substr($active_evidence->date_of_source, 0, 19)?></p>
+<p class="caveat"><b>Date and Time of Source: </b><?php substr($active_evidence->date_of_source, 0, 19)?></p>
 
-<p class="type"><b>Code: </b><?=$active_evidence->code?></p>
+<p class="type"><b>Code: </b><?php $active_evidence->code?></p>
 
-<p class="serial"><b>Flagged: </b><?=$active_evidence->flag?></p>
+<p class="serial"><b>Flagged: </b><?php $active_evidence->flag?></p>
 
-<p class="xml"><a href="<?=$base_URL?>project/<?=$active_project->id?>/evidence/<?=$active_evidence->id?>/xml">XML</a></p>
+<p class="xml"><a href="<?php $base_URL?>project/<?php $active_project->id?>/evidence/<?php $active_evidence->id?>/xml">XML</a></p>
 
 
 
@@ -77,17 +77,17 @@ $this_user->populateFromId($active_evidence->user_id);
 
 <form method="post" class="edit" action="project_edit_evidence_action.php">
 
-<input type="hidden" name="evidence_id" value="<?=$active_evidence->id?>" />
+<input type="hidden" name="evidence_id" value="<?php $active_evidence->id?>" />
 
-<input type="hidden" name="project_id" value="<?=$active_evidence->project_id?>" />
+<input type="hidden" name="project_id" value="<?php $active_evidence->project_id?>" />
 
-<input type="hidden" name="user_id" value="<?=$active_evidence->user_id?>" />
+<input type="hidden" name="user_id" value="<?php $active_evidence->user_id?>" />
 
-<h3>Evidence Name: <input type="text" name="name" value="<?=$active_evidence->name?>" size="40" /></h3>
+<h3>Evidence Name: <input type="text" name="name" value="<?php $active_evidence->name?>" size="40" /></h3>
 
 <h4>Details:</h4>
 
-<p><textarea rows="4" name="details" cols="60"><?=$active_evidence->details?></textarea></p>
+<p><textarea rows="4" name="details" cols="60"><?php $active_evidence->details?></textarea></p>
 
 <h4>Classification</h4>
 
@@ -123,7 +123,7 @@ $this_user->populateFromId($active_evidence->user_id);
 
 <h4>Serial Number</h4>
 
-<p><input type="text" name="serial_number" value="<?=$active_evidence->serial_number?>" size="20" /></p>
+<p><input type="text" name="serial_number" value="<?php $active_evidence->serial_number?>" size="20" /></p>
 
 <h4>Credibility</h4>
 
@@ -146,11 +146,11 @@ $this_credibility->getUserEvidence($active_evidence->id);
 
 <p><i>Format: YYYY-MM-DD HH:MM:SS. You may enter a date only, but not time only.</i></p>
 
-<p><input type="text" name="date_of_source" value="<?=substr($active_evidence->date_of_source, 0, 19)?>" size="20" /></p>
+<p><input type="text" name="date_of_source" value="<?php substr($active_evidence->date_of_source, 0, 19)?>" size="20" /></p>
 
 <h4>Code</h4>
 
-<p><input type="text" name="code" value="<?=$active_evidence->code?>" size="20" /></p>
+<p><input type="text" name="code" value="<?php $active_evidence->code?>" size="20" /></p>
 
 <h4>Flagged</h4>
 
@@ -169,7 +169,7 @@ $this_credibility->getUserEvidence($active_evidence->id);
 
 
 
-<p class="info">Added by <a href="<?=$base_URL?>profile/<?=$this_user->username?>"><?=$this_user->name?></a> on <b><?=$active_evidence->created?></b>.</p>
+<p class="info">Added by <a href="<?php $base_URL?>profile/<?php $this_user->username?>"><?php $this_user->name?></a> on <b><?php $active_evidence->created?></b>.</p>
 
 
 
@@ -194,15 +194,15 @@ if( $active_evidence->showComments(0) ) {
 
 <form method="post" class="edit" action="add_comment_action.php">
 
-<input type="hidden" name="this_url" value="<?=$_SERVER['REQUEST_URI']?>" />
+<input type="hidden" name="this_url" value="<?php $_SERVER['REQUEST_URI']?>" />
 
-<input type="hidden" name="user_id" value="<?=$active_user->id?>" />
+<input type="hidden" name="user_id" value="<?php $active_user->id?>" />
 
-<input type="hidden" name="evidence_id" value="<?=$active_evidence->id?>" />
+<input type="hidden" name="evidence_id" value="<?php $active_evidence->id?>" />
 
 <input type="hidden" name="hypothesis_id" value="0" />
 
-<input type="hidden" name="project_id" value="<?=$active_project->id?>" />
+<input type="hidden" name="project_id" value="<?php $active_project->id?>" />
 
 <input type="hidden" name="reply_to_id" value="0" />
 

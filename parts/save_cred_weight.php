@@ -45,7 +45,7 @@ while($query_data = mysql_fetch_array($result)) {
 	}
 //}
 	
-?>	<select onChange="saveCredWeight('<?=$evidence_id?>');" name="<?=$evidence_id?>" id="<?=$evidence_id?>">
+?>	<select onChange="saveCredWeight('<?php $evidence_id?>');" name="<?php $evidence_id?>" id="<?php $evidence_id?>">
 		<option value="2" <?php if( $this_rating == "2" ) { echo("selected"); } ?> >High</option>
 		<option value="1" <?php if( $this_rating == "1" || $this_rating == "" || $this_rating == "0" ) { echo("selected"); } ?> >Med</option>
 		<option value="0.5" <?php if( $this_rating == "0.5" ) { echo("selected"); } ?> >Low</option>

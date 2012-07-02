@@ -47,10 +47,10 @@ while($query_data = mysql_fetch_array($result)) {
 
 if( $found ) { ?>
 
-<span class="inviteViewerResult">'<?=$user_name?>' added (reload page to see).</span>
+<span class="inviteViewerResult">'<?php $user_name?>' added (reload page to see).</span>
 
 <?php } else { ?>
 
-<span class="inviteViewerResult">'<?=$viewerEmail?>' not found.</span>
+<span class="inviteViewerResult">'<?php $viewerEmail?>' not found.</span>
 
 <?php } ?>

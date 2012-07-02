@@ -51,7 +51,7 @@ for( $i = 0; $i < count($all_evidence); $i++ ) {
 <html>
 <head>
 	<title>Updating...</title>
-	<meta http-equiv=Refresh content="0; url=project/<?=$active_evidence->project_id?>">
+	<meta http-equiv=Refresh content="0; url=project/<?php $active_evidence->project_id?>">
 </head>
 
 

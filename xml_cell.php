@@ -54,16 +54,16 @@ for( $k = 0; $k < count($active_project->users); $k++ ) {
 
 <cell>
 	<project>
-		<id><?=$active_project->id?></id>
-		<title><![CDATA[<?=$active_project->title?>]]></title>
+		<id><?php $active_project->id?></id>
+		<title><![CDATA[<?php $active_project->title?>]]></title>
 	</project>
 	<evidence>
-		<id><?=$active_evidence->id?></id>
-		<name><![CDATA[<?=$active_evidence->name?>]]></name>
+		<id><?php $active_evidence->id?></id>
+		<name><![CDATA[<?php $active_evidence->name?>]]></name>
 	</evidence>
 	<hypothesis>
-		<id><?=$active_hypothesis->id?></id>
-		<label><![CDATA[<?=$active_hypothesis->label?>]]></label>
+		<id><?php $active_hypothesis->id?></id>
+		<label><![CDATA[<?php $active_hypothesis->label?>]]></label>
 	</hypothesis>
 	<ratings>	
 <?php
@@ -80,8 +80,8 @@ for( $k = 0; $k < count($active_project->users); $k++ ) {
 	}
 	if( $rating != "" ) { ?>
 		<rating>
-			<user><![CDATA[<?=$this_user->name?>]]></user>
-			<user_rating><![CDATA[<?=$rating?>]]></user_rating>
+			<user><![CDATA[<?php $this_user->name?>]]></user>
+			<user_rating><![CDATA[<?php $rating?>]]></user_rating>
 		</rating>
 <?php } } ?>
 	</ratings>

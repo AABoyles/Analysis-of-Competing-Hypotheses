@@ -41,7 +41,7 @@ $sort_field_2_dir = "asc";
 
 
 
-<p id="editSubmit" style="margin-bottom: 10px;"><input class="button" type="submit" value="Save Changes" onclick="savePersonalMatrix();" /> <a href="<?=$base_URL?>project/<?=$active_project->id?>">Cancel</a></p>
+<p id="editSubmit" style="margin-bottom: 10px;"><input class="button" type="submit" value="Save Changes" onclick="savePersonalMatrix();" /> <a href="<?php $base_URL?>project/<?php $active_project->id?>">Cancel</a></p>
 
 
 
@@ -132,7 +132,7 @@ $sort_field_2_dir = "asc";
 
 <form style="margin: 0px;" method="post" class="edit" action="project_compare_users_action.php">
 
-<input type="hidden" name="project_id" value="<?=$active_project->id?>">
+<input type="hidden" name="project_id" value="<?php $active_project->id?>">
 
 <p style="margin-bottom: 0px;">Compare your ratings with: <select name="compare_user_id"><?php
 
@@ -154,7 +154,7 @@ for( $j = 0; $j < count($active_project->users); $j++ ) {
 
 <form style="margin: 0px;" method="post" class="edit" action="project_ratings_user_action.php">
 
-<input type="hidden" name="project_id" value="<?=$active_project->id?>">
+<input type="hidden" name="project_id" value="<?php $active_project->id?>">
 
 <p style="margin-bottom: 0px;">View partner's matrix: <select name="ratings_user_id"><?php
 

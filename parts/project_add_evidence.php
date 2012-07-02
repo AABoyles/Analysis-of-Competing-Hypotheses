@@ -29,13 +29,13 @@
 
 
 
-<p class="evidenceSubmenu"><b>Single</b> <a href="<?=$base_URL?>project/<?=$active_project->id?>/evidence/new/multiple">Multiple</a></p>
+<p class="evidenceSubmenu"><b>Single</b> <a href="<?php $base_URL?>project/<?php $active_project->id?>/evidence/new/multiple">Multiple</a></p>
 
 
 
 <form name="newEvidence" onsubmit="return validateEvidenceFormOnSubmit(this)" class="formatted" method="post" class="edit" action="project_add_evidence_action.php">
 
-<input type="hidden" name="project_id" value="<?=$id?>" />
+<input type="hidden" name="project_id" value="<?php $id?>" />
 
 <h4 style="color: red">Evidence Name (required)</h4>
 

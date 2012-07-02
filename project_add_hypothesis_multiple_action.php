@@ -45,9 +45,9 @@ setStatusMessage("Added!");
 <head>
 	<title>Updating...</title>
 <?php if( $_REQUEST['add_more'] == "on" ) { ?>
-	<meta http-equiv=Refresh content="1; url=<?=$base_URL?>project/<?=$active_hypothesis->project_id?>/hypothesis/new/multiple">
+	<meta http-equiv=Refresh content="1; url=<?php $base_URL?>project/<?php $active_hypothesis->project_id?>/hypothesis/new/multiple">
 <?php } else { ?>
-	<meta http-equiv=Refresh content="0; url=<?=$base_URL?>project/<?=$active_hypothesis->project_id?>">
+	<meta http-equiv=Refresh content="0; url=<?php $base_URL?>project/<?php $active_hypothesis->project_id?>">
 <?php } ?>
 </head>
 

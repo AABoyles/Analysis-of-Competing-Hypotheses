@@ -27,7 +27,7 @@
 
 <form name="nav" method="post" class="edit" action="edit_project_action.php">
 
-<input type="hidden" name="project_id" value="<?=$active_project->id?>" />
+<input type="hidden" name="project_id" value="<?php $active_project->id?>" />
 
 <div class="form">
 
@@ -55,17 +55,17 @@ for( $j = 0; $j < count($active_project->users); $j++ ) {
 ?>
 <h4>Title</h4>
 
-<p><input type="text" name="title" value="<?=$active_project->title?>" size="20" /></p>
+<p><input type="text" name="title" value="<?php $active_project->title?>" size="20" /></p>
 
 <p class="formNote">A short phrase or question that summarizes the project.</p>
 
 <h4>Description</h4>
 
-<p><textarea rows="4" name="description" cols="30"><?=$active_project->description?></textarea></p>
+<p><textarea rows="4" name="description" cols="30"><?php $active_project->description?></textarea></p>
 
 <h4>Keywords</h4>
 
-<p><textarea rows="4" name="keywords" cols="30"><?=$active_project->keywords?></textarea></p>
+<p><textarea rows="4" name="keywords" cols="30"><?php $active_project->keywords?></textarea></p>
 
 <p class="formNote">Comma-seperated. Optional.</p>
 

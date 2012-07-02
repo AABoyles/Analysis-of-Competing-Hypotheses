@@ -51,7 +51,7 @@ while($query_data = mysql_fetch_array($result)) {
 	
 ?>				
 
-<select onChange="saveCellRating('<?=$cell_id?>');" class="table" id="<?=$cell_id?>" name="<?=$cell_id?>">
+<select onChange="saveCellRating('<?php $cell_id?>');" class="table" id="<?php $cell_id?>" name="<?php $cell_id?>">
 <option value="">Select:</option>
 <option <?php if($this_rating=="Very Inconsistent") { echo("selected"); }?> value="Very Inconsistent">Very Incons't</option>
 <option <?php if($this_rating=="Inconsistent") { echo("selected"); }?> value="Inconsistent">Inconsistent</option>

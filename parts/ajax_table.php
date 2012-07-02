@@ -76,22 +76,22 @@ $evidence = $active_project->sortByFields($sort_field_1, $sort_field_1_dir, $sor
 
 
 
-<table cellspacing="0" cellpadding="0" border="0" class="groupMatrix" id="groupMatrix"><thead><tr><th onclick="sortGroupTable('name');" class="hypothesis cursorHand <?=$active_project->getSortArrow("name")?>"></th>
+<table cellspacing="0" cellpadding="0" border="0" class="groupMatrix" id="groupMatrix"><thead><tr><th onclick="sortGroupTable('name');" class="hypothesis cursorHand <?php $active_project->getSortArrow("name")?>"></th>
 
-	<td onclick="sortGroupTable('created');" class="dclDateAdded" style="<?php if( $dccDateAdded == 0 ) { ?>display: none;<?php } ?>"><span class="cursorHand <?=$active_project->getSortArrow("created")?>">Order Added</span></td>
-	<td onclick="sortGroupTable('date_of_source');" class="dclDateOfSource" style="<?php if( $dccDateOfSource == 0 ) { ?>display: none;<?php } ?>"><span class="cursorHand <?=$active_project->getSortArrow("date_of_source")?>">Date/Time</span></td>
-	<td onclick="sortGroupTable('type');" class="dclType" style="<?php if( $dccType == 0 ) { ?>display: none;<?php } ?>"><span class="cursorHand <?=$active_project->getSortArrow("type")?>">Type</span></td>
-	<td onclick="sortGroupTable('code');" class="dclCode" style="<?php if( $dccCode == 0 ) { ?>display: none;<?php } ?>"><span class="cursorHand <?=$active_project->getSortArrow("code")?>">Code</span></td>
-	<td onclick="sortGroupTable('flag');" class="dclFlag" style="<?php if( $dccFlag == 0 ) { ?>display: none;<?php } ?>"><span class="cursorHand <?=$active_project->getSortArrow("flag")?>">Flag</span></td>	
+	<td onclick="sortGroupTable('created');" class="dclDateAdded" style="<?php if( $dccDateAdded == 0 ) { ?>display: none;<?php } ?>"><span class="cursorHand <?php $active_project->getSortArrow("created")?>">Order Added</span></td>
+	<td onclick="sortGroupTable('date_of_source');" class="dclDateOfSource" style="<?php if( $dccDateOfSource == 0 ) { ?>display: none;<?php } ?>"><span class="cursorHand <?php $active_project->getSortArrow("date_of_source")?>">Date/Time</span></td>
+	<td onclick="sortGroupTable('type');" class="dclType" style="<?php if( $dccType == 0 ) { ?>display: none;<?php } ?>"><span class="cursorHand <?php $active_project->getSortArrow("type")?>">Type</span></td>
+	<td onclick="sortGroupTable('code');" class="dclCode" style="<?php if( $dccCode == 0 ) { ?>display: none;<?php } ?>"><span class="cursorHand <?php $active_project->getSortArrow("code")?>">Code</span></td>
+	<td onclick="sortGroupTable('flag');" class="dclFlag" style="<?php if( $dccFlag == 0 ) { ?>display: none;<?php } ?>"><span class="cursorHand <?php $active_project->getSortArrow("flag")?>">Flag</span></td>	
 	
 <?php if( $kind != "group" && $kind != "compare" ) { ?>
 
-	<td onclick="sortGroupTable('cred');" class="dclCred"><span class="cursorHand <?=$active_project->getSortArrow("cred")?>">Credibility</span></td>
-	<td onclick="sortGroupTable('credWeight');" class="dclCredWeight" style="<?php if( $dccCredWeight == 0 ) { ?>display: none;<?php } ?>"><span class="cursorHand <?=$active_project->getSortArrow("credWeight")?>">Cred Weight</span></td>
+	<td onclick="sortGroupTable('cred');" class="dclCred"><span class="cursorHand <?php $active_project->getSortArrow("cred")?>">Credibility</span></td>
+	<td onclick="sortGroupTable('credWeight');" class="dclCredWeight" style="<?php if( $dccCredWeight == 0 ) { ?>display: none;<?php } ?>"><span class="cursorHand <?php $active_project->getSortArrow("credWeight")?>">Cred Weight</span></td>
 	
 <?php } ?>
 
-	<td onclick="sortGroupTable('diag');" class="dclDiag" style="<?php if( $dccDiag == 0 ) { ?>display: none;<?php } ?>"><span class="cursorHand <?=$active_project->getSortArrow("diag")?>">Diag.</span></td>	
+	<td onclick="sortGroupTable('diag');" class="dclDiag" style="<?php if( $dccDiag == 0 ) { ?>display: none;<?php } ?>"><span class="cursorHand <?php $active_project->getSortArrow("diag")?>">Diag.</span></td>	
 
 <?php
 
@@ -128,11 +128,11 @@ for( $i = 0; $i < count($evidence); $i++ ) {
 
 ?>
 
-	<td class="dcDateAdded" style="<?php if( $dccDateAdded == 0 ) { ?>display: none;<?php } ?>"><?=$evidence[$i]->created_order?> <!--<span style="color: #999999;"><small>(<?=$evidence[$i]->created?>)</small></span>--></td>
-	<td class="dcDateOfSource" style="<?php if( $dccDateOfSource == 0 ) { ?>display: none;<?php } ?>"><?=substr($evidence[$i]->date_of_source, 0, 19)?></td>
-	<td class="dcType" style="<?php if( $dccType == 0 ) { ?>display: none;<?php } ?>"><?=$evidence[$i]->type?></td>
-	<td class="dcCode" style="<?php if( $dccCode == 0 ) { ?>display: none;<?php } ?>"><?=$evidence[$i]->code?></td>
-	<td class="dcFlag" style="<?php if( $dccFlag == 0 ) { ?>display: none;<?php } ?>"><a id="flag_<?=$evidence[$i]->id?>" onclick="switchFlag('flag_<?=$evidence[$i]->id?>', <?=$evidence[$i]->id?>);"><?php if( $evidence[$i]->flag == "y" ) { echo("<img src='". $base_URL . "images/icons/flag_red.png' />"); } else { echo("<img src='". $base_URL . "images/icons/bullet_add.png' />"); } ?></a></td>
+	<td class="dcDateAdded" style="<?php if( $dccDateAdded == 0 ) { ?>display: none;<?php } ?>"><?php $evidence[$i]->created_order?> <!--<span style="color: #999999;"><small>(<?php $evidence[$i]->created?>)</small></span>--></td>
+	<td class="dcDateOfSource" style="<?php if( $dccDateOfSource == 0 ) { ?>display: none;<?php } ?>"><?php substr($evidence[$i]->date_of_source, 0, 19)?></td>
+	<td class="dcType" style="<?php if( $dccType == 0 ) { ?>display: none;<?php } ?>"><?php $evidence[$i]->type?></td>
+	<td class="dcCode" style="<?php if( $dccCode == 0 ) { ?>display: none;<?php } ?>"><?php $evidence[$i]->code?></td>
+	<td class="dcFlag" style="<?php if( $dccFlag == 0 ) { ?>display: none;<?php } ?>"><a id="flag_<?php $evidence[$i]->id?>" onclick="switchFlag('flag_<?php $evidence[$i]->id?>', <?php $evidence[$i]->id?>);"><?php if( $evidence[$i]->flag == "y" ) { echo("<img src='". $base_URL . "images/icons/flag_red.png' />"); } else { echo("<img src='". $base_URL . "images/icons/bullet_add.png' />"); } ?></a></td>
 
 <?php if( $kind == "personal" || $kind == "user" ) { 
 
@@ -161,11 +161,11 @@ for( $i = 0; $i < count($evidence); $i++ ) {
 	
 	?>
 	
-	<td class="dcCred" id="td_cred_edit_<?=$evidence[$i]->id?>"><select onChange="saveCredRating('cred_edit_<?=$evidence[$i]->id?>');" name="cred_edit_<?=$evidence[$i]->id?>" id="cred_edit_<?=$evidence[$i]->id?>">
+	<td class="dcCred" id="td_cred_edit_<?php $evidence[$i]->id?>"><select onChange="saveCredRating('cred_edit_<?php $evidence[$i]->id?>');" name="cred_edit_<?php $evidence[$i]->id?>" id="cred_edit_<?php $evidence[$i]->id?>">
 		<option value="y" <?php if( $this_credibility->value != "n" ) { echo("selected"); } ?> >Credible</option>
 		<option value="n" <?php if( $this_credibility->value == "n" ) { echo("selected"); } ?> >Suspect</option>
 	</select></td>
-	<td class="dcCredWeight" id="td_cred_weight_edit_<?=$evidence[$i]->id?>" style="<?php if( $dccCredWeight == 0 ) { ?>display: none;<?php } ?>"><select onChange="saveCredWeight('cred_weight_edit_<?=$evidence[$i]->id?>');" name="cred_weight_edit_<?=$evidence[$i]->id?>" id="cred_weight_edit_<?=$evidence[$i]->id?>">
+	<td class="dcCredWeight" id="td_cred_weight_edit_<?php $evidence[$i]->id?>" style="<?php if( $dccCredWeight == 0 ) { ?>display: none;<?php } ?>"><select onChange="saveCredWeight('cred_weight_edit_<?php $evidence[$i]->id?>');" name="cred_weight_edit_<?php $evidence[$i]->id?>" id="cred_weight_edit_<?php $evidence[$i]->id?>">
 		<option value="2" <?php if( $this_credibility->weight == "2" ) { echo("selected"); } ?> >High</option>
 		<option value="1" <?php if( $this_credibility->weight == "1" || $this_credibility->weight == "" || $this_credibility->weight == "0" ) { echo("selected"); } ?> >Med</option>
 		<option value="0.5" <?php if( $this_credibility->weight == "0.5" ) { echo("selected"); } ?> >Low</option>
@@ -175,15 +175,15 @@ for( $i = 0; $i < count($evidence); $i++ ) {
 
 <?php if( $kind == "personal" || $kind == "edit" ) { ?>
 
-	<td class="dcDiag" style="<?php if( $dccDiag == 0 ) { ?>display: none;<?php } ?>"><?=$evidence[$i]->getDiag($evidence[$i], $active_project)?></td>
+	<td class="dcDiag" style="<?php if( $dccDiag == 0 ) { ?>display: none;<?php } ?>"><?php $evidence[$i]->getDiag($evidence[$i], $active_project)?></td>
 
 <?php } else if( $kind == "compare" ) { ?>
 
-	<td class="dcDiag" style="<?php if( $dccDiag == 0 ) { ?>display: none;<?php } ?>"><?=$evidence[$i]->getDiagCompare($evidence[$i]->id, $active_project, $user_1, $user_2)?></td>
+	<td class="dcDiag" style="<?php if( $dccDiag == 0 ) { ?>display: none;<?php } ?>"><?php $evidence[$i]->getDiagCompare($evidence[$i]->id, $active_project, $user_1, $user_2)?></td>
 
 <?php } else { ?>
 
-	<td class="dcDiag" style="<?php if( $dccDiag == 0 ) { ?>display: none;<?php } ?>"><?=$evidence[$i]->getDiagGroup($evidence[$i]->id, $active_project)?></td>
+	<td class="dcDiag" style="<?php if( $dccDiag == 0 ) { ?>display: none;<?php } ?>"><?php $evidence[$i]->getDiagGroup($evidence[$i]->id, $active_project)?></td>
 
 <?php } ?>
 
@@ -224,17 +224,17 @@ if( $kind == "personal" ) {
 
 	<tr class="innerHeaders"><th>&nbsp;</th>
 
-	<td onclick="sortGroupTable('date_added');" class="dclDateAdded" style="<?php if( $dccDateAdded == 0 ) { ?>display: none;<?php } ?>"><span class="cursorHand <?=$active_project->getSortArrow("created")?>">Date Added</span></td>
-	<td onclick="sortGroupTable('date_of_source');" class="dclDateOfSource" style="<?php if( $dccDateOfSource == 0 ) { ?>display: none;<?php } ?>"><span class="cursorHand <?=$active_project->getSortArrow("date_of_source")?>">Date of Source</span></td>
-	<td onclick="sortGroupTable('type');" class="dclType" style="<?php if( $dccType == 0 ) { ?>display: none;<?php } ?>"><span class="cursorHand <?=$active_project->getSortArrow("type")?>">Type</span></td>
-	<td onclick="sortGroupTable('code');" class="dclCode" style="<?php if( $dccCode == 0 ) { ?>display: none;<?php } ?>"><span class="cursorHand <?=$active_project->getSortArrow("code")?>">Code</span></td>
-	<td onclick="sortGroupTable('flag');" class="dclFlag" style="<?php if( $dccFlag == 0 ) { ?>display: none;<?php } ?>"><span class="cursorHand <?=$active_project->getSortArrow("flag")?>">Flag</span></td>	
+	<td onclick="sortGroupTable('date_added');" class="dclDateAdded" style="<?php if( $dccDateAdded == 0 ) { ?>display: none;<?php } ?>"><span class="cursorHand <?php $active_project->getSortArrow("created")?>">Date Added</span></td>
+	<td onclick="sortGroupTable('date_of_source');" class="dclDateOfSource" style="<?php if( $dccDateOfSource == 0 ) { ?>display: none;<?php } ?>"><span class="cursorHand <?php $active_project->getSortArrow("date_of_source")?>">Date of Source</span></td>
+	<td onclick="sortGroupTable('type');" class="dclType" style="<?php if( $dccType == 0 ) { ?>display: none;<?php } ?>"><span class="cursorHand <?php $active_project->getSortArrow("type")?>">Type</span></td>
+	<td onclick="sortGroupTable('code');" class="dclCode" style="<?php if( $dccCode == 0 ) { ?>display: none;<?php } ?>"><span class="cursorHand <?php $active_project->getSortArrow("code")?>">Code</span></td>
+	<td onclick="sortGroupTable('flag');" class="dclFlag" style="<?php if( $dccFlag == 0 ) { ?>display: none;<?php } ?>"><span class="cursorHand <?php $active_project->getSortArrow("flag")?>">Flag</span></td>	
 	
 <?php if( $kind != "group" ) { ?>
 
-	<td onclick="sortGroupTable('cred');" class="dclCred"><span class="cursorHand <?=$active_project->getSortArrow("cred")?>">Credibility</span></td>
-	<td onclick="sortGroupTable('credWeight');" class="dclCredWeight" style="<?php if( $dccCredWeight == 0 ) { ?>display: none;<?php } ?>"><span class="cursorHand <?=$active_project->getSortArrow("credWeight")?>">Cred Weight</span></td>
-	<td onclick="sortGroupTable('diag');" class="dclDiag" style="<?php if( $dccDiag == 0 ) { ?>display: none;<?php } ?>"><span class="cursorHand <?=$active_project->getSortArrow("diag")?>">Diag.</span></td>
+	<td onclick="sortGroupTable('cred');" class="dclCred"><span class="cursorHand <?php $active_project->getSortArrow("cred")?>">Credibility</span></td>
+	<td onclick="sortGroupTable('credWeight');" class="dclCredWeight" style="<?php if( $dccCredWeight == 0 ) { ?>display: none;<?php } ?>"><span class="cursorHand <?php $active_project->getSortArrow("credWeight")?>">Cred Weight</span></td>
+	<td onclick="sortGroupTable('diag');" class="dclDiag" style="<?php if( $dccDiag == 0 ) { ?>display: none;<?php } ?>"><span class="cursorHand <?php $active_project->getSortArrow("diag")?>">Diag.</span></td>
 	
 <?php } ?>
 

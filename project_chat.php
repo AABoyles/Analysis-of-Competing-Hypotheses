@@ -35,7 +35,7 @@ $active_project->populateFromId($id);
 
 <html>
 <head>
-	<title>ACH: Chatting about project "<?=$active_project->title?>"</title>
+	<title>ACH: Chatting about project "<?php $active_project->title?>"</title>
 	<?php include("parts/includes.php"); ?>
 	<script language="JavaScript">
 	
@@ -52,13 +52,13 @@ $active_project->populateFromId($id);
 
 
 
-<h1 class="chatHead" style="margin-bottom: 50px;">Chatting about project: "<?=$active_project->title?>"</h1>
+<h1 class="chatHead" style="margin-bottom: 50px;">Chatting about project: "<?php $active_project->title?>"</h1>
 
 
 
 <div class="sendMessage">
 
-<input type="hidden" id="project_id" value="<?=$active_project->id?>" /><input class="text" type="text" size="60" id="message" onkeydown="return getReturn(event)" /> <input type="submit" value="Say it now &raquo;" onclick="insertMessage();" /> <span id="wheel" class="wheel"></span>
+<input type="hidden" id="project_id" value="<?php $active_project->id?>" /><input class="text" type="text" size="60" id="message" onkeydown="return getReturn(event)" /> <input type="submit" value="Say it now &raquo;" onclick="insertMessage();" /> <span id="wheel" class="wheel"></span>
 
 </div>
 

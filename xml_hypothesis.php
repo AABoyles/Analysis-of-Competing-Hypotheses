@@ -37,12 +37,12 @@ $this_user->populateFromId($active_hypothesis->user_id);
 ?>
 
 <hypothesis>
-	<id><?=$active_hypothesis->id?></id>
-	<name><![CDATA[<?=$active_hypothesis->label?>]]></name>
-	<details><![CDATA[<?=$active_hypothesis->description?>]]></details>
-	<classification><?=showClassification($active_hypothesis->classification)?></classification>
-	<caveat><?=showCaveat($active_hypothesis->caveat)?></caveat>
-	<creator><?=$this_user->name?></creator>
-	<creator_id><?=$this_user->id?></creator_id>
-	<date_created><?=$active_hypothesis->created?></date_created>
+	<id><?php $active_hypothesis->id?></id>
+	<name><![CDATA[<?php $active_hypothesis->label?>]]></name>
+	<details><![CDATA[<?php $active_hypothesis->description?>]]></details>
+	<classification><?php showClassification($active_hypothesis->classification)?></classification>
+	<caveat><?php showCaveat($active_hypothesis->caveat)?></caveat>
+	<creator><?php $this_user->name?></creator>
+	<creator_id><?php $this_user->id?></creator_id>
+	<date_created><?php $active_hypothesis->created?></date_created>
 </hypothesis>

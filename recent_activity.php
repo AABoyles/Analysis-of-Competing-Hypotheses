@@ -33,7 +33,7 @@ $active_user->getProjects();
 
 <html>
 <head>
-	<title><?=$pagetitle?></title>
+	<title><?php $pagetitle?></title>
 	<?php include("parts/includes.php"); ?>
 </head>
 

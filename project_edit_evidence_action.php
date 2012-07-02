@@ -54,7 +54,7 @@ setStatusMessage("Updated!");
 <html>
 <head>
 	<title>Updating...</title>
-	<meta http-equiv=Refresh content="0; url=project/<?=$active_evidence->project_id?>/evidence/<?=$_REQUEST['evidence_id']?>">
+	<meta http-equiv=Refresh content="0; url=project/<?php $active_evidence->project_id?>/evidence/<?php $_REQUEST['evidence_id']?>">
 </head>
 
 

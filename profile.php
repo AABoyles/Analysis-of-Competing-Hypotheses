@@ -41,7 +41,7 @@ else { */
 	<head>
 		<title>ACH: <?php if ($display_user->name === NULL) { ?>
 	No such user
-	<?php } else { ?><?=$display_user->name?>, aka <?=$display_user->username?> <?php } ?></title>
+	<?php } else { ?><?php $display_user->name?>, aka <?php $display_user->username?> <?php } ?></title>
 		<?php include("parts/includes.php"); ?>
 	</head>
 	
@@ -77,9 +77,9 @@ else { */
 	<p>This user does not exist.</p>
 	<?php } else { ?>
 	
-	<h2><?=$display_user->name?> 
+	<h2><?php $display_user->name?> 
 	<?php if( $active_user->id == $display_user->id ) { ?>
-	<a href="<?=$base_URL?>profile/edit">(Edit your profile)</a>
+	<a href="<?php $base_URL?>profile/edit">(Edit your profile)</a>
 	<?php } ?>
 	</h2>
 	<?php
@@ -110,9 +110,9 @@ else { */
 	
 	<div class="projectList">
 
-	<h3><a href="<?=$base_URL?>project/<?=$this_project->id?>"><?=$this_project->title?></a> <?php if( in_array($this_project->id, $display_user->owner_of_projects) ) { echo('<span class="isOwner">Owner</span>'); } ?></h3>
+	<h3><a href="<?php $base_URL?>project/<?php $this_project->id?>"><?php $this_project->title?></a> <?php if( in_array($this_project->id, $display_user->owner_of_projects) ) { echo('<span class="isOwner">Owner</span>'); } ?></h3>
 	
-	<p class="desc"><?=$this_project->description?></p>
+	<p class="desc"><?php $this_project->description?></p>
 	</div>
 	<?php } } } }?>
 	

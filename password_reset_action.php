@@ -48,7 +48,7 @@ include("parts/login_sidebar.php"); ?>
 
 if( $error ) { ?>
 
-<p><?=$error_message?></p>
+<p><?php $error_message?></p>
 
 <?php } else { ?>
 

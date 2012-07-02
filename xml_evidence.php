@@ -44,18 +44,18 @@ $this_group_diag = Evidence::getDiagGroup($active_evidence, $active_project);
 ?>
 
 <evidence>
-	<id><?=$active_evidence->id?></id>
-	<name><![CDATA[<?=$active_evidence->name?>]]></name>
-	<details><![CDATA[<?=$active_evidence->details?>]]></details>
-	<classification><?=showClassification($active_evidence->classification)?></classification>
-	<caveat><?=showCaveat($active_evidence->caveat)?></caveat>
-	<type><?=$active_evidence->type?></type>
-	<serial_number><?=$active_evidence->serial_number?></serial_number>
-	<date_of_source><?=substr($active_evidence->date_of_source, 0, 10)?></date_of_source>
-	<group_diagnosticity><?=$this_group_diag?></group_diagnosticity>
-	<code><?=$active_evidence->code?></code>
-	<flag><?=$active_evidence->flag?></flag>
-	<creator><?=$this_user->name?></creator>
-	<creator_id><?=$this_user->id?></creator_id>
-	<date_created><?=$active_evidence->created?></date_created>
+	<id><?php $active_evidence->id?></id>
+	<name><![CDATA[<?php $active_evidence->name?>]]></name>
+	<details><![CDATA[<?php $active_evidence->details?>]]></details>
+	<classification><?php showClassification($active_evidence->classification)?></classification>
+	<caveat><?php showCaveat($active_evidence->caveat)?></caveat>
+	<type><?php $active_evidence->type?></type>
+	<serial_number><?php $active_evidence->serial_number?></serial_number>
+	<date_of_source><?php substr($active_evidence->date_of_source, 0, 10)?></date_of_source>
+	<group_diagnosticity><?php $this_group_diag?></group_diagnosticity>
+	<code><?php $active_evidence->code?></code>
+	<flag><?php $active_evidence->flag?></flag>
+	<creator><?php $this_user->name?></creator>
+	<creator_id><?php $this_user->id?></creator_id>
+	<date_created><?php $active_evidence->created?></date_created>
 </evidence>

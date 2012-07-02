@@ -74,7 +74,7 @@ var baseURL = "<?php print $base_URL; ?>";
 function confirm_delete_evidence(id) {
 	confirmer = confirm("Are you sure you want to delete this piece of evidence?");
 	if( confirmer == true ) { 
-		window.location.href = baseURL+"project/<?=$active_project_id?>/evidence/"+id+"/delete";
+		window.location.href = baseURL+"project/<?php $active_project_id?>/evidence/"+id+"/delete";
 	} else {
 		alert("Delete canceled.");
 	}
@@ -83,7 +83,7 @@ function confirm_delete_evidence(id) {
 function confirm_delete_hypothesis(id) {
 	confirmer = confirm("Are you sure you want to delete this hypothesis?");
 	if( confirmer == true ) { 
-		window.location.href = baseURL+"project/<?=$active_project_id?>/hypothesis/"+id+"/delete";
+		window.location.href = baseURL+"project/<?php $active_project_id?>/hypothesis/"+id+"/delete";
 	} else {
 		alert("Delete canceled.");
 	}

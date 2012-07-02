@@ -53,7 +53,7 @@ while($query_data = mysql_fetch_array($result)) {
 
 }
 	
-?>	<select onChange="saveCredRating('<?=$evidence_id?>');" name="<?=$evidence_id?>" id="<?=$evidence_id?>">
+?>	<select onChange="saveCredRating('<?php $evidence_id?>');" name="<?php $evidence_id?>" id="<?php $evidence_id?>">
 		<option value="y" <?php if( $this_rating != "n" ) { echo("selected"); } ?> >Credible</option>
 		<option value="n" <?php if( $this_rating == "n" ) { echo("selected"); } ?> >Suspect</option>
 	</select>

@@ -21,7 +21,7 @@
 **    along with Open Source ACH. If not, see <http://www.gnu.org/licenses/>.
 //////////////////////////////////////////////////////////////////////////////// */
 ?>
-<h3>View Partner Matrix <a href="<?=$_SERVER['REQUEST_URI']?>/print"><img class="icon" src="<?=$base_URL?>images/icons/printer.png" alt="Print this page" border="0" /></a></h3>
+<h3>View Partner Matrix <a href="<?php $_SERVER['REQUEST_URI']?>/print"><img class="icon" src="<?php $base_URL?>images/icons/printer.png" alt="Print this page" border="0" /></a></h3>
 
 
 <?php
@@ -31,11 +31,11 @@ $ratings_user->populateFromId($_REQUEST['ratings_user_id']);
 
 ?>
 
-<p>Viewing ratings by <b><?=$ratings_user->name?></b>.</p>
+<p>Viewing ratings by <b><?php $ratings_user->name?></b>.</p>
 
 <form style="margin: 0px;" method="post" class="edit" action="project_ratings_user_action.php">
 
-<input type="hidden" name="project_id" value="<?=$active_project->id?>">
+<input type="hidden" name="project_id" value="<?php $active_project->id?>">
 
 <p style="margin-bottom: 0px;">View a different partner's matrix: <select name="ratings_user_id"><?php
 
@@ -184,7 +184,7 @@ $sort_field_2_dir = "asc";
 
 <form style="margin: 0px;" method="post" class="edit" action="project_ratings_user_action.php">
 
-<input type="hidden" name="project_id" value="<?=$active_project->id?>">
+<input type="hidden" name="project_id" value="<?php $active_project->id?>">
 
 <p style="margin-bottom: 0px;">View a different partner's matrix: <select name="ratings_user_id"><?php
 

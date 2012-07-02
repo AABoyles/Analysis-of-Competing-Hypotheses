@@ -33,19 +33,19 @@ $compare_user_2 = new User();
 if( $_REQUEST['compare_user_id_2'] ) {
 	$compare_user_2->populateFromId($_REQUEST['compare_user_id_2']);
 	?>
-	<p>Comparing the ratings of <b><?=$compare_user->name?></b> with <b><?=$compare_user_2->name?></b>.</p>
+	<p>Comparing the ratings of <b><?php $compare_user->name?></b> with <b><?php $compare_user_2->name?></b>.</p>
 	<?php
 } else {
 	$compare_user_2->populateFromId($active_user->id);
 	?>
-	<p>Comparing your ratings with <b><?=$compare_user->name?></b>.</p>
+	<p>Comparing your ratings with <b><?php $compare_user->name?></b>.</p>
 	<?php
 }
 
 ?>
 
 
-<p><img src="<?=$base_URL?>images/consensusgauge.gif"></p>
+<p><img src="<?php $base_URL?>images/consensusgauge.gif"></p>
 
 
 

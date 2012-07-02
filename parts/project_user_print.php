@@ -30,7 +30,7 @@ $ratings_user->populateFromId($_REQUEST['ratings_user_id']);
 
 ?>
 
-<p>Viewing ratings by <b><?=$ratings_user->name?></b>.</p>
+<p>Viewing ratings by <b><?php $ratings_user->name?></b>.</p>
 
 
 
@@ -64,11 +64,11 @@ for( $i = 0; $i < count($active_project->evidence); $i++ ) {
 
 ?>
 
-	<td class="dcDateAdded" style="display: none;"><?=$this_evidence->created?></td>
-	<td class="dcDateOfSource" style="display: none;"><?=substr($this_evidence->date_of_source, 0, 10)?></td>
-	<td class="dcType" style="display: none;"><?=$this_evidence->type?></td>
-	<td class="dcCode" style="display: none;"><?=$this_evidence->code?></td>
-	<td class="dcFlag" style="display: none;"><a id="flag_<?=$this_evidence->id?>" onclick="switchFlag('flag_<?=$this_evidence->id?>', <?=$this_evidence->id?>);"><?php if( $this_evidence->flag == "y" ) { echo("<img src='$base_URL/images/icons/flag_red.png' />"); } else { echo("<img src='$base_URL/images/icons/bullet_add.png' />"); } ?></a></td>
+	<td class="dcDateAdded" style="display: none;"><?php $this_evidence->created?></td>
+	<td class="dcDateOfSource" style="display: none;"><?php substr($this_evidence->date_of_source, 0, 10)?></td>
+	<td class="dcType" style="display: none;"><?php $this_evidence->type?></td>
+	<td class="dcCode" style="display: none;"><?php $this_evidence->code?></td>
+	<td class="dcFlag" style="display: none;"><a id="flag_<?php $this_evidence->id?>" onclick="switchFlag('flag_<?php $this_evidence->id?>', <?php $this_evidence->id?>);"><?php if( $this_evidence->flag == "y" ) { echo("<img src='$base_URL/images/icons/flag_red.png' />"); } else { echo("<img src='$base_URL/images/icons/bullet_add.png' />"); } ?></a></td>
 	
 <?php
 
@@ -82,7 +82,7 @@ for( $i = 0; $i < count($active_project->evidence); $i++ ) {
 		}
 		$this_rating_style = strtolower(str_replace(" ", "_", str_replace("/", "", $this_rating)));
 		?>
-		<td class="<?=$this_rating_style?>"><?=$this_rating?></td>
+		<td class="<?php $this_rating_style?>"><?php $this_rating?></td>
 		
 <?php	}
 	echo('</tr>');	

@@ -53,7 +53,7 @@ $active_owner->populateFromID($active_project->user_id);
 
 	<?php } else { ?>
 	
-	ACH: <?=$active_project->title?> <?php } ?>
+	ACH: <?php $active_project->title?> <?php } ?>
 	</title>
 	
 <?php include("parts/includes.php"); ?>
@@ -199,7 +199,7 @@ function reloadAjaxGroupTable() {
 	var baseURL = "<?php print $base_URL; ?>";
 
 	if( edit_table == 0 ) {
-		table_kind = "<?=$part?>";
+		table_kind = "<?php $part?>";
 	} else {
 		table_kind = "edit";
 	}
@@ -335,11 +335,11 @@ if( in_array($active_user->id, $active_project->users) || ($active_project->publ
 	
 	for( $i = 0; $i<count($active_project->evidence); $i++ ) {
 		for( $j = 0; $j<count($active_project->hypotheses); $j++ ) { ?>
-		matrixData += '&rating_<?=$active_project->evidence[$i]?>-<?=$active_project->hypotheses[$j]?>=' + document.getElementById("rating_<?=$active_project->evidence[$i]?>-<?=$active_project->hypotheses[$j]?>_" + document.getElementById("hypotheses_column_sort").value).value + '&';	
+		matrixData += '&rating_<?php $active_project->evidence[$i]?>-<?php $active_project->hypotheses[$j]?>=' + document.getElementById("rating_<?php $active_project->evidence[$i]?>-<?php $active_project->hypotheses[$j]?>_" + document.getElementById("hypotheses_column_sort").value).value + '&';	
 	<?php
 		} ?>
-		matrixData += '&cred_edit_<?=$active_project->evidence[$i]?>=' + document.getElementById("cred_edit_<?=$active_project->evidence[$i]?>").value + '&';
-		matrixData += '&cred_weight_edit_<?=$active_project->evidence[$i]?>=' + document.getElementById("cred_weight_edit_<?=$active_project->evidence[$i]?>").value + '&';
+		matrixData += '&cred_edit_<?php $active_project->evidence[$i]?>=' + document.getElementById("cred_edit_<?php $active_project->evidence[$i]?>").value + '&';
+		matrixData += '&cred_weight_edit_<?php $active_project->evidence[$i]?>=' + document.getElementById("cred_weight_edit_<?php $active_project->evidence[$i]?>").value + '&';
 	<?php
 	}
 
@@ -347,7 +347,7 @@ if( in_array($active_user->id, $active_project->users) || ($active_project->publ
 
 ?>
 
-	window.location = "project_ratings_action.php?project_id=<?=$active_project->id?>&x=x" + matrixData;
+	window.location = "project_ratings_action.php?project_id=<?php $active_project->id?>&x=x" + matrixData;
 
 }
 
@@ -421,7 +421,7 @@ function inviteViewer() {
 	document.getElementById("inviteViewerResult").innerHTML = "...";
 	var oXmlHttp = zXmlHttp.createRequest();
 	
-	oXmlHttp.open("get", "project_invite_viewer.php?project_id=<?=$active_project->id?>&viewerEmail=" + viewerEmail);
+	oXmlHttp.open("get", "project_invite_viewer.php?project_id=<?php $active_project->id?>&viewerEmail=" + viewerEmail);
 	oXmlHttp.onreadystatechange = function () {
 		if (oXmlHttp.readyState == 4) {
 			if (oXmlHttp.status == 200) {
@@ -437,7 +437,7 @@ function inviteViewer() {
 
 
 function goToPrintPage() {
-	window.location = "<?=$_SERVER['REQUEST_URI']?>/print/" + sortColsBy + "/" + last_sort_1 + "/" + last_sort_1_dir + "/" + last_sort_2 + "/" + last_sort_2_dir + "/" + dccDateAdded + "" + dccDateOfSource + "" + dccType + "" + dccCode + "" + dccFlag + "" + dccCredWeight + "" + dccDiag + "/";	
+	window.location = "<?php $_SERVER['REQUEST_URI']?>/print/" + sortColsBy + "/" + last_sort_1 + "/" + last_sort_1_dir + "/" + last_sort_2 + "/" + last_sort_2_dir + "/" + dccDateAdded + "" + dccDateOfSource + "" + dccType + "" + dccCode + "" + dccFlag + "" + dccCredWeight + "" + dccDiag + "/";	
 }
 
 
@@ -465,7 +465,7 @@ function confirm_delete(url) {
 	<!--END BRIDGE-SPECIFIC MATERIAL -->
 
 
-<input type="hidden" id="project_id" value="<?=$active_project->id?>" />
+<input type="hidden" id="project_id" value="<?php $active_project->id?>" />
 
 
 
@@ -499,11 +499,11 @@ if( $active_user->logged_in ) { ?>
 					<h2>This project does not exist.</h2>
 				<?php } elseif  ( !in_array($active_user->id, $active_project->users) && $active_project->directory != "y" ) { ?>
 					<h2>This is a private project.</h2>
-					<p><a class="button" href="<?=$base_URL?>project/<?=$active_project->id?>/join">Request permission to join this project</a></p>
+					<p><a class="button" href="<?php $base_URL?>project/<?php $active_project->id?>/join">Request permission to join this project</a></p>
 				<?php } else {
 				?>
 				
-					<h2 class="classTitle">Project: <?=$active_project->title?> 
+					<h2 class="classTitle">Project: <?php $active_project->title?> 
 					<?php if( !$print_mode ) { ?><span class="showHideDetails" id="showHideDetails"><a style="cursor: pointer;" onclick="showDetails();">Show details</a></span><?php } ?>
 					</h2>
 					
@@ -517,12 +517,12 @@ if( $active_user->logged_in ) { ?>
 					
 					
 					
-					<p><?=$active_project->description?></p>
+					<p><?php $active_project->description?></p>
 					
 					<div class="projectInfo">
 					
 					
-					<!--<p><b>Owner:</b> <a href="<?=$base_URL?>profile/<?=$active_owner->username?>"><?=$active_owner->name?></a></p>-->
+					<!--<p><b>Owner:</b> <a href="<?php $base_URL?>profile/<?php $active_owner->username?>"><?php $active_owner->name?></a></p>-->
 					
 					<p class="otherMembers"><b>Members:</b> <?php
 					
@@ -560,7 +560,7 @@ if( $active_user->logged_in ) { ?>
 					
 					<div class="inviteViewer" id="inviteViewer" style="display: none;">
 					
-					<input type="hidden" name="project_id" value="<?=$active_project->id?>" />
+					<input type="hidden" name="project_id" value="<?php $active_project->id?>" />
 					
 					<p>E-mail Address: <input id="inviteViewerEmail" type="text" size="30" name="inviteViewerEmail" /> <input type="button" value="Invite" onclick="inviteViewer();" /> <span id="inviteViewerResult"></span></p>
 					
@@ -573,9 +573,9 @@ if( $active_user->logged_in ) { ?>
 					
 					
 					
-					<p class="otherMembers"><b>Keywords:</b> <?=$active_project->keywords?></p>
+					<p class="otherMembers"><b>Keywords:</b> <?php $active_project->keywords?></p>
 					
-					<p class="otherMembers"><b>Overall Project Classification:</b> <?=Project::classificationTextStyled($active_project->classification)?></p>
+					<p class="otherMembers"><b>Overall Project Classification:</b> <?php Project::classificationTextStyled($active_project->classification)?></p>
 					
 					<p class="otherMembers"><b>Privacy Settings: </b><?php if( $active_project->public == "y" ) { ?>
 					This project's data is <b>public</b> for all to see,
@@ -591,16 +591,16 @@ if( $active_user->logged_in ) { ?>
 					
 					<?php if( in_array($active_user->id, $active_project->users) && $active_user->id != $active_project->user_id ) { ?>
 					
-					<?php if( !$print_mode ) { ?><p class="leaveProject"><a href="<?=$base_URL?>project/<?=$active_project->id?>/leave">Leave this project</a></p><?php } ?>
+					<?php if( !$print_mode ) { ?><p class="leaveProject"><a href="<?php $base_URL?>project/<?php $active_project->id?>/leave">Leave this project</a></p><?php } ?>
 					
 					<?php } ?>
 					
-					<?php if( !$print_mode ) { ?><?php if( !$is_firefox ) { ?><p><a onclick="window.open ('/project/<?=$active_project->id?>/chat','Chat');" style="color: #FF0000;">Project Chat</a> (pop-up window)</p><?php } ?><?php } ?>
+					<?php if( !$print_mode ) { ?><?php if( !$is_firefox ) { ?><p><a onclick="window.open ('/project/<?php $active_project->id?>/chat','Chat');" style="color: #FF0000;">Project Chat</a> (pop-up window)</p><?php } ?><?php } ?>
 					
 					
 					
 					<?php if( $active_user->id == $active_project->user_id ) { ?>
-					<p class="delete"><a href="JavaScript:confirm_delete('/project/<?=$active_project->id?>/delete');">Delete this Project</a><br /><span>This can not be undone, so <b>be careful</b>.</span></p>
+					<p class="delete"><a href="JavaScript:confirm_delete('/project/<?php $active_project->id?>/delete');">Delete this Project</a><br /><span>This can not be undone, so <b>be careful</b>.</span></p>
 					<?php } ?>
 					
 					
@@ -625,15 +625,15 @@ if( $active_user->logged_in ) { ?>
 					
 					<p class="subMenu">
 					<?php if( in_array($active_user->id, $active_project->users)) { ?>
-					<a href="<?=$base_URL?>project/<?=$active_project->id?>">Personal Matrix</a> 
+					<a href="<?php $base_URL?>project/<?php $active_project->id?>">Personal Matrix</a> 
 					<?php } else { ?>
-					<a href="<?=$base_URL?>project/<?=$active_project->id?>/join">Join Project</a> 
+					<a href="<?php $base_URL?>project/<?php $active_project->id?>/join">Join Project</a> 
 					<?php } ?>
-					<a href="<?=$base_URL?>project/<?=$active_project->id?>/group">Group Matrix</a> 
+					<a href="<?php $base_URL?>project/<?php $active_project->id?>/group">Group Matrix</a> 
 					<?php if( in_array($active_user->id, $active_project->users)) { ?>
-					<a href="<?=$base_URL?>project/<?=$active_project->id?>/evidence/new">Enter Evidence/Arguments</a>  <!--<a href="<?=$base_URL?>project/<?=$active_project->id?>/export">Export Matrix</a> -->
+					<a href="<?php $base_URL?>project/<?php $active_project->id?>/evidence/new">Enter Evidence/Arguments</a>  <!--<a href="<?php $base_URL?>project/<?php $active_project->id?>/export">Export Matrix</a> -->
 					<?php } ?>
-					<?php if( $active_user->id == $active_project->user_id) { ?><a href="<?=$base_URL?>project/<?=$active_project->id?>/hypothesis/new">Enter Hypotheses</a> <a href="<?=$base_URL?>project/<?=$active_project->id?>/edit">Edit Project Options</a> <?php } ?>
+					<?php if( $active_user->id == $active_project->user_id) { ?><a href="<?php $base_URL?>project/<?php $active_project->id?>/hypothesis/new">Enter Hypotheses</a> <a href="<?php $base_URL?>project/<?php $active_project->id?>/edit">Edit Project Options</a> <?php } ?>
 					</p>
 					
 					
@@ -652,11 +652,11 @@ if( $active_user->logged_in ) { ?>
 				$active_project->getJoinRequests();
 				//if anyone can join this project, then display Join This Project link. Otherwise, display Request Permission link
 				if( $active_project->open == "y" ) { ?>
-				<p><a class="button" href="<?=$base_URL?>project/<?=$active_project->id?>/join">Join this project</a></p>
+				<p><a class="button" href="<?php $base_URL?>project/<?php $active_project->id?>/join">Join this project</a></p>
 				<?php } else if( in_array($active_user->id, $active_project->join_requests) ) { ?>
-				<p><i><b>You have requested permission to join this project. The project owner has been notified. When your request is acted upon, there will be a notification on your <a href="<?=$base_URL?>">home page</a>.</b></i></p>
+				<p><i><b>You have requested permission to join this project. The project owner has been notified. When your request is acted upon, there will be a notification on your <a href="<?php $base_URL?>">home page</a>.</b></i></p>
 				<?php } else { ?>
-				<p><a class="button" href="<?=$base_URL?>project/<?=$active_project->id?>/join">Request permission to join this project</a></p>
+				<p><a class="button" href="<?php $base_URL?>project/<?php $active_project->id?>/join">Request permission to join this project</a></p>
 				<?php } ?>
 				
 				

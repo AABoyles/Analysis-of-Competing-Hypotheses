@@ -46,7 +46,7 @@ if( $this_project->open == "y" ) {
 <html>
 <head>
 	<title>Updating...</title>
-	<meta http-equiv=Refresh content="0; url=project/<?=$project_id?>">
+	<meta http-equiv=Refresh content="0; url=project/<?php $project_id?>">
 </head>
 
 

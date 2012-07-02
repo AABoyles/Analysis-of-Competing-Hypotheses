@@ -40,7 +40,7 @@ if( in_array($active_user->id, $active_project->users) ) { ?>
 
 <p class="chatClose" onclick="document.getElementById('chatPanel').style.display='none'; createCookie('cachchat', 'n', 7); chatActive = 'n';"><a href="javascript:void(0);">Close</a></p>
 
-<!--<p class="chatPopOut" style="border: #9FB3ED 2px solid; width: 4em; padding: 2px; margin: 0px; position: relative; top: 4px; left: 2px; text-align: center;"><a style="color: #7492EF; font-size: 10px;" href="/project/<?=$active_project->id?>/chat" onClick="window.open('/project/<?=$active_project->id?>/chat', 'Chat', 'toolbar=yes,directories=no,location=no,status=yes,menubar=no,resizable=yes,scrollbars=yes,width=1000,height=500'); return false">Pop out</a></p>-->
+<!--<p class="chatPopOut" style="border: #9FB3ED 2px solid; width: 4em; padding: 2px; margin: 0px; position: relative; top: 4px; left: 2px; text-align: center;"><a style="color: #7492EF; font-size: 10px;" href="/project/<?php $active_project->id?>/chat" onClick="window.open('/project/<?php $active_project->id?>/chat', 'Chat', 'toolbar=yes,directories=no,location=no,status=yes,menubar=no,resizable=yes,scrollbars=yes,width=1000,height=500'); return false">Pop out</a></p>-->
 
 
 <div class="sendMessage">

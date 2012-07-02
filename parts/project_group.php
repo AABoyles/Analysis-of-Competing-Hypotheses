@@ -59,7 +59,7 @@
 	
 	
 	
-	<p><b>Consensus Guage:</b> <img style="position: relative; top: 4px; padding-left: 15px;" src="<?=$base_URL?>images/gauge.gif"></p>
+	<p><b>Consensus Guage:</b> <img style="position: relative; top: 4px; padding-left: 15px;" src="<?php $base_URL?>images/gauge.gif"></p>
 	
 	
 	
@@ -189,7 +189,7 @@
 	
 	<form style="margin: 0px;" method="post" class="edit" action="project_compare_two_users_action.php">
 	
-	<input type="hidden" name="project_id" value="<?=$active_project->id?>">
+	<input type="hidden" name="project_id" value="<?php $active_project->id?>">
 	
 	<p style="margin-bottom: 0px;">Compare the ratings of <select name="compare_user_id"><?php
 	
@@ -223,7 +223,7 @@
 	
 	<form style="margin: 0px;" method="post" class="edit" action="project_ratings_user_action.php">
 	
-	<input type="hidden" name="project_id" value="<?=$active_project->id?>">
+	<input type="hidden" name="project_id" value="<?php $active_project->id?>">
 	
 	<p style="margin-bottom: 0px;">View others' personal matrices: <select name="ratings_user_id"><?php
 	

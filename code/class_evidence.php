@@ -127,39 +127,39 @@ class Evidence extends FrameworkDatabase {
 			
 		<div class="comment" style="margin-left: <?php echo($reply_depth*50); ?>">
 		
-		<a name="comment_<?=$this_comment->id?>" />
+		<a name="comment_<?php $this_comment->id?>" />
 		
-		<p class="by"><a href="<?=$base_URL?>profile/<?=$commenter->username?>"><?=$commenter->name?></a> <?php if( $thread_id == 0 ) { ?>writes<?php } else { ?>replies<?php } ?>:</p>
+		<p class="by"><a href="<?php $base_URL?>profile/<?php $commenter->username?>"><?php $commenter->name?></a> <?php if( $thread_id == 0 ) { ?>writes<?php } else { ?>replies<?php } ?>:</p>
 		
-		<p class="comment"><?=nl2br($this_comment->comment)?></p>
+		<p class="comment"><?php nl2br($this_comment->comment)?></p>
 		
-		<p class="time"><b>Time:</b> <?=$this_comment->created?></p>
+		<p class="time"><b>Time:</b> <?php $this_comment->created?></p>
 		
-		<p class="classification"><b>Classification:</b> <?=$this_comment->classification?></p>
+		<p class="classification"><b>Classification:</b> <?php $this_comment->classification?></p>
 		
-		<p class="caveat"><b>Caveat:</b> <?=$this_comment->caveat?></p>
+		<p class="caveat"><b>Caveat:</b> <?php $this_comment->caveat?></p>
 		
 		
 		
 		<?php $reply_id = rand(0, 10000000000); ?>
 		
-		<p class="replyTo"><a style="cursor: pointer;" onclick="new Effect.BlindDown(reply<?=$reply_id?>);">Reply</a></p>
+		<p class="replyTo"><a style="cursor: pointer;" onclick="new Effect.BlindDown(reply<?php $reply_id?>);">Reply</a></p>
 		
-		<div class="replyToThis" id="reply<?=$reply_id?>" style="display: none;">
+		<div class="replyToThis" id="reply<?php $reply_id?>" style="display: none;">
 		
 		<form method="post" class="edit" action="add_comment_action.php">
 
-		<input type="hidden" name="this_url" value="<?=$_SERVER['REQUEST_URI']?>" />
+		<input type="hidden" name="this_url" value="<?php $_SERVER['REQUEST_URI']?>" />
 		
-		<input type="hidden" name="user_id" value="<?=$active_user->id?>" />
+		<input type="hidden" name="user_id" value="<?php $active_user->id?>" />
 		
-		<input type="hidden" name="evidence_id" value="<?=$this->id?>" />
+		<input type="hidden" name="evidence_id" value="<?php $this->id?>" />
 		
-		<input type="hidden" name="project_id" value="<?=$this->project_id?>" />
+		<input type="hidden" name="project_id" value="<?php $this->project_id?>" />
 		
 		<input type="hidden" name="hypothesis_id" value="0" />
 		
-		<input type="hidden" name="reply_to_id" value="<?=$this_comment->id?>" />
+		<input type="hidden" name="reply_to_id" value="<?php $this_comment->id?>" />
 		
 		<p><textarea rows="8" name="comment" cols="60"></textarea></p>
 		

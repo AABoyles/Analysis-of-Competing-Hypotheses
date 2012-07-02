@@ -21,7 +21,7 @@
 **    along with Open Source ACH. If not, see <http://www.gnu.org/licenses/>.
 //////////////////////////////////////////////////////////////////////////////// */
 ?>
-<h3>Compare User Matrices <a href="<?=$_SERVER['REQUEST_URI']?>/print"><img class="icon" src="<?=$base_URL?>images/icons/printer.png" alt="Print this page" border="0" /></a></h3>
+<h3>Compare User Matrices <a href="<?php $_SERVER['REQUEST_URI']?>/print"><img class="icon" src="<?php $base_URL?>images/icons/printer.png" alt="Print this page" border="0" /></a></h3>
 
 <?php
 
@@ -33,12 +33,12 @@ $compare_user_2 = new User();
 if( $_REQUEST['compare_user_id_2'] ) {
 	$compare_user_2->populateFromId($_REQUEST['compare_user_id_2']);
 	?>
-	<p>Comparing the ratings of <b><?=$compare_user->name?></b> with <b><?=$compare_user_2->name?></b>.</p>
+	<p>Comparing the ratings of <b><?php $compare_user->name?></b> with <b><?php $compare_user_2->name?></b>.</p>
 	<?php
 } else {
 	$compare_user_2->populateFromId($active_user->id);
 	?>
-	<p>Comparing your ratings with <b><?=$compare_user->name?></b>.</p>
+	<p>Comparing your ratings with <b><?php $compare_user->name?></b>.</p>
 	<?php
 }
 
@@ -60,7 +60,7 @@ if( $_REQUEST['compare_user_id_2'] ) {
 
 
 
-<p><img src="<?=$base_URL?>images/consensusgauge.gif"></p>
+<p><img src="<?php $base_URL?>images/consensusgauge.gif"></p>
 
 <table cellspacing="0" cellpadding="0" border="0" class="sort-table" id="compareMatrix"><thead><tr><th class="hypothesis"></th>
 <?php
@@ -103,11 +103,11 @@ for( $i = 0; $i < count($active_project->evidence); $i++ ) {
 	
 ?>
 
-	<td class="dcDateAdded" style="display: none;"><?=$this_evidence->created?></td>
-	<td class="dcDateOfSource" style="display: none;"><?=substr($this_evidence->date_of_source, 0, 10)?></td>
-	<td class="dcType" style="display: none;"><?=$this_evidence->type?></td>
-	<td class="dcCode" style="display: none;"><?=$this_evidence->code?></td>
-	<td class="dcFlag" style="display: none;"><a id="flag_<?=$this_evidence->id?>" onclick="switchFlag('flag_<?=$this_evidence->id?>', <?=$this_evidence->id?>);"><?php if( $this_evidence->flag == "y" ) { echo("<img src='". $base_URL . "images/icons/flag_red.png' />"); } else { echo("<img src='". $base_URL . "images/icons/bullet_add.png' />"); } ?></a></td>	
+	<td class="dcDateAdded" style="display: none;"><?php $this_evidence->created?></td>
+	<td class="dcDateOfSource" style="display: none;"><?php substr($this_evidence->date_of_source, 0, 10)?></td>
+	<td class="dcType" style="display: none;"><?php $this_evidence->type?></td>
+	<td class="dcCode" style="display: none;"><?php $this_evidence->code?></td>
+	<td class="dcFlag" style="display: none;"><a id="flag_<?php $this_evidence->id?>" onclick="switchFlag('flag_<?php $this_evidence->id?>', <?php $this_evidence->id?>);"><?php if( $this_evidence->flag == "y" ) { echo("<img src='". $base_URL . "images/icons/flag_red.png' />"); } else { echo("<img src='". $base_URL . "images/icons/bullet_add.png' />"); } ?></a></td>	
 <?php
 
 	for( $j = 0; $j < count($active_project->hypotheses); $j++ ) {
@@ -184,7 +184,7 @@ for( $i = 0; $i < count($active_project->evidence); $i++ ) {
 
 <form style="margin: 0px;" method="post" class="edit" action="project_compare_two_users_action.php">
 
-<input type="hidden" name="project_id" value="<?=$active_project->id?>">
+<input type="hidden" name="project_id" value="<?php $active_project->id?>">
 
 <p style="margin-bottom: 0px;">Compare the ratings of <select name="compare_user_id"><?php
 
@@ -220,7 +220,7 @@ for( $j = 0; $j < count($active_project->users); $j++ ) {
 
 <form style="margin: 0px;" method="post" class="edit" action="project_ratings_user_action.php">
 
-<input type="hidden" name="project_id" value="<?=$active_project->id?>">
+<input type="hidden" name="project_id" value="<?php $active_project->id?>">
 
 <p style="margin-bottom: 0px;">View partner's matrix: <select name="ratings_user_id"><?php
 

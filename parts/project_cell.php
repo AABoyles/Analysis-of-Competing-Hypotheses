@@ -34,10 +34,10 @@ $active_hypothesis->populateFromId($_REQUEST['hypothesis_id']);
 
 <h3>Cell Details</h3>
 
-<h4>Evidence: <a href="<?=$base_URL?>project/<?=$active_project->id?>/evidence/<?=$active_evidence->id?>"><?=$active_evidence->name?></a></h4>
-<br/><?=$active_evidence->details?><br>
+<h4>Evidence: <a href="<?php $base_URL?>project/<?php $active_project->id?>/evidence/<?php $active_evidence->id?>"><?php $active_evidence->name?></a></h4>
+<br/><?php $active_evidence->details?><br>
 
-<h4>Hypothesis: <a href="<?=$base_URL?>project/<?=$active_project->id?>/hypothesis/<?=$active_hypothesis->id?>"><?=$active_hypothesis->label?></a></h4>
+<h4>Hypothesis: <a href="<?php $base_URL?>project/<?php $active_project->id?>/hypothesis/<?php $active_hypothesis->id?>"><?php $active_hypothesis->label?></a></h4>
 
 <h4>User Ratings</h4>
 
@@ -111,13 +111,13 @@ if( showCellComments($active_evidence->id, $active_hypothesis->id, 0) ) {
 
 <form method="post" class="edit" action="add_comment_action.php">
 
-<input type="hidden" name="this_url" value="<?=$_SERVER['REQUEST_URI']?>" />
+<input type="hidden" name="this_url" value="<?php $_SERVER['REQUEST_URI']?>" />
 
-<input type="hidden" name="user_id" value="<?=$active_user->id?>" />
+<input type="hidden" name="user_id" value="<?php $active_user->id?>" />
 
-<input type="hidden" name="evidence_id" value="<?=$active_evidence->id?>" />
+<input type="hidden" name="evidence_id" value="<?php $active_evidence->id?>" />
 
-<input type="hidden" name="hypothesis_id" value="<?=$active_hypothesis->id?>" />
+<input type="hidden" name="hypothesis_id" value="<?php $active_hypothesis->id?>" />
 
 <input type="hidden" name="reply_to_id" value="0" />
 

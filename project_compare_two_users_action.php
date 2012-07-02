@@ -29,7 +29,7 @@ include("code/includes.php");
 <html>
 <head>
 	<title>Loading...</title>
-	<meta http-equiv=Refresh content="0; url=project/<?=$_REQUEST['project_id']?>/compare/<?=$_REQUEST['compare_user_id']?>/<?=$_REQUEST['compare_user_id_2']?>">
+	<meta http-equiv=Refresh content="0; url=project/<?php $_REQUEST['project_id']?>/compare/<?php $_REQUEST['compare_user_id']?>/<?php $_REQUEST['compare_user_id_2']?>">
 </head>
 
 

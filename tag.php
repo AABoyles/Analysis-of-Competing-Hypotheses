@@ -62,7 +62,7 @@ if( $active_user->logged_in ) { ?>
 		<div class="inner">
 			<div class="main">
 
-<h2>Classes matching "<span class="hilight"><?=$tag?></span>"</h2>
+<h2>Classes matching "<span class="hilight"><?php $tag?></span>"</h2>
 
 
 
@@ -77,8 +77,8 @@ while($query_data = mysql_fetch_array($result)) {
 
 ?>
 
-<p><a href="<?=$base_URL?>class/<?=$query_data['id']?>"><?=$query_data['title']?></a><br />
-<span class="classListInfo">Taught by <a href="<?=$base_URL?>profile/<?=$this_teacher->username?>"><?=$this_teacher->name?></a><br />
+<p><a href="<?php $base_URL?>class/<?php $query_data['id']?>"><?php $query_data['title']?></a><br />
+<span class="classListInfo">Taught by <a href="<?php $base_URL?>profile/<?php $this_teacher->username?>"><?php $this_teacher->name?></a><br />
 Starts <a href="">June 1st, 2007</a></span></p>
 
 <?php } ?>

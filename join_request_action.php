@@ -53,7 +53,7 @@ if( $active_user->id == $this_project->user_id ) {
 <html>
 <head>
 	<title>Updating...</title>
-	<meta http-equiv=Refresh content="0; url=<?=$base_URL?>index.php">
+	<meta http-equiv=Refresh content="0; url=<?php $base_URL?>index.php">
 </head>
 
 

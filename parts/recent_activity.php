@@ -74,13 +74,13 @@ while($query_data = mysql_fetch_array($result)) {
 
 <div class="recentEvidenceHypothesis">
 
-<p class="item"><a href="<?=$base_URL?>project/<?=$this_project->id?>/evidence/<?=$this_evidence->id?>"><?=$this_evidence->name?></a> in project <a href="<?=$base_URL?>project/<?=$this_project->id?>"><?=$this_project->title?></a></p>
+<p class="item"><a href="<?php $base_URL?>project/<?php $this_project->id?>/evidence/<?php $this_evidence->id?>"><?php $this_evidence->name?></a> in project <a href="<?php $base_URL?>project/<?php $this_project->id?>"><?php $this_project->title?></a></p>
 
 <?php if( $this_evidence->details != "" ) { ?>
-<p class="description">Details: <i>"<?=condenseComment($this_evidence->details)?>"</i></p>
+<p class="description">Details: <i>"<?php condenseComment($this_evidence->details)?>"</i></p>
 <?php } ?>
 
-<p class="details">Added by <a href="<?=$base_URL?>profile/<?=$this_user->username?>"><?=$this_user->name?></a> on <b style="color: #888888;"><?=date("M d, g:ia", strtotime($query_data['created']))?></b></p>
+<p class="details">Added by <a href="<?php $base_URL?>profile/<?php $this_user->username?>"><?php $this_user->name?></a> on <b style="color: #888888;"><?php date("M d, g:ia", strtotime($query_data['created']))?></b></p>
 
 </div>
 
@@ -137,13 +137,13 @@ while($query_data = mysql_fetch_array($result)) {
 
 <div class="recentEvidenceHypothesis">
 
-<p class="item"><a href="<?=$base_URL?>project/<?=$this_project->id?>/hypothesis/<?=$this_hypothesis->id?>"><?=$this_hypothesis->label?></a> in project <a href="<?=$base_URL?>project/<?=$this_project->id?>"><?=$this_project->title?></a></p>
+<p class="item"><a href="<?php $base_URL?>project/<?php $this_project->id?>/hypothesis/<?php $this_hypothesis->id?>"><?php $this_hypothesis->label?></a> in project <a href="<?php $base_URL?>project/<?php $this_project->id?>"><?php $this_project->title?></a></p>
 
 <?php if( $this_hypothesis->description != "" ) { ?>
-<p class="description">Description: <i>"<?=condenseComment($this_hypothesis->description)?>"</i></p>
+<p class="description">Description: <i>"<?php condenseComment($this_hypothesis->description)?>"</i></p>
 <?php } ?>
 
-<p class="details">Added by <a href="<?=$base_URL?>profile/<?=$this_user->username?>"><?=$this_user->name?></a> on <b style="color: #888888;"><?=date("M d, g:ia", strtotime($query_data['created']))?></b></p>
+<p class="details">Added by <a href="<?php $base_URL?>profile/<?php $this_user->username?>"><?php $this_user->name?></a> on <b style="color: #888888;"><?php date("M d, g:ia", strtotime($query_data['created']))?></b></p>
 
 </div>
 
@@ -213,7 +213,7 @@ while($query_data = mysql_fetch_array($result)) {
 
 <div class="recentComment">
 
-<p class="comment"><a href="<?=$base_URL?>profile/<?=$this_user->username?>"><?=$this_user->name?></a> wrote: <i>"<?=condenseComment($query_data['comment'])?>"</i> <a href="<?=$base_URL?>project/<?=$this_project->id?>/<?php
+<p class="comment"><a href="<?php $base_URL?>profile/<?php $this_user->username?>"><?php $this_user->name?></a> wrote: <i>"<?php condenseComment($query_data['comment'])?>"</i> <a href="<?php $base_URL?>project/<?php $this_project->id?>/<?php
 
 if( $query_data['evidence_id'] > 0 ) {
 	echo("evidence/" . $this_evidence->id);
@@ -221,11 +221,11 @@ if( $query_data['evidence_id'] > 0 ) {
 	echo("hypothesis/" . $this_hypothesis->id);
 }
 
-?>#comment_<?=$query_data['id']?>" class="read">Read</a></p>
+?>#comment_<?php $query_data['id']?>" class="read">Read</a></p>
 
 
 
-<p class="reply">In reply to your comment: <i>"<?=$this_reply_comment->comment?>"</i> <a href="<?=$base_URL?>project/<?=$this_project->id?>/<?php
+<p class="reply">In reply to your comment: <i>"<?php $this_reply_comment->comment?>"</i> <a href="<?php $base_URL?>project/<?php $this_project->id?>/<?php
 
 if( $query_data['evidence_id'] > 0 ) {
 	echo("evidence/" . $this_evidence->id);
@@ -233,16 +233,16 @@ if( $query_data['evidence_id'] > 0 ) {
 	echo("hypothesis/" . $this_hypothesis->id);
 }
 
-?>#comment_<?=$this_reply_comment->id?>" class="readLight">Read</a></p>
+?>#comment_<?php $this_reply_comment->id?>" class="readLight">Read</a></p>
 
 
 
-<p class="which"><b style="color: #666666;"><?=date("M d, g:ia", strtotime($query_data['created']))?></b> &sim; 
+<p class="which"><b style="color: #666666;"><?php date("M d, g:ia", strtotime($query_data['created']))?></b> &sim; 
 
 <?php if( $query_data['evidence_id'] > 0 ) { ?>
-Evidence: <a href="<?=$base_URL?>project/<?=$this_project->id?>"><?=$this_project->title?></a> &rarr; <a href="<?=$base_URL?>project/<?=$this_project->id?>/evidence/<?=$this_evidence->id?>"><?=$this_evidence->name?></a></p>
+Evidence: <a href="<?php $base_URL?>project/<?php $this_project->id?>"><?php $this_project->title?></a> &rarr; <a href="<?php $base_URL?>project/<?php $this_project->id?>/evidence/<?php $this_evidence->id?>"><?php $this_evidence->name?></a></p>
 <?php } else if( $query_data['hypothesis_id'] > 0 ) { ?>
-Hypothesis: <a href="<?=$base_URL?>project/<?=$this_project->id?>"><?=$this_project->title?></a> &rarr; <a href="<?=$base_URL?>project/<?=$this_project->id?>/hypothesis/<?=$this_hypothesis->id?>"><?=$this_hypothesis->label?></a></p>
+Hypothesis: <a href="<?php $base_URL?>project/<?php $this_project->id?>"><?php $this_project->title?></a> &rarr; <a href="<?php $base_URL?>project/<?php $this_project->id?>/hypothesis/<?php $this_hypothesis->id?>"><?php $this_hypothesis->label?></a></p>
 <?php } ?>
 
 </div>
@@ -305,7 +305,7 @@ while($query_data = mysql_fetch_array($result)) {
 
 <div class="recentComment">
 
-<p class="comment"><a href="<?=$base_URL?>profile/<?=$this_user->username?>"><?=$this_user->name?></a> wrote: <i>"<?php
+<p class="comment"><a href="<?php $base_URL?>profile/<?php $this_user->username?>"><?php $this_user->name?></a> wrote: <i>"<?php
 
 $num_words_to_show = 10;
 
@@ -324,7 +324,7 @@ if( count($words) > $num_words_to_show ) {
 
 echo($comment);
 
-?>"</i> <a href="<?=$base_URL?>project/<?=$this_project->id?>/<?php
+?>"</i> <a href="<?php $base_URL?>project/<?php $this_project->id?>/<?php
 
 if( $query_data['evidence_id'] > 0 ) {
 	echo("evidence/" . $this_evidence->id);
@@ -332,14 +332,14 @@ if( $query_data['evidence_id'] > 0 ) {
 	echo("hypothesis/" . $this_hypothesis->id);
 }
 
-?>#comment_<?=$query_data['id']?>" class="read">Read</a></p>
+?>#comment_<?php $query_data['id']?>" class="read">Read</a></p>
 
-<p class="which"><b style="color: #666666;"><?=date("M d, g:ia", strtotime($query_data['created']))?></b> &sim; 
+<p class="which"><b style="color: #666666;"><?php date("M d, g:ia", strtotime($query_data['created']))?></b> &sim; 
 
 <?php if( $query_data['evidence_id'] > 0 ) { ?>
-Evidence: <a href="<?=$base_URL?>project/<?=$this_project->id?>"><?=$this_project->title?></a> &rarr; <a href="<?=$base_URL?>project/<?=$this_project->id?>/evidence/<?=$this_evidence->id?>"><?=$this_evidence->name?></a></p>
+Evidence: <a href="<?php $base_URL?>project/<?php $this_project->id?>"><?php $this_project->title?></a> &rarr; <a href="<?php $base_URL?>project/<?php $this_project->id?>/evidence/<?php $this_evidence->id?>"><?php $this_evidence->name?></a></p>
 <?php } else if( $query_data['hypothesis_id'] > 0 ) { ?>
-Hypothesis: <a href="/<?=$base_URL?>project/<?=$this_project->id?>"><?=$this_project->title?></a> &rarr; <a href="<?=$base_URL?>project/<?=$this_project->id?>/hypothesis/<?=$this_hypothesis->id?>"><?=$this_hypothesis->label?></a></p>
+Hypothesis: <a href="/<?php $base_URL?>project/<?php $this_project->id?>"><?php $this_project->title?></a> &rarr; <a href="<?php $base_URL?>project/<?php $this_project->id?>/hypothesis/<?php $this_hypothesis->id?>"><?php $this_hypothesis->label?></a></p>
 <?php } ?>
 
 </div>
