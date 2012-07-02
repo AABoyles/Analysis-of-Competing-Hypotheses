@@ -73,7 +73,7 @@ if( strpos( $_POST['email'], "@" ) === FALSE ) {
 }
 
 if( $success == TRUE ) {
-	$active_user->password = crypt($active_user->password);
+	$active_user->password = md5($active_user->password);
 	$active_user->insertNew();
 	$active_user->setCookies();
 }
@@ -89,8 +89,7 @@ echo '</head><body>';
 include("parts/header.php");
 include("parts/login_sidebar.php");
 
-echo '
-<div class="mainContainer">
+echo '<div class="mainContainer">
 	<div class="ydsf left">
 		<div class="inner">
 			<div class="main">';
