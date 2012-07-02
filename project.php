@@ -46,14 +46,14 @@ $active_owner->populateFromID($active_project->user_id);
 <html>
 <head>
 	<title>
-	<? if ($active_project->id === NULL) { ?>	
+	<?php if ($active_project->id === NULL) { ?>	
 		ACH: This project does not exist
-	<? } else if ( !in_array($active_user->id, $active_project->users) && $active_project->directory != "y" ) { ?>
+	<?php } else if ( !in_array($active_user->id, $active_project->users) && $active_project->directory != "y" ) { ?>
 	ACH: This is a private project.
 
-	<? } else { ?>
+	<?php } else { ?>
 	
-	ACH: <?=$active_project->title?> <? } ?>
+	ACH: <?=$active_project->title?> <?php } ?>
 	</title>
 	
 <?php include("parts/includes.php"); ?>

@@ -53,7 +53,7 @@ $this_user->populateFromId($active_evidence->user_id);
 <p class="serial"><b>Serial Number: </b><?=$active_evidence->serial_number?>
 <?php if ($active_evidence->serial_number != NULL) { ?>
 <a href="<?=$base_URL?>evidence/<?=$active_evidence->serial_number?>"><em> Who else is using this?</em></a></p>
-<? } ?>
+<?php } ?>
 
 <p class="caveat"><b>Date and Time of Source: </b><?=substr($active_evidence->date_of_source, 0, 19)?></p>
 
