@@ -33,9 +33,9 @@ echo '<!DOCTYPE html><html><head><title>ACH</title>';
 
 include("parts/includes.php");
 
-$script = "setTimeout('Effect.Fade(\'statusMessage\')',2500); setTimeout('Effect.Fade(\'statusMessage2\')',2500); bridge.replaceHeader('BridgeHeader', '1');";
+#$script = "setTimeout('Effect.Fade(\'statusMessage\')',2500); setTimeout('Effect.Fade(\'statusMessage2\')',2500); bridge.replaceHeader('BridgeHeader', '1');";
 
-echo "</head><body onload=$script>";
+echo "</head><body>";
 
 include("parts/header.php");
 	

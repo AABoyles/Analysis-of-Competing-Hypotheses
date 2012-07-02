@@ -217,7 +217,6 @@ echo '<div class="mainContainer">
 		<div class="ydsf left">
 			<div class="inner">
 				<div class="main welcome">
-					<p class="welcome">Welcome to ACH.</p>
 					<div class="introBoxes">
 						<div class="analyse">					
 							<h2>Analyze</h2>
