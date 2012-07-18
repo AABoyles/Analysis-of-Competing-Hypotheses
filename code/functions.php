@@ -290,12 +290,12 @@ function sendMail($to, $subject, $message, $headers) {
 
 function helpLink($helpSubject) {
 	global $base_URL;
-	echo "<a href='" . $base_URL . "help/$helpSubject' onClick=\"window.open('" . $base_URL . "help/" . $helpSubject . "', 'Help', 'toolbar=yes,directories=no,location=no,status=yes,menubar=no,resizable=yes,scrollbars=yes,width=1000,height=500');  return false\"><img src=\"images/icons/help_red.png\" width=\"16\" height=\"16\" border=\"0\" alt='Help' /></a>";
+	echo "<a href='" . $base_URL . "$helpSubject' onClick=\"window.open('" . $base_URL . "/" . $helpSubject . "', 'Help', 'toolbar=yes,directories=no,location=no,status=yes,menubar=no,resizable=yes,scrollbars=yes,width=1000,height=500');  return false\"><img src=\"images/icons/help_red.png\" width=\"16\" height=\"16\" border=\"0\" alt='Help' /></a>";
 }
 
 function helpTextLink($helpSubject, $linktext) {
 	global $base_URL;
-	echo "<a href='" . $base_URL . "help/$helpSubject' onClick=\"window.open('" . $base_URL . "help/" . $helpSubject . "', 'Help', 'toolbar=yes,directories=no,location=no,status=yes,menubar=no,resizable=yes,scrollbars=yes,width=1000,height=500'); return false\">" . $linktext . "</a>";
+	echo "<a href='" . $base_URL . "$helpSubject' onClick=\"window.open('" . $base_URL . "/" . $helpSubject . "', 'Help', 'toolbar=yes,directories=no,location=no,status=yes,menubar=no,resizable=yes,scrollbars=yes,width=1000,height=500'); return false\">" . $linktext . "</a>";
 }
 
 function condenseComment($text) {
