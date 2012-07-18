@@ -75,7 +75,7 @@ else {
 
 <p>That's it.</p> 
 
-<p>This process can be done on your own or with a group. If you want to do ACH with multiple analysts, the next article will give you some guidance on <a href="../help/collaboration_steps.php">modifying this 9-step process for collaborative, multi-analyst projects.</a></p> <p>Otherwise, skip ahead to learn about <a href="../help/hypotheses.php">hypotheses</a>.</p>
+<p>This process can be done on your own or with a group. If you want to do ACH with multiple analysts, the next article will give you some guidance on <a href="collaboration_steps.php">modifying this 9-step process for collaborative, multi-analyst projects.</a></p> <p>Otherwise, skip ahead to learn about <a href="hypotheses.php">hypotheses</a>.</p>
 </div>
 </div></div>
 </div>
@@ -83,7 +83,7 @@ else {
 </div></div>
 </div>
 
-<?php include("../parts/footer.php"); ?>
+<?php include("parts/footer.php"); ?>
 
 </body>
 </html>

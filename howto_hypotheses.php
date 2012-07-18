@@ -1,87 +1,37 @@
 <?php
 
-include("../code/includes.php");
+include("code/includes.php");
 
-$username = $_REQUEST['username'];
+$active_user = new User();
 
-$display_user = new User();
-$display_user->populateFromAttribute($username, "username");
+if (array_key_exists('username', $_REQUEST)){
+	$username = $_REQUEST['username'];
+	$active_user->populateFromUsername($username);
+}
 
 ?>
 
+<!DOCTYPE html>
 <html>
 <head>
 	<title>ACH: Help</title>
-	<?php include("../parts/includes.php"); ?>
-	<script language="JavaScript" type="text/javascript">
-
-function changeFontSize(inc)
-
-{
-
-  var p = document.getElementsByTagName('p');
-
-  for(n=0; n<p.length; n++) {
-
-    if(p[n].style.fontSize) {
-
-       var size = parseInt(p[n].style.fontSize.replace("px", ""));
-
-    } else {
-
-       var size = 14;
-
-    }
-
-    p[n].style.fontSize = size+inc + 'px';
-
-   }
-
-}
-
-</script>
+	<?php include("parts/includes.php"); ?>
+	<script src='js/tools.js'></script>
 </head>
 
-<?php include("../parts/header.php"); ?>
-
-
-
-
-
-
-
-<?php
-	
-if( $active_user->logged_in ) { ?>
-	
-
-
-<?php include("../parts/menu_sidebar.php"); ?>
-
-<?php } else { ?>
-
-
-
-<?php include("../parts/login_sidebar.php"); ?>
-
-
-
-
+<?php include("parts/header.php"); 
+if( $active_user->logged_in ) {
+	include("parts/menu_sidebar.php");} 
+else {
+	include("parts/login_sidebar.php"); ?>
 
 </div>
 
 <?php } ?>
 
-
-
 <div class="mainContainer">
-
 <div class="ydsf left"><div class="inner">
-
-
-
 <div class="help">
-
 <div class="fontSize"><a href="javascript:changeFontSize(1)" style:font-size="14px">Enlarge font</a><br /><a href="javascript:changeFontSize(-1)" style:font-size="8px">Shrink font</a></p></div>
 
 <h2>Entering and Editing Hypotheses</h2> 
@@ -133,7 +83,7 @@ if( $active_user->logged_in ) { ?>
 
 
 
-<?php include("../parts/footer.php"); ?>
+<?php include("parts/footer.php"); ?>
 
 
 
