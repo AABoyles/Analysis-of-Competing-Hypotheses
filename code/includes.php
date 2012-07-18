@@ -38,7 +38,7 @@ if (strpos($_SERVER['HTTP_USER_AGENT'], "MSIE") > 0) {
 else {
 	$is_ie = FALSE;}
 
-include ("LocalSettings.php");
+include (__DIR__."/../LocalSettings.php");
 include ("common_db.php");
 include ("frameworks/framework_database.php");
 include ("class_user.php");
