@@ -29,17 +29,16 @@ $LOAD_TIMER_START = microtime(TRUE);
 error_reporting(E_ALL);
 
 if (strpos($_SERVER['HTTP_USER_AGENT'], "Firefox") > 0) {
-	$is_firefox = TRUE;
-} else {
-	$is_firefox = FALSE;
-}
+	$is_firefox = TRUE;} 
+else {
+	$is_firefox = FALSE;}
 
 if (strpos($_SERVER['HTTP_USER_AGENT'], "MSIE") > 0) {
-	$is_ie = TRUE;
-} else {
-	$is_ie = FALSE;
-}
+	$is_ie = TRUE;} 
+else {
+	$is_ie = FALSE;}
 
+include ("LocalSettings.php");
 include ("common_db.php");
 include ("frameworks/framework_database.php");
 include ("class_user.php");
@@ -52,43 +51,41 @@ include ("functions.php");
 include ("nusoap/lib/nusoap.php");
 
 if (isset($_REQUEST['print']) && $_REQUEST['print'] == "y") {
-	$print_mode = TRUE;
-} else {
-	$print_mode = FALSE;
-}
+	$print_mode = TRUE;} 
+else {
+	$print_mode = FALSE;}
+
+$active_user = new User();
 
 //If there's cookie data, grab it!
-if (isset($_COOKIE['cookie_user_id'])) {
+if (array_key_exists('cookie_user_id', $_COOKIE)) {
 	$cookie_user_id = $_COOKIE['cookie_user_id'];
+	$active_user -> populateFromID($cookie_user_id);}
+if (array_key_exists('cookie_user_password', $_COOKIE)) {
 	$cookie_user_password = $_COOKIE['cookie_user_password'];
-	$active_user = new User();
-	$active_user -> populateFromID($cookie_user_id);
-	$show_user_menu = TRUE;
-} else {
+	$show_user_menu = TRUE;}
+else {
+	//TODO: Expose a variable to allow/deny anonymous users
 	/*$new_user = new User();
 	 $new_user->username = "anonymous";
 	 $new_user->password = "";
 	 $new_user->insertNew();
 	 $new_user->setCookies();
 	 $cookie_user_id = $new_user->id;*/
-	$show_user_menu = FALSE;
-	$active_user = new User();
+	 $show_user_menu = FALSE;
 }
 
 // Log user in users_active.
-if (isset($active_user)) {
-	if ($active_user -> logged_in && substr($_SERVER['REQUEST_URI'], 0, 19) != "/insert_message.php" && substr($_SERVER['REQUEST_URI'], 0, 22) != "/show_active_users.php") {
-		$found = false;
-		//TODO: Migrate to mysqli library
-		$result = mysql_do("SELECT id FROM users_active WHERE user_id='$active_user->id'");
-		while ($query_data = mysql_fetch_array($result)) {
-			$found = true;
-		}
+if ($active_user -> logged_in && substr($_SERVER['REQUEST_URI'], 0, 19) != "/insert_message.php" && substr($_SERVER['REQUEST_URI'], 0, 22) != "/show_active_users.php") {
+	$found = false;
+	//TODO: Migrate to mysqli library
+	$result = mysql_do("SELECT id FROM users_active WHERE user_id='".$active_user->id."'");
+	while ($query_data = mysql_fetch_array($result)) {
+		$found = true;
 		$this_page = $_SERVER['REQUEST_URI'];
 		if ($found) {
-			mysql_do("UPDATE users_active SET last_visited=NOW(), last_page='$this_page' WHERE user_id='$active_user->id'");
-		} else {
-			mysql_do("INSERT INTO users_active (id, user_id, last_visited, last_page, color) VALUES (NULL, '$active_user->id', NOW(), '$this_page', '000000');");
-		}
+			mysql_do("UPDATE users_active SET last_visited=NOW(), last_page='$this_page' WHERE user_id='".$active_user->id."'");} 
+		else {
+			mysql_do("INSERT INTO users_active (id, user_id, last_visited, last_page, color) VALUES (NULL, '".$active_user->id."', NOW(), '$this_page', '000000');");}
 	}
 }
