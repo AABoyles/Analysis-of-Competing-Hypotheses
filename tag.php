@@ -70,7 +70,7 @@ if( $active_user->logged_in ) { ?>
 
 $tag_space = $tag . " ";
 
-$result = mysql_do("SELECT * FROM classes WHERE tags LIKE '%$tag_space%'");
+$result = achquery("SELECT * FROM classes WHERE tags LIKE '%$tag_space%'");
 while($query_data = mysql_fetch_array($result)) {
 	$this_teacher = new User();
 	$this_teacher->populateFromID($query_data['user_id']);

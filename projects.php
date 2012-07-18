@@ -72,7 +72,7 @@ if( $active_user->logged_in ) { ?>
 			
 			$active_user->getProjects();
 			
-			$result = mysql_do("SELECT * FROM projects WHERE directory='y' ORDER BY title");
+			$result = achquery("SELECT * FROM projects WHERE directory='y' ORDER BY title");
 			while($query_data = mysql_fetch_array($result)) { 
 			
 				$this_project = new Project();

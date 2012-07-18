@@ -22,7 +22,7 @@
 **    along with Open Source ACH. If not, see <http://www.gnu.org/licenses/>.
 //////////////////////////////////////////////////////////////////////////////// */
 
-include ("LocalSettings.php");
+include (__DIR__."/../LocalSettings.php");
 
 $SQL_CACHING_ACTIVE = TRUE; // Set this to FALSE to turn off SQL caching.
 $SPEED_REPORTING = TRUE; // Set this to FALSE to turn off the speed display at the bottom of the pages.
@@ -37,7 +37,7 @@ $SQL_SELECTS = 0;
 
 $MYSQL_ERRNO = '';
 
-function db_connect() {
+function achconnect() {
 	global $dbhost, $dbusername, $dbuserpassword, $dbname, $default_dbname;
 	global $MYSQL_ERRNO, $MYSQL_ERROR;
 	global $DB_QUERIES;
@@ -67,7 +67,7 @@ function sql_error() {
 	return "$MYSQL_ERRNO: $MYSQL_ERROR";
 }
 
-function mysql_do($sql) {
+function achquery($sql) {
 	global $SQL_SELECTS, $SQL_STATEMENTS_ALL;
 	
 	$SQL_STATEMENTS_ALL[] = $sql;
@@ -76,12 +76,13 @@ function mysql_do($sql) {
 		$SQL_SELECTS++;
 	}
 
-	$link = db_connect();
+	$link = achconnect();
 	$result = $link->query($sql);
 	
 	return $result;
 }
 
+#TODO: Should Refactor/Remove this...
 function mysql_fast($sql) {
 	// Cached SQL statements, DOESN'T RESULT RESULT RESOURCE, RETURNS $query_data ARRAY. 
 	//  FOR NOW, limit to QUERIES WITH ONE RESULT.
@@ -93,7 +94,7 @@ function mysql_fast($sql) {
 			$SQL_DUPES++;
 			$results = $SQL_CACHE[$sql];
 		} else {
-			$result = mysql_do($sql);
+			$result = achquery($sql);
 			while( $query_data = mysqli_fetch_array($result) ) {
 				$results[] = $query_data;
 			}
@@ -101,7 +102,7 @@ function mysql_fast($sql) {
 			$SQL_STATEMENTS_CACHE[] = $sql;
 		}
 	} else {
-		$result = mysql_do($sql);
+		$result = achquery($sql);
 		while( $query_data = mysql_fetch_array($result) ) {
 			$results[] = $query_data;
 		}
@@ -110,9 +111,9 @@ function mysql_fast($sql) {
 	return $results;
 }
 
-function getFieldList($table) { //updated for PHP5.3, contributed by Chris Snow of ISW Corp
+function getFieldList($table) {
         
-        $fldlist = mysql_do("SHOW COLUMNS FROM ".$table);				
+        $fldlist = achquery("SHOW COLUMNS FROM ".$table);				
         
         while (($field = mysqli_fetch_row($fldlist)) !== NULL ){
         	$listing[] = $field[0];

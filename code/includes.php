@@ -79,13 +79,13 @@ else {
 if ($active_user -> logged_in && substr($_SERVER['REQUEST_URI'], 0, 19) != "/insert_message.php" && substr($_SERVER['REQUEST_URI'], 0, 22) != "/show_active_users.php") {
 	$found = false;
 	//TODO: Migrate to mysqli library
-	$result = mysql_do("SELECT id FROM users_active WHERE user_id='".$active_user->id."'");
+	$result = achquery("SELECT id FROM users_active WHERE user_id='".$active_user->id."'");
 	while ($query_data = mysql_fetch_array($result)) {
 		$found = true;
 		$this_page = $_SERVER['REQUEST_URI'];
 		if ($found) {
-			mysql_do("UPDATE users_active SET last_visited=NOW(), last_page='$this_page' WHERE user_id='".$active_user->id."'");} 
+			achquery("UPDATE users_active SET last_visited=NOW(), last_page='$this_page' WHERE user_id='".$active_user->id."'");} 
 		else {
-			mysql_do("INSERT INTO users_active (id, user_id, last_visited, last_page, color) VALUES (NULL, '".$active_user->id."', NOW(), '$this_page', '000000');");}
+			achquery("INSERT INTO users_active (id, user_id, last_visited, last_page, color) VALUES (NULL, '".$active_user->id."', NOW(), '$this_page', '000000');");}
 	}
 }

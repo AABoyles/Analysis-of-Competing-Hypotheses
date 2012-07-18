@@ -30,7 +30,7 @@ if (array_key_exists('email', $_POST)){
 
 	$email = $_POST['email'];
 	
-	$result = mysql_do("SELECT password, username FROM users WHERE email='$email' LIMIT 1");	
+	$result = achquery("SELECT password, username FROM users WHERE email='$email' LIMIT 1");	
 	
 	if ($hit = mysqli_fetch_array($result, MYSQL_ASSOC)){
 		$hasEmail = true; 

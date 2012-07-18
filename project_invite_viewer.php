@@ -34,12 +34,12 @@ $viewerEmail = $_REQUEST['viewerEmail'];
 
 $found = FALSE;
 
-$result = mysql_do("SELECT * FROM users WHERE email='$viewerEmail' LIMIT 1");
+$result = achquery("SELECT * FROM users WHERE email='$viewerEmail' LIMIT 1");
 while($query_data = mysql_fetch_array($result)) {
 	$user_id = $query_data['id'];
 	$user_name = $query_data['name'];
 	$user_email = $query_data['email'];
-	mysql_do("INSERT INTO users_in_projects_view_only (user_id, project_id) VALUES ('$user_id', '$this_project->id')");
+	achquery("INSERT INTO users_in_projects_view_only (user_id, project_id) VALUES ('$user_id', '$this_project->id')");
 	$found = TRUE;
 	sendMail($user_email, "[ACH] Project view invitation.", "Hello,\r\n\r\nYou have been invited to view project '" . $this_project->title . "':\r\n " . $base_URL . 'project/' . $this_project->id . "\r\n\r\n - The ACH Bot");
 

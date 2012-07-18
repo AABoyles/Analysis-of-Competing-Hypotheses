@@ -43,7 +43,7 @@ $new_evidence = Array();
 $new_hypotheses = Array();
 
 //GET ALL OF THE EVIDENCE FROM THIS MATRIX AND DUPLICATE IT
-$result = mysql_do("SELECT id, deleted FROM evidence WHERE project_id='$project_id'");
+$result = achquery("SELECT id, deleted FROM evidence WHERE project_id='$project_id'");
 while($query_data = mysql_fetch_array($result)) {
 	if( $query_data['deleted'] != "y" ) {
 		$this_evidence = new Evidence();
@@ -57,7 +57,7 @@ while($query_data = mysql_fetch_array($result)) {
 }
 
 //GET ALL OF THE HYPOTHESES FROM THIS MATRIX AND DUPLICATE THEM
-$result = mysql_do("SELECT id, deleted FROM hypotheses WHERE project_id='$project_id'");
+$result = achquery("SELECT id, deleted FROM hypotheses WHERE project_id='$project_id'");
 while($query_data = mysql_fetch_array($result)) {
 	if( $query_data['deleted'] != "y" ) {
 		$this_hypothesis = new Hypothesis();
@@ -72,7 +72,7 @@ while($query_data = mysql_fetch_array($result)) {
 
 $active_user_id = $active_user->id;
 //GET ALL OF THE DUPLICATING USER'S CONSISTENCY RATINGS FOR THIS MATRIX
-$result = mysql_do("SELECT * FROM ratings WHERE user_id='$active_user_id'");
+$result = achquery("SELECT * FROM ratings WHERE user_id='$active_user_id'");
 while($query_data = mysql_fetch_array($result)) {
 	
 	if( in_array($query_data['evidence_id'], $old_evidence) && in_array($query_data['hypothesis_id'], $old_hypotheses) ) {
@@ -87,11 +87,11 @@ while($query_data = mysql_fetch_array($result)) {
 		$new_note = $query_data['note'];
 		$new_created = $query_data['created'];
 	
-		mysql_do("INSERT INTO ratings (hypothesis_id, evidence_id, user_id, rating, note, created) VALUES ('$new_hypothesis_id', '$new_evidence_id', '$new_user_id', '$new_rating', '$new_note', '$new_created')");
+		achquery("INSERT INTO ratings (hypothesis_id, evidence_id, user_id, rating, note, created) VALUES ('$new_hypothesis_id', '$new_evidence_id', '$new_user_id', '$new_rating', '$new_note', '$new_created')");
 	}
 }
 
-//mysql_do("INSERT INTO users_in_projects (user_id, project_id) VALUES ('$active_user_id', '$new_project_id')");
+//achquery("INSERT INTO users_in_projects (user_id, project_id) VALUES ('$active_user_id', '$new_project_id')");
 
 
 //AFTER ALL THE DATA IS DUPLICATED, THE USER IS SENT TO THE PROJECT EDIT PAGE...

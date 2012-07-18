@@ -76,7 +76,7 @@ for( $i = 0; $i < count($active_project->evidence); $i++ ) {
 		$this_hypothesis = new Hypothesis();
 		$this_hypothesis->populateFromId($active_project->hypotheses[$j]);
 		$this_rating = "";
-		$result = mysql_do("SELECT * FROM ratings WHERE evidence_id='$this_evidence->id' AND hypothesis_id='$this_hypothesis->id' AND user_id='$ratings_user->id'");
+		$result = achquery("SELECT * FROM ratings WHERE evidence_id='$this_evidence->id' AND hypothesis_id='$this_hypothesis->id' AND user_id='$ratings_user->id'");
 		while($query_data = mysql_fetch_array($result)) {
 			$this_rating = $query_data['rating'];
 		}

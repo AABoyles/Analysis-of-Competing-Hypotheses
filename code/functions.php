@@ -60,7 +60,7 @@ function getStatusMessage() {
 #TODO: Migrate to MySQLi
 function get_tag_data() {
 	$arr = Array();	
-	$result = mysql_do("SELECT tags FROM classes");
+	$result = achquery("SELECT tags FROM classes");
 	while($query_data = mysql_fetch_array($result)) {
 		$all_tags .= $query_data['tags'];
 	}
@@ -143,7 +143,7 @@ function cleanForDisplay($text) {
 
 function getCellComments($evidence_id, $hypothesis_id, $thread_id) {
 	$comments = Array();
-	$result = mysql_do("SELECT id FROM comments WHERE hypothesis_id='$hypothesis_id' AND evidence_id='$evidence_id' AND reply_to_id='$thread_id';");
+	$result = achquery("SELECT id FROM comments WHERE hypothesis_id='$hypothesis_id' AND evidence_id='$evidence_id' AND reply_to_id='$thread_id';");
 	while($query_data = mysql_fetch_array($result)) {
 		$comments[] = $query_data['id'];
 	}
@@ -230,12 +230,12 @@ function getActiveUsers($project_id) {
 function showChat($project_id) {
 	global $base_URL;
 	$messages = false;
-	$result = mysql_do("SELECT * FROM chat_log WHERE project_id='$project_id' ORDER BY created DESC LIMIT 50;");
+	$result = achquery("SELECT * FROM chat_log WHERE project_id='$project_id' ORDER BY created DESC LIMIT 50;");
 	while($query_data = mysql_fetch_array($result)) {
 		$messages = true;
 		$this_user = new User();
 		$this_user->populateFromId($query_data['user_id']);
-		$result_2 = mysql_do("SELECT * FROM users_active WHERE user_id='$this_user->id' LIMIT 1;");
+		$result_2 = achquery("SELECT * FROM users_active WHERE user_id='$this_user->id' LIMIT 1;");
 		while($query_data_2 = mysql_fetch_array($result_2)) {
 			echo('<p><span class="date">' . $query_data['created'] . '</span> <span class="name"><a href="'. $base_URL . 'profile/' . $this_user->username . '" style="color: #' . $query_data_2['color'] . ';">' . $this_user->name . '</a></span>: <span class="message">' . $query_data['chat'] . '</span></p>');
 		}

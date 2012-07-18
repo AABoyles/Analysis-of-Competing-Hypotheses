@@ -35,8 +35,8 @@ foreach ($_POST as $field => $value) {
 
 
 if( $_POST['username'] ) {
-	$escaped = mysqli_real_escape_string(db_connect(), $_POST['username']);
-	$result = mysql_do("SELECT * FROM users WHERE username = '".$escaped."'");
+	$escaped = mysqli_real_escape_string(achconnect(), $_POST['username']);
+	$result = achquery("SELECT * FROM users WHERE username = '".$escaped."'");
 	$rows = mysqli_num_rows($result);
 	if ($rows>0) {
 		$success = FALSE;

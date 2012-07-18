@@ -50,7 +50,7 @@ $total_counter = 0;
 $counter = 0;
 
 //RETRIEVE ALL NEW EVIDENCE ITEMS ADDED TO USER'S PROJECTS IN THE LAST SEVEN DAYS
-$result = mysql_do("SELECT * FROM evidence WHERE project_id IN ($project_list) AND created > DATE_SUB(CURDATE(),INTERVAL 7 DAY) ORDER BY `created` DESC LIMIT 20;");
+$result = achquery("SELECT * FROM evidence WHERE project_id IN ($project_list) AND created > DATE_SUB(CURDATE(),INTERVAL 7 DAY) ORDER BY `created` DESC LIMIT 20;");
 while($query_data = mysql_fetch_array($result)) {
 
 	if( $counter == 0 ) { ?>
@@ -112,7 +112,7 @@ $total_counter += $counter;
 $counter = 0;
 
 //RETRIEVE ALL NEW HYPOTHESES ADDED TO USER'S PROJECTS IN THE LAST SEVEN DAYS
-$result = mysql_do("SELECT * FROM hypotheses WHERE project_id IN ($project_list) AND created > DATE_SUB(CURDATE(),INTERVAL 7 DAY) ORDER BY `created` DESC LIMIT 20;");
+$result = achquery("SELECT * FROM hypotheses WHERE project_id IN ($project_list) AND created > DATE_SUB(CURDATE(),INTERVAL 7 DAY) ORDER BY `created` DESC LIMIT 20;");
 while($query_data = mysql_fetch_array($result)) {
 
 	if( $counter == 0 ) { ?>
@@ -178,7 +178,7 @@ $active_user->getComments();
 $comments_list = implode(", ", $active_user->comments);
 //RETRIEVE ALL NEW REPLIES TO USER'S MESSAGE BOARD COMMENTS FROM THE LAST SEVEN DAYS
 
-$result = mysql_do("SELECT * FROM comments WHERE reply_to_id IN ($comments_list) AND created > DATE_SUB(CURDATE(),INTERVAL 7 DAY) ORDER BY `created` DESC LIMIT 20;");
+$result = achquery("SELECT * FROM comments WHERE reply_to_id IN ($comments_list) AND created > DATE_SUB(CURDATE(),INTERVAL 7 DAY) ORDER BY `created` DESC LIMIT 20;");
 while($query_data = mysql_fetch_array($result)) {
 
 	if( $counter == 0 ) { ?>
@@ -273,7 +273,7 @@ $total_counter += $counter;
 $counter = 0;
 
 //RETRIEVE ALL NEW MESSAGE BOARD COMMENTS ADDED TO USER'S PROJECTS IN THE LAST SEVEN DAYS
-$result = mysql_do("SELECT * FROM comments WHERE project_id IN ($project_list) AND created > DATE_SUB(CURDATE(),INTERVAL 7 DAY) ORDER BY `created` DESC LIMIT 20;");
+$result = achquery("SELECT * FROM comments WHERE project_id IN ($project_list) AND created > DATE_SUB(CURDATE(),INTERVAL 7 DAY) ORDER BY `created` DESC LIMIT 20;");
 while($query_data = mysql_fetch_array($result)) {
 
 	if( $counter == 0 ) { ?>

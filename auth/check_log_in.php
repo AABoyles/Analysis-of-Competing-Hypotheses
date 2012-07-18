@@ -12,7 +12,7 @@ $cookie_user_username = $_POST['cookie_user_username'];
 $cookie_user_password = $_POST['cookie_user_password'];
 
 $success = FALSE;
-$result = mysql_do("SELECT password FROM users WHERE username='$cookie_user_username' LIMIT 1;");
+$result = achquery("SELECT password FROM users WHERE username='$cookie_user_username' LIMIT 1;");
 $query_data = mysqli_fetch_array($result, MYSQLI_NUM);
 
 if ($query_data !== NULL) {

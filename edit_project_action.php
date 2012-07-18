@@ -43,7 +43,7 @@ $active_project->populateFromId[$_REQUEST['project_id']];
 	} else {
 		$active_project->getNonAdmins();
 		if( !in_array($active_user->id, $active_project->nonadmins) ) {
-			mysql_do("INSERT INTO users_in_projects (project_id, user_id) VALUES ('$active_project->id', '$active_user->id')");
+			achquery("INSERT INTO users_in_projects (project_id, user_id) VALUES ('$active_project->id', '$active_user->id')");
 		}
 	}
 	

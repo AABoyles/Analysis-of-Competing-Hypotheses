@@ -142,26 +142,26 @@ class Credibility extends FrameworkDatabase {
 		}
 	
 		if( $this_evidence->serial_number != "" ) {
-			$result = mysql_do("SELECT id FROM evidence WHERE serial_number='$this_evidence->serial_number'");
+			$result = achquery("SELECT id FROM evidence WHERE serial_number='$this_evidence->serial_number'");
 			while($query_data = mysql_fetch_array($result)) {
 			
 				$exists = FALSE;
 				
 				$this_evidence_id = $query_data['id'];
 
-				$result2 = mysql_do("SELECT id FROM credibility WHERE user_id='$active_user->id' AND evidence_id='$this_evidence_id' LIMIT 1");
+				$result2 = achquery("SELECT id FROM credibility WHERE user_id='$active_user->id' AND evidence_id='$this_evidence_id' LIMIT 1");
 				while($query_data2 = mysql_fetch_array($result2)) {
 					$exists = TRUE;
 				}
 				
 				if( !$exists ) {
-					mysql_do("INSERT INTO credibility (value, evidence_id, user_id, weight) VALUES ('$toValue', '$this_evidence_id', '$active_user->id', '1')");
+					achquery("INSERT INTO credibility (value, evidence_id, user_id, weight) VALUES ('$toValue', '$this_evidence_id', '$active_user->id', '1')");
 				}
 				
 			}
-			mysql_do("UPDATE credibility SET value='$toValue' WHERE user_id='$active_user->id' AND evidence_id IN (SELECT id FROM evidence WHERE serial_number='$this_evidence->serial_number')");
+			achquery("UPDATE credibility SET value='$toValue' WHERE user_id='$active_user->id' AND evidence_id IN (SELECT id FROM evidence WHERE serial_number='$this_evidence->serial_number')");
 		} else {
-			mysql_do("UPDATE credibility SET value='$toValue' WHERE user_id='$active_user->id' AND evidence_id='$this_evidence->id'");
+			achquery("UPDATE credibility SET value='$toValue' WHERE user_id='$active_user->id' AND evidence_id='$this_evidence->id'");
 		}
 		
 		return $return_value;

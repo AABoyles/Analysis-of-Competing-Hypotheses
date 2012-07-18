@@ -90,7 +90,7 @@ class Evidence extends FrameworkDatabase {
 	
 	public function getCredFlag() {
 		$this->cred_flagged = FALSE;
-		$result = mysql_do("SELECT id FROM credibility WHERE evidence_id='$this->id' AND value='n';");
+		$result = achquery("SELECT id FROM credibility WHERE evidence_id='$this->id' AND value='n';");
 		while($query_data = mysql_fetch_array($result)) {
 			$this->cred_flagged = TRUE;
 		}
@@ -99,7 +99,7 @@ class Evidence extends FrameworkDatabase {
 	
 	public function getComments($thread_id) {
 		$this->comments = Array();
-		$result = mysql_do("SELECT id FROM comments WHERE evidence_id='$this->id' AND hypothesis_id='0' AND reply_to_id='$thread_id';");
+		$result = achquery("SELECT id FROM comments WHERE evidence_id='$this->id' AND hypothesis_id='0' AND reply_to_id='$thread_id';");
 		while($query_data = mysql_fetch_array($result)) {
 			$this->comments[] = $query_data['id'];
 		}

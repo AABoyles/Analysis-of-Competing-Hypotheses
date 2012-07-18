@@ -63,7 +63,7 @@ $LOAD_TIME = $LOAD_TIMER_STOP-$LOAD_TIMER_START;
 $flag = $SQL_CACHING_ACTIVE ? "ACTIVE SQL CACHING" : "INACTIVE SQL CACHING";
 
 $this_uri = $_SERVER['REQUEST_URI'];
-mysql_do("INSERT INTO load_times (url, load_time, queries, flag, user_id) VALUES ('$this_uri', '$LOAD_TIME', '$DB_QUERIES', '$flag', '$active_user->id');");
+achquery("INSERT INTO load_times (url, load_time, queries, flag, user_id) VALUES ('$this_uri', '$LOAD_TIME', '$DB_QUERIES', '$flag', '$active_user->id');");
 
 if( $SPEED_REPORTING ) { */
 /*

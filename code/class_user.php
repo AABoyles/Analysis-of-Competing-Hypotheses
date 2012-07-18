@@ -77,19 +77,19 @@ class User extends FrameworkDatabase {
 
 	public function getProjects() { // Add all projects for this user to the $projects variable.
 		$this->projects = Array();
-		$result = mysql_do("SELECT * FROM projects WHERE user_id='$this->id' ORDER BY title");
+		$result = achquery("SELECT * FROM projects WHERE user_id='$this->id' ORDER BY title");
 		while($query_data = mysql_fetch_array($result)) {
 			$this->projects[] = $query_data['id'];
 			$this->owner_of_projects[] = $query_data['id'];
 		}
-		$result = mysql_do("SELECT * FROM users_in_projects WHERE user_id='$this->id'");
+		$result = achquery("SELECT * FROM users_in_projects WHERE user_id='$this->id'");
 		while($query_data = mysql_fetch_array($result)) {
 			$this->projects[] = $query_data['project_id'];
 			if( !in_array($query_data['project_id'], $this->owner_of_projects) ) {
 				$this->member_of_projects[] = $query_data['project_id'];
 			}
 		}
-		$result = mysql_do("SELECT * FROM users_in_projects_view_only WHERE user_id='$this->id'");
+		$result = achquery("SELECT * FROM users_in_projects_view_only WHERE user_id='$this->id'");
 		while($query_data = mysql_fetch_array($result)) {
 			$this->projects[] = $query_data['project_id'];
 			if( !in_array($query_data['project_id'], $this->owner_of_projects) && 
@@ -102,7 +102,7 @@ class User extends FrameworkDatabase {
 
 	public function getComments() {
 		$this->comments = Array();
-		$result = mysql_do("SELECT * FROM comments WHERE user_id='$this->id' ORDER BY `created` DESC");
+		$result = achquery("SELECT * FROM comments WHERE user_id='$this->id' ORDER BY `created` DESC");
 		while($query_data = mysql_fetch_array($result)) {
 			$this->comments[] = $query_data['id'];
 		}
@@ -110,12 +110,12 @@ class User extends FrameworkDatabase {
 	
 	public function getPublicProjects() { // Add all projects for this user to the $projects variable.
 		$this->projects = Array();
-		$result = mysql_do("SELECT * FROM projects WHERE public='y' AND user_id='$this->id'");
+		$result = achquery("SELECT * FROM projects WHERE public='y' AND user_id='$this->id'");
 		while($query_data = mysql_fetch_array($result)) {
 			$this->projects[] = $query_data['id'];
 			$this->owner_of_projects[] = $query_data['id'];
 		}
-		$result = mysql_do("SELECT * FROM users_in_projects JOIN projects ON users_in_projects.project_id=projects.id WHERE users_in_projects.user_id='$this->id' AND projects.public='y'");//JOIN projects ON users_in_projects.user_id='$this->id' AND projects.public='y'");
+		$result = achquery("SELECT * FROM users_in_projects JOIN projects ON users_in_projects.project_id=projects.id WHERE users_in_projects.user_id='$this->id' AND projects.public='y'");//JOIN projects ON users_in_projects.user_id='$this->id' AND projects.public='y'");
 		while($query_data = mysql_fetch_array($result)) {
 			$this->projects[] = $query_data['project_id'];
 		}
@@ -124,12 +124,12 @@ class User extends FrameworkDatabase {
 
 	public function getDirectoryProjects() { // Add all projects for this user to the $projects variable.
 		$this->projects = Array();
-		$result = mysql_do("SELECT * FROM projects WHERE directory='y' AND user_id='$this->id'");
+		$result = achquery("SELECT * FROM projects WHERE directory='y' AND user_id='$this->id'");
 		while($query_data = mysql_fetch_array($result)) {
 			$this->projects[] = $query_data['id'];
 			$this->owner_of_projects[] = $query_data['id'];
 		}
-		$result = mysql_do("SELECT * FROM users_in_projects JOIN projects ON users_in_projects.project_id=projects.id WHERE users_in_projects.user_id='$this->id' AND projects.directory='y'");//JOIN projects ON users_in_projects.user_id='$this->id' AND projects.public='y'");
+		$result = achquery("SELECT * FROM users_in_projects JOIN projects ON users_in_projects.project_id=projects.id WHERE users_in_projects.user_id='$this->id' AND projects.directory='y'");//JOIN projects ON users_in_projects.user_id='$this->id' AND projects.public='y'");
 		while($query_data = mysql_fetch_array($result)) {
 			$this->projects[] = $query_data['project_id'];
 		}
@@ -174,7 +174,7 @@ class User extends FrameworkDatabase {
 	}
 	
 	public function populateFromUsername($name) { // Populates all of the varibles in this object from the DB.
-		$return_value = parent::populateFromAttribute($value, 'username');
+		$return_value = parent::populateFromAttribute($name, 'username');
 		/*$results = mysql_fast("SELECT last_visited, last_page, color FROM user, users_active WHERE username='$name'");
 		for( $i = 0; $i < count($results); $i++ ) {
 			foreach ($results[$i] as $field => $value) {
@@ -193,7 +193,7 @@ class User extends FrameworkDatabase {
 	
 	public function checkUsernameAvailability($username) {
 		$username_exists = FALSE;
-		$result = mysql_do("SELECT username FROM users WHERE username='$username'");
+		$result = achquery("SELECT username FROM users WHERE username='$username'");
 		while($query_data = mysql_fetch_array($result)) {
 			$username_exists = TRUE;
 		}
@@ -214,7 +214,7 @@ class User extends FrameworkDatabase {
 	}
 	
 	public function getRating($evidence_id, $hypothesis_id) {
-		$result = mysql_do("SELECT * FROM ratings WHERE evidence_id='$evidence_id' AND hypothesis_id='$hypothesis_id' AND user_id='$this->id'");
+		$result = achquery("SELECT * FROM ratings WHERE evidence_id='$evidence_id' AND hypothesis_id='$hypothesis_id' AND user_id='$this->id'");
 		while($query_data = mysql_fetch_array($result)) {
 			return $query_data['rating'];
 		}
@@ -231,7 +231,7 @@ class User extends FrameworkDatabase {
 	
 	public function displayInvitationNotices() {
 		echo('<div class="invitationNotices">');
-		$result = mysql_do("SELECT * FROM invitation_notices WHERE user_id='$this->id' AND displayed='n'");
+		$result = achquery("SELECT * FROM invitation_notices WHERE user_id='$this->id' AND displayed='n'");
 		while($query_data = mysql_fetch_array($result)) {
 			$this_project = new Project();
 			$this_project->populateFromId($query_data['project_id']);
@@ -243,11 +243,11 @@ class User extends FrameworkDatabase {
 			echo(' access to project <a href="' . $base_URL . 'project/' . $this_project->id . '">' . $this_project->title . '</a> by <a href="' . $base_URL . 'profile/' . $by_user->username . '">' . $by_user->name . '</a>.');
 		}
 		echo('</div>');
-		mysql_do("UPDATE invitation_notices SET displayed='y' WHERE user_id='$this->id';");
+		achquery("UPDATE invitation_notices SET displayed='y' WHERE user_id='$this->id';");
 	}
 	
 	public function displayWaitingForApproval() {
-		$result = mysql_do("SELECT * FROM join_requests WHERE user_id='$this->id'");
+		$result = achquery("SELECT * FROM join_requests WHERE user_id='$this->id'");
 		while($query_data = mysql_fetch_array($result)) {
 			$this_project = new Project();
 			$this_project->populateFromId($query_data['project_id']);

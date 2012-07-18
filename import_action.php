@@ -169,7 +169,7 @@ if( $success ) {
 			
 			$this_hypothesis_id = $this_hypothesis[$j]->id;
 		
-			mysql_do("INSERT INTO `ratings` (`hypothesis_id`,`evidence_id`,`user_id`,`rating`) VALUES ('$this_hypothesis_id', '$this_evidence->id', '$active_user->id', '$this_rating');");
+			achquery("INSERT INTO `ratings` (`hypothesis_id`,`evidence_id`,`user_id`,`rating`) VALUES ('$this_hypothesis_id', '$this_evidence->id', '$active_user->id', '$this_rating');");
 				
 		}
 		

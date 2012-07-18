@@ -49,7 +49,7 @@ class Project extends FrameworkDatabase {
 	
 	
 	public function getJoinRequests() {	
-		$result = mysql_do("SELECT * FROM join_requests WHERE project_id='$this->id'");
+		$result = achquery("SELECT * FROM join_requests WHERE project_id='$this->id'");
 		while($query_data = mysql_fetch_array($result)) {
 			$this->join_requests[] = $query_data['user_id'];
 		}
@@ -57,11 +57,11 @@ class Project extends FrameworkDatabase {
 	}
 
 	public function getUsers() { // Load up users array.
-		$result = mysql_do("SELECT * FROM projects WHERE id='$this->id'");
+		$result = achquery("SELECT * FROM projects WHERE id='$this->id'");
 		while($query_data = mysql_fetch_array($result)) {
 			$this->users[] = $query_data['user_id'];
 		}
-		$result = mysql_do("SELECT * FROM users_in_projects WHERE project_id='$this->id' AND user_id > 0");
+		$result = achquery("SELECT * FROM users_in_projects WHERE project_id='$this->id' AND user_id > 0");
 		while($query_data = mysql_fetch_array($result)) {
 			$this->users[] = $query_data['user_id'];
 		}
@@ -69,7 +69,7 @@ class Project extends FrameworkDatabase {
 		sort($this->users);
 		
 		// View-only users.
-		$result = mysql_do("SELECT * FROM users_in_projects_view_only WHERE project_id='$this->id' AND user_id > 0");
+		$result = achquery("SELECT * FROM users_in_projects_view_only WHERE project_id='$this->id' AND user_id > 0");
 		while($query_data = mysql_fetch_array($result)) {
 			if( !in_array($query_data['user_id'], $this->users) ) {
 				$this->users_view_only[] = $query_data['user_id'];
@@ -80,7 +80,7 @@ class Project extends FrameworkDatabase {
 	}
 	
 	public function getNonAdmins() { // Load up all non-admin users.
-		$result = mysql_do("SELECT * FROM users_in_projects WHERE project_id='$this->id' AND user_id > 0");
+		$result = achquery("SELECT * FROM users_in_projects WHERE project_id='$this->id' AND user_id > 0");
 		while($query_data = mysql_fetch_array($result)) {
 			$this->nonadmins[] = $query_data['user_id'];
 		}
@@ -100,11 +100,11 @@ class Project extends FrameworkDatabase {
 		
 		$this->ratings = Array();
 	
-		$result = mysql_do("SELECT id FROM evidence WHERE project_id='$this->id' AND deleted!='y' ORDER BY name DESC");
+		$result = achquery("SELECT id FROM evidence WHERE project_id='$this->id' AND deleted!='y' ORDER BY name DESC");
 		while($query_data = mysql_fetch_array($result)) {
 			$this->evidence[] = $query_data['id'];
 		}
-		$result = mysql_do("SELECT id FROM hypotheses WHERE project_id='$this->id' AND deleted!='y' ORDER BY label DESC");
+		$result = achquery("SELECT id FROM hypotheses WHERE project_id='$this->id' AND deleted!='y' ORDER BY label DESC");
 		while($query_data = mysql_fetch_array($result)) {
 			$this->hypotheses[] = $query_data['id'];
 		}
@@ -881,32 +881,32 @@ class Project extends FrameworkDatabase {
 	
 	public function delete() {
 	
-		$result = mysql_do("SELECT id FROM evidence WHERE project_id='$this->id';");
+		$result = achquery("SELECT id FROM evidence WHERE project_id='$this->id';");
 		while($query_data = mysql_fetch_array($result)) {
 			$evidence_id = $query_data['id'];
-			mysql_do("DELETE FROM comments WHERE evidence_id='$evidence_id';");
-			mysql_do("DELETE FROM credibility WHERE evidence_id='$evidence_id';");
-			mysql_do("DELETE FROM evidence WHERE id='$evidence_id';");
-			mysql_do("DELETE FROM ratings WHERE evidence_id='$evidence_id';");
+			achquery("DELETE FROM comments WHERE evidence_id='$evidence_id';");
+			achquery("DELETE FROM credibility WHERE evidence_id='$evidence_id';");
+			achquery("DELETE FROM evidence WHERE id='$evidence_id';");
+			achquery("DELETE FROM ratings WHERE evidence_id='$evidence_id';");
 		}
-		$result = mysql_do("SELECT id FROM hypotheses WHERE project_id='$this->id';");
+		$result = achquery("SELECT id FROM hypotheses WHERE project_id='$this->id';");
 		while($query_data = mysql_fetch_array($result)) {
 			$hypothesis_id = $query_data['id'];
-			mysql_do("DELETE FROM comments WHERE hypothesis_id='$hypothesis_id';");
-			mysql_do("DELETE FROM hypotheses WHERE id='$hypothesis_id';");
-			mysql_do("DELETE FROM ratings WHERE evidence_id='$hypothesis_id';");
+			achquery("DELETE FROM comments WHERE hypothesis_id='$hypothesis_id';");
+			achquery("DELETE FROM hypotheses WHERE id='$hypothesis_id';");
+			achquery("DELETE FROM ratings WHERE evidence_id='$hypothesis_id';");
 		}
 		
-		mysql_do("DELETE FROM chat_log WHERE project_id='$this->id';");
-		mysql_do("DELETE FROM comments WHERE project_id='$this->id';");
-		mysql_do("DELETE FROM evidence WHERE project_id='$this->id';");
-		mysql_do("DELETE FROM hypotheses WHERE project_id='$this->id';");
-		mysql_do("DELETE FROM invitation_notices WHERE project_id='$this->id';");
-		mysql_do("DELETE FROM join_requests WHERE project_id='$this->id';");
-		mysql_do("DELETE FROM users_in_projects WHERE project_id='$this->id';");
-		mysql_do("DELETE FROM users_in_projects_view_only WHERE project_id='$this->id';");
+		achquery("DELETE FROM chat_log WHERE project_id='$this->id';");
+		achquery("DELETE FROM comments WHERE project_id='$this->id';");
+		achquery("DELETE FROM evidence WHERE project_id='$this->id';");
+		achquery("DELETE FROM hypotheses WHERE project_id='$this->id';");
+		achquery("DELETE FROM invitation_notices WHERE project_id='$this->id';");
+		achquery("DELETE FROM join_requests WHERE project_id='$this->id';");
+		achquery("DELETE FROM users_in_projects WHERE project_id='$this->id';");
+		achquery("DELETE FROM users_in_projects_view_only WHERE project_id='$this->id';");
 		
-		mysql_do("DELETE FROM projects WHERE id='$this->id';");
+		achquery("DELETE FROM projects WHERE id='$this->id';");
 		
 	}
 	
