@@ -62,9 +62,9 @@ if( navigator.appName == "Microsoft Internet Explorer" ) {
 <?php
 
 // Only load this stuff if we're on a project page.
-
-if( $active_project->id != "" ) {
-	$active_project_id = $active_project->id;
+if(isset($active_project)){
+	if( $active_project->id != "" ) {
+		$active_project_id = $active_project->id;
 
 ?>
 
@@ -191,7 +191,7 @@ function getReturn(e) {
 }
 
 <?php }
-
+	}
 } ?>
 
 

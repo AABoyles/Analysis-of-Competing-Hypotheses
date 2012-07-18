@@ -1,87 +1,36 @@
 <?php
 
-include("../code/includes.php");
+include("code/includes.php");
 
-$username = $_REQUEST['username'];
+$active_user = new User();
 
-$display_user = new User();
-$display_user->populateFromAttribute($username, "username");
+if (array_key_exists('username', $_REQUEST)){
+	$username = $_REQUEST['username'];
+	$active_user->populateFromUsername($username);
+}
 
 ?>
 
 <html>
 <head>
 	<title>ACH: Help</title>
-	<?php include("../parts/includes.php"); ?>
-	<script language="JavaScript" type="text/javascript">
-
-function changeFontSize(inc)
-
-{
-
-  var p = document.getElementsByTagName('p');
-
-  for(n=0; n<p.length; n++) {
-
-    if(p[n].style.fontSize) {
-
-       var size = parseInt(p[n].style.fontSize.replace("px", ""));
-
-    } else {
-
-       var size = 14;
-
-    }
-
-    p[n].style.fontSize = size+inc + 'px';
-
-   }
-
-}
-
-</script>
+	<?php include("parts/includes.php"); ?>
+	<script src='js/tools.js'></script>
 </head>
 
-<?php include("../parts/header.php"); ?>
-
-
-
-
-
-
-
-<?php
-	
-if( $active_user->logged_in ) { ?>
-	
-
-
-<?php include("../parts/menu_sidebar.php"); ?>
-
-<?php } else { ?>
-
-
-
-<?php include("../parts/login_sidebar.php"); ?>
-
-
-
-
+<?php include("parts/header.php"); 
+if( $active_user->logged_in ) {
+	include("parts/menu_sidebar.php");} 
+else {
+	include("parts/login_sidebar.php"); ?>
 
 </div>
 
 <?php } ?>
 
-
-
 <div class="mainContainer">
-
 <div class="ydsf left"><div class="inner">
-
-
-
 <div class="help">
-
 <div class="fontSize"><a href="javascript:changeFontSize(1)" style:font-size="14px">Enlarge font</a><br /><a href="javascript:changeFontSize(-1)" style:font-size="8px">Shrink font</a></p></div>
 
 <h2>ACH Is a 9-Step Process</h2> 
@@ -102,9 +51,9 @@ if( $active_user->logged_in ) { ?>
 
 <h2>4. Prepare a matrix with the hypotheses across the top and the evidence/arguments down the side</h2> 
 
-<p>Work horizontally across the matrix to <a href="../help/rate_consistency.php">rate each data item's consistency or inconsistency with each hypothesis</a>. There is an option to  also assess the Credibility of each item of evidence to determine how much weight it should have in the analysis. Check the diagnosticity  of the evidence. An item of evidence is diagnostic if it helps you determine that an item of evidence or argument shows that one or more  hypotheses may be less likely than the others. </p> 
+<p>Work horizontally across the matrix to <a href="rate_consistency.php">rate each data item's consistency or inconsistency with each hypothesis</a>. There is an option to  also assess the Credibility of each item of evidence to determine how much weight it should have in the analysis. Check the diagnosticity  of the evidence. An item of evidence is diagnostic if it helps you determine that an item of evidence or argument shows that one or more  hypotheses may be less likely than the others. </p> 
 
-<p>When you're done, you should have something like this:</p> <img src="../help/images/samplematrix.png"> <p>In this example, Hypothesis 1 is looking pretty unlikely. (But remember, that doesn't necessarily mean that Hypothesis 2 is correct. Our goal  is to <a href="../help/ach.php#refuting">refute hypotheses</a>, not prove them.)</p> 
+<p>When you're done, you should have something like this:</p> <img src="images/samplematrix.png"> <p>In this example, Hypothesis 1 is looking pretty unlikely. (But remember, that doesn't necessarily mean that Hypothesis 2 is correct. Our goal  is to <a href="../help/ach.php#refuting">refute hypotheses</a>, not prove them.)</p> 
 
 <h2>5. Reconsider the hypotheses</h2> 
 
@@ -128,43 +77,13 @@ if( $active_user->logged_in ) { ?>
 
 <p>This process can be done on your own or with a group. If you want to do ACH with multiple analysts, the next article will give you some guidance on <a href="../help/collaboration_steps.php">modifying this 9-step process for collaborative, multi-analyst projects.</a></p> <p>Otherwise, skip ahead to learn about <a href="../help/hypotheses.php">hypotheses</a>.</p>
 </div>
-
-
-
-
-
-
-
-
-
-
 </div></div>
-
 </div>
-
-
-
-
-
-
-
 </div>
-
 </div></div>
-
 </div>
-
-
-
-
-
-
 
 <?php include("../parts/footer.php"); ?>
-
-
-
-
 
 </body>
 </html>
