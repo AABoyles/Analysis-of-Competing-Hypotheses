@@ -173,6 +173,24 @@ class User extends FrameworkDatabase {
 		return $return_value;
 	}
 	
+	public function populateFromUsername($name) { // Populates all of the varibles in this object from the DB.
+		$return_value = parent::populateFromAttribute($value, 'username');
+		/*$results = mysql_fast("SELECT last_visited, last_page, color FROM user, users_active WHERE username='$name'");
+		for( $i = 0; $i < count($results); $i++ ) {
+			foreach ($results[$i] as $field => $value) {
+				$this->$field = $value;
+			}
+		}*/
+		$this->logged_in = $this->checkLoggedIn();
+		$this->found = $return_value;
+		if( $this->password != "" ) {
+			$this->logged_in_full_account = TRUE;
+		} else {
+			$this->logged_in_full_account = FALSE;
+		}
+		return $return_value;
+	}
+	
 	public function checkUsernameAvailability($username) {
 		$username_exists = FALSE;
 		$result = mysql_do("SELECT username FROM users WHERE username='$username'");
