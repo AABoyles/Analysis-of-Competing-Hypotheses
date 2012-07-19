@@ -68,7 +68,7 @@ if(isset($active_project)){
 
 ?>
 
-var chatActive = <?php if( $_COOKIE['cachchat'] == "y" ) { echo('"y"'); } else { echo('"n"'); } ?>;
+var chatActive = <?php if( $_REQUEST['cachchat'] == "y" ) { echo('"y"'); } else { echo('"n"'); } ?>;
 var baseURL = "<?php print $base_URL; ?>";
 
 function confirm_delete_evidence(id) {

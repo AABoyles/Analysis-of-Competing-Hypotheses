@@ -4,12 +4,12 @@ echo '<!DOCTYPE html><html><head><title>Checking Log In...</title>';
 
 include (__DIR__."/../code/includes.php");
 
-if(! (array_key_exists('cookie_user_username', $_POST) || 
-	  array_key_exists('cookie_user_password', $_POST))){
+if(! (array_key_exists('cookie_user_username', $_REQUEST) || 
+	  array_key_exists('cookie_user_password', $_REQUEST))){
 	  	die(); }
 
-$cookie_user_username = $_POST['cookie_user_username'];
-$cookie_user_password = $_POST['cookie_user_password'];
+$cookie_user_username = $_REQUEST['cookie_user_username'];
+$cookie_user_password = $_REQUEST['cookie_user_password'];
 
 $success = FALSE;
 $result = achquery("SELECT password FROM users WHERE username='$cookie_user_username' LIMIT 1;");
@@ -29,7 +29,7 @@ if ($query_data !== NULL) {
 
 if ($success === TRUE) {
 	$active_user = new User();
-	$active_user -> populateFromUsername($_POST['cookie_user_username']);
+	$active_user -> populateFromUsername($_REQUEST['cookie_user_username']);
 	$active_user -> setCookies();
 	User::successfulLogin();
 	//print_r($active_user);

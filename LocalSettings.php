@@ -11,7 +11,7 @@ $path="ach";
 # Database Settings:
 $dbhost = 'localhost';
 $dbusername = 'root';
-$dbuserpassword = 'foo';
+$dbuserpassword = '';
 $dbname = 'ach';
 
 # Email Settings

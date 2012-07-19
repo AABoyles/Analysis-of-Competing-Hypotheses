@@ -26,9 +26,9 @@ include(__DIR__."/../code/includes.php");
 
 $hasEmail = false;
 
-if (array_key_exists('email', $_POST)){
+if (array_key_exists('email', $_REQUEST)){
 
-	$email = $_POST['email'];
+	$email = $_REQUEST['email'];
 	
 	$result = achquery("SELECT password, username FROM users WHERE email='$email' LIMIT 1");	
 	
@@ -38,7 +38,7 @@ if (array_key_exists('email', $_POST)){
 		$username = $hit["username"];
 		$subject = "ACH Login Info";
 		$from = "noreply@competinghypotheses.org";
-		$to = $_POST['email'];
+		$to = $_REQUEST['email'];
 		$message = "Your CACH username is '$username', and your password is '$password'.\r\n\r\n - the ACH robot";
 		$headers = "From: $from\r\nReply-To: $from\r\n";
 		$params = "-f $from";
@@ -46,7 +46,7 @@ if (array_key_exists('email', $_POST)){
 		echo $message;
 	} 
 	else {
-		$error = "We do not have a record with the email <strong>".$_POST['email']."</strong> in our files.";
+		$error = "We do not have a record with the email <strong>".$_REQUEST['email']."</strong> in our files.";
 	}
 }
 

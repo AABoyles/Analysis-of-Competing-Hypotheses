@@ -4,11 +4,11 @@ echo '<div class="menu">
 	  <form method="post" action="auth/check_log_in.php">
 	  <div class="loginForm">';
 
-if (isset($_COOKIE['failed_login'])){ 
-	if ($_COOKIE['failed_login'] ) {
+if (isset($_REQUEST['failed_login'])){ 
+	if ($_REQUEST['failed_login'] ) {
 		echo "<div class='loginFail'><p>You provided an incorrect username/password combination. Please try again.</p></div>";
 	}
-	unset($_COOKIE['failed_login']);
+	unset($_REQUEST['failed_login']);
 }
 
 echo "<p class='label'>User Name: <input class='login' type='text' size='15' name='cookie_user_username' /></p>

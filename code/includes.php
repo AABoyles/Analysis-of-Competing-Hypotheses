@@ -58,11 +58,11 @@ else {
 $active_user = new User();
 
 //If there's cookie data, grab it!
-if (array_key_exists('cookie_user_id', $_COOKIE)) {
-	$cookie_user_id = $_COOKIE['cookie_user_id'];
+if (array_key_exists('cookie_user_id', $_REQUEST)) {
+	$cookie_user_id = $_REQUEST['cookie_user_id'];
 	$active_user -> populateFromID($cookie_user_id);}
-if (array_key_exists('cookie_user_password', $_COOKIE)) {
-	$cookie_user_password = $_COOKIE['cookie_user_password'];
+if (array_key_exists('cookie_user_password', $_REQUEST)) {
+	$cookie_user_password = $_REQUEST['cookie_user_password'];
 	$show_user_menu = TRUE;}
 else {
 	//TODO: Expose a variable to allow/deny anonymous users

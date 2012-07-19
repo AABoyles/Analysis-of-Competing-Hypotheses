@@ -32,7 +32,7 @@ if( in_array($active_user->id, $active_project->users) ) { ?>
 <p class="chatTab" id="chatTab" onclick="document.getElementById('chatPanel').style.display='block'; createCookie('cachchat', 'y', 7); chatActive = 'y'; reloadConversation();"><a href="javascript:void(0);">Chat</a></p>
 
 <div class="chatWrapper" id="chatWrapper">
-<div class="chatPanel" id="chatPanel" style="bottom: 0px; display: none;" <?php if( $_COOKIE['cachchat'] == "n" ) { echo('style="display: none;"'); } ?> >
+<div class="chatPanel" id="chatPanel" style="bottom: 0px; display: none;" <?php if( $_REQUEST['cachchat'] == "n" ) { echo('style="display: none;"'); } ?> >
 
 <div class="chatShadow"> </div>
 

@@ -54,7 +54,7 @@ function setStatusMessage($message) {
 }
 
 function getStatusMessage() {
-	return $_COOKIE['campaign_status_message'];
+	return $_REQUEST['campaign_status_message'];
 }
 
 #TODO: Migrate to MySQLi
