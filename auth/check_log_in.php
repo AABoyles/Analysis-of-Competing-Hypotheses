@@ -30,7 +30,8 @@ if ($success === TRUE) {
 	$active_user = new User();
 	$active_user -> populateFromUsername($_REQUEST['cookie_user_username']);
 	$active_user -> setCookies();
-	User::successfulLogin();}
+	User::successfulLogin();
+	$active_user -> display();}
 else {
 	User::failedLogin();}
 
