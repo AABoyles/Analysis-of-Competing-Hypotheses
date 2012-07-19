@@ -36,7 +36,7 @@ else {
 
 <h2>Hypotheses</h2> 
 
-<p>Hypotheses are added via <a href="../help/howto_hypotheses.php">a simple tool (called Enter Hypotheses)</a> that asks for a short, descriptive label and a more detailed explanation. <b>Note:</b> You may only add, remove, and edit hypotheses if you are the project owner, the person designated as the administrator.</p>
+<p>Hypotheses are added via <a href="howto_hypotheses.php">a simple tool (called Enter Hypotheses)</a> that asks for a short, descriptive label and a more detailed explanation. <b>Note:</b> You may only add, remove, and edit hypotheses if you are the project owner, the person designated as the administrator.</p>
 
 <p>Deciding what hypotheses to evaluate is the first step in ACH. Hypotheses must be carefully considered and worded, as they form the foundation  on which the analysis is built. Input from several different analysts with different perspectives is strongly encouraged.</p> 
 
@@ -48,7 +48,7 @@ else {
 
 <p>When deciding whether to include an unlikely hypothesis, consider whether the hypothesis is virtually impossible or simply unproven because  there is no evidence for it. For example, the possibility that an adversary is trying to deceive you should not be rejected just because you see  no evidence of deception. If deception is done well, you should not expect to find evidence of it readily at hand. The possibility should not be  rejected until it is disproved, or, at least, until after you have made a systematic search for evidence and found it lacking.</p>
 
-<p>If you're ready to start adding hypotheses, we have a <a href="howto_hypotheses.php">set of instructions</a>. Then come back here and learn about <a href="../help/evidence.php">evidence</a>.</p>
+<p>If you're ready to start adding hypotheses, we have a <a href="howto_hypotheses.php">set of instructions</a>. Then come back here and learn about <a href="evidence.php">evidence</a>.</p>
 
 </div>
 

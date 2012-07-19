@@ -96,7 +96,7 @@ ACH features a number of tools to help you collaborate.
 
 <h2>Group Matrix</h2>
 
-<p>If your ACH project as multiple members, each member, like you, will complete a Personal Matrix. Naturally, you and your counterparts will disagree on some of the consistency scores. The Group Matrix automatically shows you where those disagreements lie. Rolling your mouse over the cells will reveal how each project member scored the cell. <a href="../help/howto_matrices.php#group">Learn more about what you can do with the Group Matrix</a>.</p>
+<p>If your ACH project as multiple members, each member, like you, will complete a Personal Matrix. Naturally, you and your counterparts will disagree on some of the consistency scores. The Group Matrix automatically shows you where those disagreements lie. Rolling your mouse over the cells will reveal how each project member scored the cell. <a href="howto_matrices.php#group">Learn more about what you can do with the Group Matrix</a>.</p>
 
 <h2>Persistent Chat</h2>
 

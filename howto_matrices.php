@@ -96,7 +96,7 @@ if( $active_user->logged_in ) { ?>
 <h2>Personal Matrix</h2>
 <p>The Personal Matrix is for your own consistency scores. Here, you will assess the consistency of each piece of evidence to each hypothesis. To begin, click the "Edit Consistency Scores" link. When you do this, that link turns into a link to "stop editing."</p>
 
-<p>As you complete the matrix, be sure to <a href="../help/rate_consistency.php#working_across">work across the matrix, not down</a>. For each hypothesis, ask yourself: if this hypothesis were true, is it likely that I would see this evidence? (For more tips, see our Help article on <a href="../help/rate_consistency.php">rating consistency scores</a>.) You do not have to complete the entire matrix; for example, if there is a piece of evidence that requires technical expertise you do not have, you are free to leave those cells blank.</p>
+<p>As you complete the matrix, be sure to <a href="rate_consistency.php#working_across">work across the matrix, not down</a>. For each hypothesis, ask yourself: if this hypothesis were true, is it likely that I would see this evidence? (For more tips, see our Help article on <a href="rate_consistency.php">rating consistency scores</a>.) You do not have to complete the entire matrix; for example, if there is a piece of evidence that requires technical expertise you do not have, you are free to leave those cells blank.</p>
 
 <p>Be sure to move your mouse over the evidence and hypothesis headers, as doing so will expose more details about these items. This is very helpful when assessing consistency.</p>
 

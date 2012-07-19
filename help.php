@@ -12,31 +12,14 @@ if(array_key_exists('username', $_REQUEST)){
 echo '<!DOCTYPE HTML><html><head><title>ACH: Help</title>';
 
 include("parts/includes.php");
-
-echo '<script language="JavaScript" type="text/javascript">
-function changeFontSize(inc)
-{
-  var p = document.getElementsByTagName(\'p\');
-  for(n=0; n<p.length; n++) {
-    if(p[n].style.fontSize) {
-       var size = parseInt(p[n].style.fontSize.replace("px", ""));
-    } else {
-       var size = 14;
-    }
-    p[n].style.fontSize = size+inc + \'px\';
-   }
-}
-</script>
-</head>';
-
+echo '<script src="js/tools.js"></script></head>';
 include("parts/header.php"); 
 	
 if( $active_user->logged_in ) {
-	include("parts/menu_sidebar.php");
-} else {
+	include("parts/menu_sidebar.php");} 
+else {
 	include("parts/login_sidebar.php");
-	echo '</div>';
-}
+	echo '</div>';}
 
 echo '
 <div class="mainContainer">
