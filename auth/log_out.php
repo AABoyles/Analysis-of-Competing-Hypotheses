@@ -1,6 +1,6 @@
 <?php
 
-include("../code/includes.php");
+include(__DIR__."/../code/includes.php");
 
 $active_user = new User();
 $active_user->eraseCookies();
