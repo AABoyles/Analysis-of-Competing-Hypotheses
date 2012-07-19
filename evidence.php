@@ -42,6 +42,6 @@ echo '
 <p>Now that you have a matrix full of hypotheses and evidence, <a href="rate_consistency.php">the next step is to fill the matrix with consistency scores</a>.</p>
 </div></div></div></div></div></div></div></div>';
 
-include("../parts/footer.php");
+include("parts/footer.php");
 
 echo '</body></html>';
