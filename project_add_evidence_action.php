@@ -37,9 +37,9 @@ $active_evidence->insertNew();
 $cred = $_REQUEST['credibility'];
 
 if( $cred == "credible" ) {
-	mysql_do("INSERT INTO credibility (value, evidence_id, user_id, weight) VALUES ('y', '$active_evidence->id', '$active_user->id', '1')");
+	achquery("INSERT INTO credibility (value, evidence_id, user_id, weight) VALUES ('y', '$active_evidence->id', '$active_user->id', '1')");
 } else if( $cred == "suspect" ) {
-	mysql_do("INSERT INTO credibility (value, evidence_id, user_id, weight) VALUES ('n', '$active_evidence->id', '$active_user->id', '1')");
+	achquery("INSERT INTO credibility (value, evidence_id, user_id, weight) VALUES ('n', '$active_evidence->id', '$active_user->id', '1')");
 }
 
 setStatusMessage("Added!");

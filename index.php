@@ -31,10 +31,9 @@ include("code/includes.php");
 $is_index = TRUE;
 
 if( $active_user->logged_in ) { 
-	$pagetitle = "ACH: Your Projects";
-} else {
-	$pagetitle = "ACH: Collaborative Analysis of Competing Hypotheses";
-}	
+	$pagetitle = "ACH: Your Projects";}
+else {
+	$pagetitle = "ACH: Collaborative Analysis of Competing Hypotheses";}	
 
 echo "<title>$pagetitle</title>";
 include("parts/includes.php");
@@ -222,7 +221,7 @@ echo '<div class="mainContainer">
 							<h2>Analyze</h2>
 							<p class="subtitle">multiple hypotheses against large bodies of evidence.</p>
 							<p>ACH helps you track how many data points affect the validity of various outcomes, and compares your assessments with your teammates\'.</p> 
-							<p><a href="help">Read more about ACH &raquo;</a></p>
+							<p><a href="help.php">Read more about ACH &raquo;</a></p>
 						</div>
 						<div class="manage">
 							<h2>Manage</h2>

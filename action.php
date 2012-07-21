@@ -33,7 +33,7 @@ $campaign_id = $_REQUEST['campaign_id'];
 $email_address = $_REQUEST['email_address'];
 $outgoing_message = $_REQUEST['outgoing_message'];
 
-mysql_do("UPDATE campaigns SET name='$name', campaign_id='$campaign_id', outgoing_message='$outgoing_message', email_address='$email_address' WHERE id='$id';");
+achquery("UPDATE campaigns SET name='$name', campaign_id='$campaign_id', outgoing_message='$outgoing_message', email_address='$email_address' WHERE id='$id';");
 
 $redirectURL = "campaign/$id";
 require('redirect.php');

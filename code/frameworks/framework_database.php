@@ -64,7 +64,7 @@ class FrameworkDatabase {
 		}
 		$sql_statement .= ");";
 		
-		mysql_do($sql_statement);
+		achquery($sql_statement);
 		$this->id = mysql_insert_id();
 		return TRUE;
 		
@@ -81,7 +81,7 @@ class FrameworkDatabase {
 		}
 		$sql_statement .= " WHERE id=$this->id;";
 		
-		mysql_do($sql_statement);
+		achquery($sql_statement);
 		$this->id = mysql_insert_id();
 		return TRUE;
 	}

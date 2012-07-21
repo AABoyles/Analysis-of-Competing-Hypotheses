@@ -36,16 +36,16 @@ $hypothesis_id = substr($cell_id, strpos($cell_id, "-")+1, strpos($cell_id, "_",
 
 $exists = FALSE;
 
-$result = mysql_do("SELECT * FROM ratings WHERE evidence_id='$evidence_id' AND hypothesis_id='$hypothesis_id' AND user_id='$active_user->id'");
+$result = achquery("SELECT * FROM ratings WHERE evidence_id='$evidence_id' AND hypothesis_id='$hypothesis_id' AND user_id='$active_user->id'");
 while($query_data = mysql_fetch_array($result)) {
 	$exists = TRUE;
 }
 
 //if( $this_rating != "" ) {
 	if( $exists ) {
-		mysql_do("UPDATE ratings SET rating='$this_rating' WHERE evidence_id='$evidence_id' AND hypothesis_id='$hypothesis_id' AND user_id='$active_user->id'");
+		achquery("UPDATE ratings SET rating='$this_rating' WHERE evidence_id='$evidence_id' AND hypothesis_id='$hypothesis_id' AND user_id='$active_user->id'");
 	} else {
-		mysql_do("INSERT INTO ratings (rating, evidence_id, hypothesis_id, user_id) VALUES ('$this_rating', '$evidence_id', '$hypothesis_id' ,'$active_user->id')");
+		achquery("INSERT INTO ratings (rating, evidence_id, hypothesis_id, user_id) VALUES ('$this_rating', '$evidence_id', '$hypothesis_id' ,'$active_user->id')");
 	}
 //}
 	

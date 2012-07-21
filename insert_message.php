@@ -26,11 +26,11 @@ header("Content-Type: text/plain");
 
 include("code/includes.php");
 
-$message = addslashes($_GET['message']);
-$project_id = $_GET['project_id'];
+$message = addslashes($_REQUEST['message']);
+$project_id = $_REQUEST['project_id'];
 
-if( $_GET['insert'] != "n" && $message != "" ) {
-	mysql_do("INSERT INTO chat_log (user_id, project_id, chat) VALUES ('$active_user->id', '$project_id', '$message');");
+if( $_REQUEST['insert'] != "n" && $message != "" ) {
+	achquery("INSERT INTO chat_log (user_id, project_id, chat) VALUES ('$active_user->id', '$project_id', '$message');");
 }
 
 if( $_REQUEST['project_id'] > 0 ) {

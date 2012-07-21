@@ -50,7 +50,7 @@ echo '<div class="mainContainer">
 
 echo "<h2>Projects using evidence with serial number '$display_evidence->serial_number':</h2>";
 
-$result = mysql_do("SELECT * FROM evidence WHERE serial_number='$display_evidence->serial_number';");
+$result = achquery("SELECT * FROM evidence WHERE serial_number='$display_evidence->serial_number';");
 while($query_data = mysql_fetch_array($result)) { 
 
 	$this_evidence = new Evidence();

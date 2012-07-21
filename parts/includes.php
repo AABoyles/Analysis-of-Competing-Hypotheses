@@ -62,13 +62,13 @@ if( navigator.appName == "Microsoft Internet Explorer" ) {
 <?php
 
 // Only load this stuff if we're on a project page.
-
-if( $active_project->id != "" ) {
-	$active_project_id = $active_project->id;
+if(isset($active_project)){
+	if( $active_project->id != "" ) {
+		$active_project_id = $active_project->id;
 
 ?>
 
-var chatActive = <?php if( $_COOKIE['cachchat'] == "y" ) { echo('"y"'); } else { echo('"n"'); } ?>;
+var chatActive = <?php if( $_REQUEST['cachchat'] == "y" ) { echo('"y"'); } else { echo('"n"'); } ?>;
 var baseURL = "<?php print $base_URL; ?>";
 
 function confirm_delete_evidence(id) {
@@ -191,7 +191,7 @@ function getReturn(e) {
 }
 
 <?php }
-
+	}
 } ?>
 
 

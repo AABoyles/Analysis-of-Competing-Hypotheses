@@ -32,16 +32,16 @@ $this_evidence_id = substr($evidence_id, 17);
 
 $exists = FALSE;
 
-$result = mysql_do("SELECT * FROM credibility WHERE evidence_id='$this_evidence_id' AND user_id='$active_user->id'");
+$result = achquery("SELECT * FROM credibility WHERE evidence_id='$this_evidence_id' AND user_id='$active_user->id'");
 while($query_data = mysql_fetch_array($result)) {
 	$exists = TRUE;
 }
 
 //if( $this_rating != "" ) {
 	if( $exists ) {
-		mysql_do("UPDATE credibility SET weight='$this_rating' WHERE evidence_id='$this_evidence_id' AND user_id='$active_user->id'");
+		achquery("UPDATE credibility SET weight='$this_rating' WHERE evidence_id='$this_evidence_id' AND user_id='$active_user->id'");
 	} else {
-		mysql_do("INSERT INTO credibility (weight, evidence_id, user_id, value) VALUES ('$this_rating', '$this_evidence_id', '$active_user->id', 'y')");
+		achquery("INSERT INTO credibility (weight, evidence_id, user_id, value) VALUES ('$this_rating', '$this_evidence_id', '$active_user->id', 'y')");
 	}
 //}
 	

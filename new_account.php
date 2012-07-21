@@ -36,10 +36,6 @@ include("parts/includes.php");
 
 echo '</head><body>';
 
-#TODO: what is this for and is it worth it?
-#<body onload="setTimeout('Effect.Fade(\'statusMessage\')',2500); setTimeout('Effect.Fade(\'statusMessage2\')',2500);">
-
-
 include("parts/header.php");
 include("parts/login_sidebar.php");
 

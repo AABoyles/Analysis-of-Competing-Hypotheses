@@ -35,7 +35,7 @@ class Hypothesis extends FrameworkDatabase {
 	
 	public function getComments($thread_id) {
 		$this->comments = Array();
-		$result = mysql_do("SELECT id FROM comments WHERE hypothesis_id='$this->id' AND evidence_id='0' AND reply_to_id='$thread_id';");
+		$result = achquery("SELECT id FROM comments WHERE hypothesis_id='$this->id' AND evidence_id='0' AND reply_to_id='$thread_id';");
 		while($query_data = mysql_fetch_array($result)) {
 			$this->comments[] = $query_data['id'];
 		}

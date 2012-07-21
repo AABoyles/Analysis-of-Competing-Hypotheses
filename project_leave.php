@@ -26,7 +26,7 @@ include("code/includes.php");
 
 $project_id = $_REQUEST['id'];
 
-$result = mysql_do("DELETE FROM users_in_projects WHERE project_id='$project_id' AND user_id='$active_user->id'");
+$result = achquery("DELETE FROM users_in_projects WHERE project_id='$project_id' AND user_id='$active_user->id'");
 
 ?>
 

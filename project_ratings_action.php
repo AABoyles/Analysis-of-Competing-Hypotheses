@@ -28,18 +28,18 @@ foreach ($_REQUEST as $field => $value) {
 	if( substr($field, 0, 6) == "rating" ) {
 		$evidence = substr($field, 7, strpos($field, "-")-7);
 		$hypothesis = substr($field, strpos($field, "-")+1);
-		mysql_do("DELETE FROM ratings WHERE evidence_id='$evidence' AND hypothesis_id='$hypothesis' AND user_id='$active_user->id'");
+		achquery("DELETE FROM ratings WHERE evidence_id='$evidence' AND hypothesis_id='$hypothesis' AND user_id='$active_user->id'");
 		if( is_numeric($evidence) && is_numeric($hypothesis) ) {
-			mysql_do("INSERT INTO ratings (evidence_id, hypothesis_id, rating, user_id) VALUES ('$evidence', '$hypothesis', '$value', '$active_user->id')");
+			achquery("INSERT INTO ratings (evidence_id, hypothesis_id, rating, user_id) VALUES ('$evidence', '$hypothesis', '$value', '$active_user->id')");
 		}
 		$value = "";
 	}
 	if( substr($field, 0, 9) == "cred_edit" ) {
 		$evidence = substr($field, 10);
-		mysql_do("DELETE FROM credibility WHERE evidence_id='$evidence' AND user_id='$active_user->id'");
+		achquery("DELETE FROM credibility WHERE evidence_id='$evidence' AND user_id='$active_user->id'");
 		if( is_numeric($evidence) ) {
 			$weight = $_REQUEST['cred_weight_edit_' . $evidence];
-			mysql_do("INSERT INTO credibility (evidence_id, value, weight, user_id) VALUES ('$evidence', '$value', '$weight', '$active_user->id')");
+			achquery("INSERT INTO credibility (evidence_id, value, weight, user_id) VALUES ('$evidence', '$value', '$weight', '$active_user->id')");
 		}
 		$value = "";
 	}
