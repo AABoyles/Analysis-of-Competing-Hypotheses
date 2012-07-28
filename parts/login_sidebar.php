@@ -1,17 +1,16 @@
 <?php
 
-echo '<div class="menu">
-	  <form method="post" action="auth/check_log_in.php">
-	  <div class="loginForm">';
-
-if (isset($_REQUEST['failed_login'])){ 
-	if ($_REQUEST['failed_login'] ) {
+if (isset($_POST['failed_login'])){ 
+	if ( $_POST['failed_login'] ) {
 		echo "<div class='loginFail'><p>You provided an incorrect username/password combination. Please try again.</p></div>";
 	}
-	unset($_REQUEST['failed_login']);
+	$_POST['failed_login'] = FALSE;
 }
 
-echo "<p class='label'>User Name: <input class='login' type='text' size='15' name='cookie_user_username' /></p>
+echo "<div class='menu'>
+      <form method='post' action='auth/check_log_in.php'>
+	  <div class='loginForm'>
+      <p class='label'>User Name: <input class='login' type='text' size='15' name='cookie_user_username' /></p>
 	  <p class='label'>Password: <input class='login' type='password' size='15' name='cookie_user_password' /></p>
 	  <p><input type='submit' value='Sign in' /></p>
 	  <p class='forgot'><a href='password_reset.php'>Forget your password?</a></p>

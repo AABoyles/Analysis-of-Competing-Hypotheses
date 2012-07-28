@@ -1,5 +1,4 @@
 <?php
-
 /* ////////////////////////////////////////////////////////////////////////////////
  **    Copyright 2010 Matthew Burton, http://matthewburton.org
  **    Code by Burton and Joshua Knowles, http://auscillate.com
@@ -35,12 +34,12 @@ if (!$print_mode) {
 </span> <span class='tab'><a href='auth/log_out.php'>Logout</a></span>";
 	}
 
-	echo '</p></div>
-	<script type="text/javascript">
+	echo "</p></div>
+	<script type='text/javascript'>
 		function forgotPassword() {
-			window.open("/auth/forgot.php","forgotBox","width=450","height=220","resizeable=no","status=yes");
+			window.open('$baseURL/auth/forgot.php','forgotBox','width=450','height=220','resizeable=no','status=yes');
 		}
-	</script>';
+	</script>";
 
 } else {
 	echo "<div class='printHeader'>

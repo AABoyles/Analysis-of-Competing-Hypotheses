@@ -26,8 +26,6 @@ ini_set("memory_limit", "64M");
 
 $LOAD_TIMER_START = microtime(TRUE);
 
-error_reporting(E_ALL);
-
 if (strpos($_SERVER['HTTP_USER_AGENT'], "Firefox") > 0) {
 	$is_firefox = TRUE;} 
 else {
@@ -65,20 +63,22 @@ if (array_key_exists('cookie_user_password', $_REQUEST)) {
 	$cookie_user_password = $_REQUEST['cookie_user_password'];
 	$show_user_menu = TRUE;}
 else {
-	//TODO: Expose a variable to allow/deny anonymous users
-	/*$new_user = new User();
-	 $new_user->username = "anonymous";
-	 $new_user->password = "";
-	 $new_user->insertNew();
-	 $new_user->setCookies();
-	 $cookie_user_id = $new_user->id;*/
-	 $show_user_menu = FALSE;
+    if($allowAnons){
+	    $active_user->username = "anonymous";
+	    $active_user->password = "";
+	    $active_user->insertNew();
+	    $active_user->setCookies();
+	    $cookie_user_id = $active_user->id;
+	    $show_user_menu = TRUE;
+    }
 }
 
 // Log user in users_active.
-if ($active_user -> logged_in && substr($_SERVER['REQUEST_URI'], 0, 19) != "/insert_message.php" && substr($_SERVER['REQUEST_URI'], 0, 22) != "/show_active_users.php") {
-	$found = false;
-	//TODO: Migrate to mysqli library
+if ($active_user -> logged_in && 
+    substr($_SERVER['REQUEST_URI'], 0, 19) != "/insert_message.php" && 
+    substr($_SERVER['REQUEST_URI'], 0, 22) != "/show_active_users.php") {
+	
+    $found = false;
 	$result = achquery("SELECT id FROM users_active WHERE user_id='".$active_user->id."'");
 	while ($query_data = mysql_fetch_array($result)) {
 		$found = true;

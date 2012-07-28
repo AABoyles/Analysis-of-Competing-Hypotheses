@@ -67,7 +67,7 @@ if( in_array($active_user->id, $active_project->users) ) { ?>
 
 <?php /*
 
-$page = 'http://cach.matthewburton.org/show_active_users.php?project_id=' . $active_project->id;
+$page = show_active_users.php?project_id=' . $active_project->id;
 
 //echo($page);
 include($page);

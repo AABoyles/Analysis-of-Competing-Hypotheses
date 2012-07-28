@@ -2,7 +2,7 @@
 /* ////////////////////////////////////////////////////////////////////////////////
 **    Copyright 2010 Matthew Burton, http://matthewburton.org
 **    Code by Burton and Joshua Knowles, http://auscillate.com 
-**    This fork by Tony Boyles, http://nortalktoowise.com/
+**    This version by Tony Boyles, http://aaboyles.com/
 **
 **    This software is part of the Open Source ACH Project (ACH). You'll find 
 **    all current information about project contributors, installation, updates, 
@@ -25,7 +25,6 @@
 
 echo '<!DOCTYPE html><html><head>';
 
-include("LocalSettings.php");
 include("code/includes.php");
 
 $is_index = TRUE;

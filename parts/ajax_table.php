@@ -10,11 +10,9 @@ $dccDiag = 0;
 
 $sortColsBy = "added";
 
-
-
 if( isset($_REQUEST['reload']) && $_REQUEST['reload'] == "y" ) {
 
-	include_once("../code/includes.php");
+	include_once("code/includes.php");
 	
 	$kind = $_REQUEST['kind'];
 
@@ -74,7 +72,7 @@ $evidence = $active_project->sortByFields($sort_field_1, $sort_field_1_dir, $sor
 
 ?>
 
-
+#TODO: This is an abomination.  Echo the output.
 
 <table cellspacing="0" cellpadding="0" border="0" class="groupMatrix" id="groupMatrix"><thead><tr><th onclick="sortGroupTable('name');" class="hypothesis cursorHand <?php $active_project->getSortArrow("name")?>"></th>
 
@@ -134,7 +132,9 @@ for( $i = 0; $i < count($evidence); $i++ ) {
 	<td class="dcCode" style="<?php if( $dccCode == 0 ) { ?>display: none;<?php } ?>"><?php $evidence[$i]->code?></td>
 	<td class="dcFlag" style="<?php if( $dccFlag == 0 ) { ?>display: none;<?php } ?>"><a id="flag_<?php $evidence[$i]->id?>" onclick="switchFlag('flag_<?php $evidence[$i]->id?>', <?php $evidence[$i]->id?>);"><?php if( $evidence[$i]->flag == "y" ) { echo("<img src='". $base_URL . "images/icons/flag_red.png' />"); } else { echo("<img src='". $base_URL . "images/icons/bullet_add.png' />"); } ?></a></td>
 
-<?php if( $kind == "personal" || $kind == "user" ) { 
+<?php 
+
+    if( $kind == "personal" || $kind == "user" ) { 
 
 	$this_credibility = new Credibility();
 	if( $kind == "user" ) {
@@ -236,9 +236,7 @@ if( $kind == "personal" ) {
 	<td onclick="sortGroupTable('credWeight');" class="dclCredWeight" style="<?php if( $dccCredWeight == 0 ) { ?>display: none;<?php } ?>"><span class="cursorHand <?php $active_project->getSortArrow("credWeight")?>">Cred Weight</span></td>
 	<td onclick="sortGroupTable('diag');" class="dclDiag" style="<?php if( $dccDiag == 0 ) { ?>display: none;<?php } ?>"><span class="cursorHand <?php $active_project->getSortArrow("diag")?>">Diag.</span></td>
 	
-<?php } ?>
-
-<?php
+<?php }
 
 if( $kind == "group" ) {
 	$active_project->showHypothesisGroupLabelsInner("least_likely", $sortColsBy == "least_likely");
@@ -262,10 +260,8 @@ if( $kind == "group" ) {
 	$active_project->showHypothesisPersonalLabelsInner("alpha", $sortColsBy == "alpha");
 }
 
-echo('</tr>');
-
+echo '</tr>';
 	}
+}
 
-} ?>
-
-</tbody></table>
+echo '</tbody></table>';

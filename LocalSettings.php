@@ -18,9 +18,12 @@ $dbname = 'ach';
 $email_enabled=false;
 $email_address="admin@$domain";
 
+# System Settings
+$allowAnons = FALSE;
+error_reporting(E_ALL);
 
 # END USER CONFIGURATION OPTIONS.  DO NOT EDIT ANYTHING BEYOND THIS LINE.
 
 $base_URL="$domain/$path";
 
-$versionNumber="1.0.3alpha";
+$versionNumber="1.1beta";
