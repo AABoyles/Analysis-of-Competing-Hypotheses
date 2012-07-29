@@ -74,7 +74,7 @@ else {
 }
 
 // Log user in users_active.
-if ($active_user -> logged_in && 
+if ($active_user->logged_in && 
     substr($_SERVER['REQUEST_URI'], 0, 19) != "/insert_message.php" && 
     substr($_SERVER['REQUEST_URI'], 0, 22) != "/show_active_users.php") {
 	
@@ -83,9 +83,9 @@ if ($active_user -> logged_in &&
 	while ($query_data = mysql_fetch_array($result)) {
 		$found = true;
 		$this_page = $_SERVER['REQUEST_URI'];
-		if ($found) {
-			achquery("UPDATE users_active SET last_visited=NOW(), last_page='$this_page' WHERE user_id='".$active_user->id."'");} 
-		else {
-			achquery("INSERT INTO users_active (id, user_id, last_visited, last_page, color) VALUES (NULL, '".$active_user->id."', NOW(), '$this_page', '000000');");}
-	}
+    }
+	if ($found) {
+		achquery("UPDATE users_active SET last_visited=NOW(), last_page='$this_page' WHERE user_id='".$active_user->id."'");} 
+	else {
+		achquery("INSERT INTO users_active (id, user_id, last_visited, last_page, color) VALUES (NULL, '".$active_user->id."', NOW(), '$this_page', '000000');");}
 }

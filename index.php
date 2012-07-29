@@ -29,10 +29,9 @@ include("code/includes.php");
 
 $is_index = TRUE;
 
+$pagetitle = "ACH: Collaborative Analysis of Competing Hypotheses";
 if( $active_user->logged_in ) { 
 	$pagetitle = "ACH: Your Projects";}
-else {
-	$pagetitle = "ACH: Collaborative Analysis of Competing Hypotheses";}	
 
 echo "<title>$pagetitle</title>";
 include("parts/includes.php");
@@ -192,20 +191,20 @@ if( $active_user->logged_in ) {
 				echo "<p class='joinRequests'><b>Join Requests:</b></p>";
 				echo "<ul class='joinRequests'>";
 		
-				for ($j = 0; $j < count($this_project -> join_requests); $j++) {
-					$this_user = new User();
-					$this_user -> populateFromId($this_project -> join_requests[$j]);
-					echo('<li><a href="' . $base_URL . 'profile/' . $this_user -> username . '">' . $this_user -> name . '</a> <a class="approve" href="' . $base_URL . 'joinrequest/' . $this_user -> id . '/' . $this_project -> id . '/approve">Approve</a> <a class="deny" href="' . $base_URL . 'joinrequest/' . $this_user -> id . '/' . $this_project -> id . '/deny">Deny</a></li>');
-				}
-				echo "</ul>";
-			}
-			echo "</div>";			
-		}
-	}
-	echo '</div>';
-	echo "<div class='mainRecentActivity'>";	
-	include ("parts/recent_activity.php");
-	echo "</div><br /><br /><br /><br /></div></div></div></div>";
+				    for ($j = 0; $j < count($this_project -> join_requests); $j++) {
+					    $this_user = new User();
+					    $this_user -> populateFromId($this_project -> join_requests[$j]);
+				    	echo('<li><a href="' . $base_URL . 'profile/' . $this_user -> username . '">' . $this_user -> name . '</a> <a class="approve" href="' . $base_URL . 'joinrequest/' . $this_user -> id . '/' . $this_project -> id . '/approve">Approve</a> <a class="deny" href="' . $base_URL . 'joinrequest/' . $this_user -> id . '/' . $this_project -> id . '/deny">Deny</a></li>');
+			    	}
+			    	echo "</ul>";
+			    }
+			    echo "</div>";			
+		    }
+	    }
+    	echo '</div>';
+	    echo "<div class='mainRecentActivity'>";	
+    	include ("parts/recent_activity.php");
+	    echo "</div><br /><br /><br /><br /></div></div></div></div>";
 	}
 } else {
 	include ("parts/login_sidebar.php");

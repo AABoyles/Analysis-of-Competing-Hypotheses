@@ -4,8 +4,8 @@ echo '<!DOCTYPE html><html><head><title>Checking Log In...</title>';
 
 include (__DIR__."/../code/includes.php");
 
-if(! (array_key_exists('cookie_user_username', $_REQUEST) || 
-	  array_key_exists('cookie_user_password', $_REQUEST))){
+if(! (array_key_exists('cookie_user_username', $_POST) || 
+	  array_key_exists('cookie_user_password', $_POST))){
 	  	die(); }
 
 $cookie_user_username =     $_REQUEST['cookie_user_username'];
