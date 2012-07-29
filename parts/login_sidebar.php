@@ -12,7 +12,7 @@ echo "<div class='menu'>
 	  <div class='loginForm'>
       <p class='label'>User Name: <input class='login' type='text' size='15' name='cookie_user_username' /></p>
 	  <p class='label'>Password: <input class='login' type='password' size='15' name='cookie_user_password' /></p>
-	  <p><input type='submit' value='Sign in' /></p>
+	  <p><input type='submit' value='Sign in' /></p></div></form>
 	  <p class='forgot'><a href='password_reset.php'>Forget your password?</a></p>
 	  <p class='signUp'><a href='new_account.php'>Sign Up for an Account...</a></p>
-	  </div></form></div>";
+	  </div>";

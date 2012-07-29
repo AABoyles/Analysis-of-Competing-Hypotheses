@@ -1,4 +1,5 @@
 <?php
+//TODO: GET RID OF THIS FILE.
 
 echo '<!DOCTYPE html><html><head><title>Checking Log In...</title>';
 

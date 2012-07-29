@@ -30,8 +30,7 @@ include("code/includes.php");
 $is_index = TRUE;
 
 $pagetitle = "ACH: Collaborative Analysis of Competing Hypotheses";
-if( $active_user->logged_in ) { 
-	$pagetitle = "ACH: Your Projects";}
+if( $active_user->logged_in ) { $pagetitle = "ACH: Your Projects"; }
 
 echo "<title>$pagetitle</title>";
 include("parts/includes.php");
@@ -207,7 +206,7 @@ if( $active_user->logged_in ) {
 	    echo "</div><br /><br /><br /><br /></div></div></div></div>";
 	}
 } else {
-	include ("parts/login_sidebar.php");
+    include("parts/login_sidebar.php");
 }
 
 echo '<div class="mainContainer">
