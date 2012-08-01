@@ -20,8 +20,7 @@
 **    You should have received a copy of the GNU General Public License
 **    along with Open Source ACH. If not, see <http://www.gnu.org/licenses/>.
 //////////////////////////////////////////////////////////////////////////////// */
-?>
-<?php 
+ 
 //if the matrix has no hypotheses, tell the user they need to add them...
 
 		$result = mysql_query("SELECT * FROM hypotheses WHERE project_id='$active_project->id'");

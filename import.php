@@ -36,21 +36,9 @@ include("code/includes.php");
 
 
 
-<?php include("parts/header.php"); ?>
-
-
-
-
-
-
-
-<?php
+<?php include("parts/header.php"); 
 	
-if( $active_user->logged_in ) { ?>
-	
-
-
-<?php include("parts/menu_sidebar.php"); ?>
+if( $active_user->logged_in ) {  include("parts/menu_sidebar.php"); ?>
 
 
 
@@ -86,11 +74,7 @@ if( $active_user->logged_in ) { ?>
 
 
 
-<?php } else { ?>
-
-
-
-<?php include("parts/login_sidebar.php"); ?>
+<?php } else {  include("parts/login_sidebar.php"); ?>
 
 
 

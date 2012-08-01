@@ -20,9 +20,7 @@
 **    You should have received a copy of the GNU General Public License
 **    along with Open Source ACH. If not, see <http://www.gnu.org/licenses/>.
 //////////////////////////////////////////////////////////////////////////////// */
-?>
 
-<?php
 
 $active_evidence = new Evidence();
 $active_evidence->populateFromId($_REQUEST['evidence_id']);

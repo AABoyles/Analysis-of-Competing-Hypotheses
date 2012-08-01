@@ -41,7 +41,7 @@ else { */
 	<head>
 		<title>ACH: <?php if ($display_user->name === NULL) { ?>
 	No such user
-	<?php } else { ?><?php $display_user->name?>, aka <?php $display_user->username?> <?php } ?></title>
+	<?php } else {  $display_user->name?>, aka <?php $display_user->username } ?></title>
 		<?php include("parts/includes.php"); ?>
 	</head>
 	
@@ -49,21 +49,9 @@ else { */
 	
 	
 	
-	<?php include("parts/header.php"); ?>
-	
-	
-	
-	
-	
-	
-	
-	<?php
+	<?php include("parts/header.php"); 
 		
-	if( $active_user->logged_in ) { ?>
-		
-	
-	
-	<?php include("parts/menu_sidebar.php"); ?>
+	if( $active_user->logged_in ) {  include("parts/menu_sidebar.php"); ?>
 	
 	
 	
@@ -77,8 +65,7 @@ else { */
 	<p>This user does not exist.</p>
 	<?php } else { ?>
 	
-	<h2><?php $display_user->name?> 
-	<?php if( $active_user->id == $display_user->id ) { ?>
+	<h2><?php $display_user->name if( $active_user->id == $display_user->id ) { ?>
 	<a href="<?php $base_URL?>profile/edit">(Edit your profile)</a>
 	<?php } ?>
 	</h2>
@@ -97,9 +84,7 @@ else { */
 		echo "This user is not a member of any public projects.";
 		}
 		else {
-	?>
 	
-	<?php
 	
 	for( $i = 0; $i <= count($display_user->projects); $i++ ) {
 		$this_project = new Project();
@@ -125,11 +110,7 @@ else { */
 	
 	
 	
-	<?php } else { ?>
-	
-	
-	
-	<?php include("parts/login_sidebar.php"); ?>
+	<?php } else {  include("parts/login_sidebar.php"); ?>
 	
 	
 	

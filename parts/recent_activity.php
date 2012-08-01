@@ -20,8 +20,7 @@
 **    You should have received a copy of the GNU General Public License
 **    along with Open Source ACH. If not, see <http://www.gnu.org/licenses/>.
 //////////////////////////////////////////////////////////////////////////////// */
-?>
-<?php
+
 
 $project_list = implode(", ", $active_user->projects);
 
@@ -84,30 +83,13 @@ while($query_data = mysql_fetch_array($result)) {
 
 </div>
 
-<?php } ?>
-
-<?php if( $counter > 0 ) { ?>
+<?php }  if( $counter > 0 ) { ?>
 </div>
 <?php }
 
 $total_counter += $counter;
 
-?>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-<?php
 
 $counter = 0;
 
@@ -147,29 +129,13 @@ while($query_data = mysql_fetch_array($result)) {
 
 </div>
 
-<?php } ?>
-
-<?php if( $counter > 0 ) { ?>
+<?php }  if( $counter > 0 ) { ?>
 </div>
 <?php }
 
 $total_counter += $counter;
 
-?>
 
-
-
-
-
-
-
-
-
-
-
-
-
-<?php
 
 $counter = 0;
 
@@ -247,28 +213,13 @@ Hypothesis: <a href="<?php $base_URL?>project/<?php $this_project->id?>"><?php $
 
 </div>
 
-<?php } ?>
-
-<?php if( $counter > 0 ) { ?>
+<?php }  if( $counter > 0 ) { ?>
 </div>
 <?php }
 
 $total_counter += $counter;
 
-?>
 
-
-
-
-
-
-
-
-
-
-
-
-<?php
 
 $counter = 0;
 
@@ -344,9 +295,7 @@ Hypothesis: <a href="/<?php $base_URL?>project/<?php $this_project->id?>"><?php 
 
 </div>
 
-<?php } ?>
-
-<?php if( $counter > 0 ) { ?>
+<?php }  if( $counter > 0 ) { ?>
 </div>
 <?php }
 

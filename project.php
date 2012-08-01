@@ -53,7 +53,7 @@ $active_owner->populateFromID($active_project->user_id);
 
 	<?php } else { ?>
 	
-	ACH: <?php $active_project->title?> <?php } ?>
+	ACH: <?php $active_project->title } ?>
 	</title>
 	
 <?php include("parts/includes.php"); ?>
@@ -207,7 +207,7 @@ function reloadAjaxGroupTable() {
 	var date = new Date();
 	var timestamp = date.getTime();
 	
-	oXmlHttp.open("get", baseURL+"parts/ajax_table.php?kind=" + table_kind + "&sort_field_1=" + last_sort_1 + "&sort_field_1_dir=" + last_sort_1_dir + "&sort_field_2=" + last_sort_2 + "&sort_field_2_dir=" + last_sort_2_dir + "&reload=y&project_id=" + thisProjectId + "&dccDateAdded=" + dccDateAdded + "&dccDateOfSource=" + dccDateOfSource + "&dccType=" + dccType + "&dccCode=" + dccCode + "&dccFlag=" + dccFlag + "&dccCredWeight=" + dccCredWeight + "&dccDiag=" + dccDiag + "&sortColsBy=" + sortColsBy + "&internetexplorerisawful=" + timestamp <?php if( isset($_REQUEST['ratings_user_id']) ) { echo(' + "&display_user_id=' . $_REQUEST['ratings_user_id'] . '"'); } ?> <?php if( isset($_REQUEST['compare_user_id']) ) { echo(' + "&compare_user_id=' . $_REQUEST['compare_user_id'] . '"'); } ?> <?php if( isset($_REQUEST['compare_user_id_2']) ) { echo(' + "&compare_user_id_2=' . $_REQUEST['compare_user_id_2'] . '"'); } ?>, true);
+	oXmlHttp.open("get", baseURL+"parts/ajax_table.php?kind=" + table_kind + "&sort_field_1=" + last_sort_1 + "&sort_field_1_dir=" + last_sort_1_dir + "&sort_field_2=" + last_sort_2 + "&sort_field_2_dir=" + last_sort_2_dir + "&reload=y&project_id=" + thisProjectId + "&dccDateAdded=" + dccDateAdded + "&dccDateOfSource=" + dccDateOfSource + "&dccType=" + dccType + "&dccCode=" + dccCode + "&dccFlag=" + dccFlag + "&dccCredWeight=" + dccCredWeight + "&dccDiag=" + dccDiag + "&sortColsBy=" + sortColsBy + "&internetexplorerisawful=" + timestamp <?php if( isset($_REQUEST['ratings_user_id']) ) { echo(' + "&display_user_id=' . $_REQUEST['ratings_user_id'] . '"'); }  if( isset($_REQUEST['compare_user_id']) ) { echo(' + "&compare_user_id=' . $_REQUEST['compare_user_id'] . '"'); }  if( isset($_REQUEST['compare_user_id_2']) ) { echo(' + "&compare_user_id_2=' . $_REQUEST['compare_user_id_2'] . '"'); } ?>, true);
 	oXmlHttp.onreadystatechange = function () {
 		if (oXmlHttp.readyState == 4) {
 			if (oXmlHttp.status == 200) {
@@ -469,23 +469,11 @@ function confirm_delete(url) {
 
 
 
-<?php include("parts/header.php"); ?>
-
-
-
-
-
-
-
-<?php
+<?php include("parts/header.php"); 
 
 
 	
-if( $active_user->logged_in ) { ?>
-	
-
-
-<?php include("parts/menu_sidebar.php"); ?>
+if( $active_user->logged_in ) {  include("parts/menu_sidebar.php"); ?>
 
 
 
@@ -503,8 +491,7 @@ if( $active_user->logged_in ) { ?>
 				<?php } else {
 				?>
 				
-					<h2 class="classTitle">Project: <?php $active_project->title?> 
-					<?php if( !$print_mode ) { ?><span class="showHideDetails" id="showHideDetails"><a style="cursor: pointer;" onclick="showDetails();">Show details</a></span><?php } ?>
+					<h2 class="classTitle">Project: <?php $active_project->title if( !$print_mode ) { ?><span class="showHideDetails" id="showHideDetails"><a style="cursor: pointer;" onclick="showDetails();">Show details</a></span><?php } ?>
 					</h2>
 					
 					
@@ -581,25 +568,11 @@ if( $active_user->logged_in ) { ?>
 					This project's data is <b>public</b> for all to see,
 					<?php } else { ?>
 					This project's data is <b>private</b>, 
-					<?php } ?>
-					
-					<?php if( $active_project->open == "y" ) { ?>
+					<?php }  if( $active_project->open == "y" ) { ?>
 					and anyone may join <b>without permission</b>.</p>
 					<?php } else { ?>
 					<span class="closed"></span>and new users <b>must request permission</b> to join.</p>
-					<?php } ?>
-					
-					<?php if( in_array($active_user->id, $active_project->users) && $active_user->id != $active_project->user_id ) { ?>
-					
-					<?php if( !$print_mode ) { ?><p class="leaveProject"><a href="<?php $base_URL?>project/<?php $active_project->id?>/leave">Leave this project</a></p><?php } ?>
-					
-					<?php } ?>
-					
-					<?php if( !$print_mode ) { ?><?php if( !$is_firefox ) { ?><p><a onclick="window.open ('/project/<?php $active_project->id?>/chat','Chat');" style="color: #FF0000;">Project Chat</a> (pop-up window)</p><?php } ?><?php } ?>
-					
-					
-					
-					<?php if( $active_user->id == $active_project->user_id ) { ?>
+					<?php }  if( in_array($active_user->id, $active_project->users) && $active_user->id != $active_project->user_id ) {  if( !$print_mode ) { ?><p class="leaveProject"><a href="<?php $base_URL?>project/<?php $active_project->id?>/leave">Leave this project</a></p><?php }  }  if( !$print_mode ) {  if( !$is_firefox ) { ?><p><a onclick="window.open ('/project/<?php $active_project->id?>/chat','Chat');" style="color: #FF0000;">Project Chat</a> (pop-up window)</p><?php }  }  if( $active_user->id == $active_project->user_id ) { ?>
 					<p class="delete"><a href="JavaScript:confirm_delete('/project/<?php $active_project->id?>/delete');">Delete this Project</a><br /><span>This can not be undone, so <b>be careful</b>.</span></p>
 					<?php } ?>
 					
@@ -613,15 +586,7 @@ if( $active_user->logged_in ) { ?>
 					
 					
 					
-					<?php } ?>
-					
-					
-					
-					<?php if( in_array($active_user->id, $active_project->users) || in_array($active_user->id, $active_project->users_view_only) || $active_project->public =="y" ) { ?>
-					
-					
-					
-					<?php if( !$print_mode ) { ?>
+					<?php }  if( in_array($active_user->id, $active_project->users) || in_array($active_user->id, $active_project->users_view_only) || $active_project->public =="y" ) {  if( !$print_mode ) { ?>
 					
 					<p class="subMenu">
 					<?php if( in_array($active_user->id, $active_project->users)) { ?>
@@ -632,23 +597,12 @@ if( $active_user->logged_in ) { ?>
 					<a href="<?php $base_URL?>project/<?php $active_project->id?>/group">Group Matrix</a> 
 					<?php if( in_array($active_user->id, $active_project->users)) { ?>
 					<a href="<?php $base_URL?>project/<?php $active_project->id?>/evidence/new">Enter Evidence/Arguments</a>  <!--<a href="<?php $base_URL?>project/<?php $active_project->id?>/export">Export Matrix</a> -->
-					<?php } ?>
-					<?php if( $active_user->id == $active_project->user_id) { ?><a href="<?php $base_URL?>project/<?php $active_project->id?>/hypothesis/new">Enter Hypotheses</a> <a href="<?php $base_URL?>project/<?php $active_project->id?>/edit">Edit Project Options</a> <?php } ?>
+					<?php }  if( $active_user->id == $active_project->user_id) { ?><a href="<?php $base_URL?>project/<?php $active_project->id?>/hypothesis/new">Enter Hypotheses</a> <a href="<?php $base_URL?>project/<?php $active_project->id?>/edit">Edit Project Options</a> <?php } ?>
 					</p>
 					
 					
 					
-					<?php } ?>
-					
-					
-					
-					<?php include("parts/project_" . $part . ".php"); ?>
-				
-				<?php } else { ?>
-				
-				
-				
-				<?php 
+					<?php }  include("parts/project_" . $part . ".php");  } else {  
 				$active_project->getJoinRequests();
 				//if anyone can join this project, then display Join This Project link. Otherwise, display Request Permission link
 				if( $active_project->open == "y" ) { ?>
@@ -657,11 +611,7 @@ if( $active_user->logged_in ) { ?>
 				<p><i><b>You have requested permission to join this project. The project owner has been notified. When your request is acted upon, there will be a notification on your <a href="<?php $base_URL?>">home page</a>.</b></i></p>
 				<?php } else { ?>
 				<p><a class="button" href="<?php $base_URL?>project/<?php $active_project->id?>/join">Request permission to join this project</a></p>
-				<?php } ?>
-				
-				
-				
-				<?php } ?>
+				<?php }  } ?>
 
 
 			</div>
@@ -669,13 +619,7 @@ if( $active_user->logged_in ) { ?>
 	</div>
 </div>
 
-<?php } ?>
-
-<?php } else { ?>
-
-
-
-<?php include("parts/login_sidebar.php"); ?>
+<?php }  } else {  include("parts/login_sidebar.php"); ?>
 
 
 
@@ -693,17 +637,13 @@ if( $active_user->logged_in ) { ?>
 	</div>
 </div>
 
-<?php } ?>
-
-<?php include("parts/footer.php"); ?>
+<?php }  include("parts/footer.php"); ?>
 
 
 </div> <!--removing this screws up the Chat tab. -->
 
 
-<?php if( !$print_mode ) { ?>
-<?php if( $is_firefox || !$is_firefox ) { include("parts/chat_panel.php"); } ?>
-<?php } ?>
+<?php if( !$print_mode ) {  if( $is_firefox || !$is_firefox ) { include("parts/chat_panel.php"); }  } ?>
 
 
 

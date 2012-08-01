@@ -20,8 +20,7 @@
 **    You should have received a copy of the GNU General Public License
 **    along with Open Source ACH. If not, see <http://www.gnu.org/licenses/>.
 //////////////////////////////////////////////////////////////////////////////// */
-?>
-<?php if( in_array($active_user->id, $active_project->users)) { ?>
+ if( in_array($active_user->id, $active_project->users)) { ?>
 
 
 

@@ -39,21 +39,9 @@ $tag = $_REQUEST['tag'];
 
 
 
-<?php include("parts/header.php"); ?>
-
-
-
-
-
-
-
-<?php
+<?php include("parts/header.php"); 
 	
-if( $active_user->logged_in ) { ?>
-	
-
-
-<?php include("parts/menu_sidebar.php"); ?>
+if( $active_user->logged_in ) {  include("parts/menu_sidebar.php"); ?>
 
 
 
@@ -93,11 +81,7 @@ Starts <a href="">June 1st, 2007</a></span></p>
 
 
 
-<?php } else { ?>
-
-
-
-<?php include("parts/login_sidebar.php"); ?>
+<?php } else {  include("parts/login_sidebar.php"); ?>
 
 
 

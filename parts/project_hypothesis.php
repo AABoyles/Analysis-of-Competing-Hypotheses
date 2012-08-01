@@ -20,9 +20,7 @@
 **    You should have received a copy of the GNU General Public License
 **    along with Open Source ACH. If not, see <http://www.gnu.org/licenses/>.
 //////////////////////////////////////////////////////////////////////////////// */
-?>
 
-<?php
 
 $active_hypothesis = new Hypothesis();
 $active_hypothesis->populateFromId($_REQUEST['hypothesis_id']);
@@ -34,8 +32,7 @@ $this_user->populateFromId($active_hypothesis->user_id);
 
 <div id="nonEdit">
 
-<?php if( $active_project->user_id == $active_user->id ) { ?><p><a onClick="document.getElementById('edit').style.display='block'; document.getElementById('nonEdit').style.display='none';">Edit hypothesis information</a> | <?php } ?>
-<?php if( $active_project->user_id == $active_user->id ) { ?><a style="color: #FF0000;" onclick="javascript:confirm_delete_hypothesis(<?php $active_hypothesis->id?>);">Delete hypothesis</a></p><?php } ?>
+<?php if( $active_project->user_id == $active_user->id ) { ?><p><a onClick="document.getElementById('edit').style.display='block'; document.getElementById('nonEdit').style.display='none';">Edit hypothesis information</a> | <?php }  if( $active_project->user_id == $active_user->id ) { ?><a style="color: #FF0000;" onclick="javascript:confirm_delete_hypothesis(<?php $active_hypothesis->id?>);">Delete hypothesis</a></p><?php } ?>
 
 <h3>Hypothesis: <?php $active_hypothesis->label?></h3>
 <h4>Description: <?php $active_hypothesis->description?></h4>

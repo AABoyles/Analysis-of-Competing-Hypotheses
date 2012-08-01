@@ -20,9 +20,7 @@
 **    You should have received a copy of the GNU General Public License
 **    along with Open Source ACH. If not, see <http://www.gnu.org/licenses/>.
 //////////////////////////////////////////////////////////////////////////////// */
-?>
 
-<?php
 
 $active_evidence = new Evidence();
 $active_evidence->populateFromId($_REQUEST['evidence_id']);
@@ -50,8 +48,7 @@ $this_user->populateFromId($active_evidence->user_id);
 
 <p class="type"><b>Type: </b><?php $active_evidence->type?></p>
 
-<p class="serial"><b>Serial Number: </b><?php $active_evidence->serial_number?>
-<?php if ($active_evidence->serial_number != NULL) { ?>
+<p class="serial"><b>Serial Number: </b><?php $active_evidence->serial_number if ($active_evidence->serial_number != NULL) { ?>
 <a href="<?php $base_URL?>evidence/<?php $active_evidence->serial_number?>"><em> Who else is using this?</em></a></p>
 <?php } ?>
 

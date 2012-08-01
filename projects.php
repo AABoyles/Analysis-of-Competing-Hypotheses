@@ -38,21 +38,9 @@ $display_user->populateFromAttribute($username, "username");
 </head>
 
 
-<?php include("parts/header.php"); ?>
-
-
-
-
-
-
-
-<?php
+<?php include("parts/header.php"); 
 	
-if( $active_user->logged_in ) { ?>
-	
-
-
-<?php include("parts/menu_sidebar.php"); ?>
+if( $active_user->logged_in ) {  include("parts/menu_sidebar.php"); ?>
 
 
 
@@ -81,7 +69,7 @@ if( $active_user->logged_in ) { ?>
 			
 			<div class="projectList">
 			
-				<h4><a href="<?php $base_URL?>project/<?php $this_project->id?>"><?php $this_project->title?></a> <?php if( $this_project->open != "y" ) { echo('<span class="closed"><img src="' . $base_URL . 'images/icons/lock.png" alt="Closed" /></span>'); } ?> <?php if( in_array($this_project->id, $active_user->owner_of_projects) ) { echo('<span class="isOwner">Owner</span>'); } ?></h4>
+				<h4><a href="<?php $base_URL?>project/<?php $this_project->id?>"><?php $this_project->title?></a> <?php if( $this_project->open != "y" ) { echo('<span class="closed"><img src="' . $base_URL . 'images/icons/lock.png" alt="Closed" /></span>'); }  if( in_array($this_project->id, $active_user->owner_of_projects) ) { echo('<span class="isOwner">Owner</span>'); } ?></h4>
 				
 				<p class="desc"><?php $this_project->description?></p>
 				
@@ -113,11 +101,7 @@ if( $active_user->logged_in ) { ?>
 
 
 
-<?php } else { ?>
-
-
-
-<?php include("parts/login_sidebar.php"); ?>
+<?php } else {  include("parts/login_sidebar.php"); ?>
 
 
 

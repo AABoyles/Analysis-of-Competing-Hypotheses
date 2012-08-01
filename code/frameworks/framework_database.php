@@ -36,7 +36,7 @@ class FrameworkDatabase {
 		$this->found = $return_value;
 		return $return_value;
 	}
-	
+
 	public function insertNew() {
 	
 		$table_fields = getFieldList($this->database_table_name);
@@ -55,7 +55,7 @@ class FrameworkDatabase {
 		$counter = 0;
 		for( $i = 1; $i < count($table_fields); $i ++ ) {
 			if( !in_array($table_fields[$i], $this->insert_fields_to_ignore) ) {
-				$sql_statement .= "'" . addslashes($this->$table_fields[$i]) . "'";
+				//$sql_statement .= "'" . addslashes($this->$table_fields[$i]) . "'";
 				$counter++;
 				if( $counter < count($table_fields)-count($this->insert_fields_to_ignore)-1 ) {
 					$sql_statement .= ", ";
@@ -69,7 +69,7 @@ class FrameworkDatabase {
 		return TRUE;
 		
 	}
-	
+ 
 	public function update() {
 		$table_fields = getFieldList($this->database_table_name);
 		$sql_statement = "UPDATE $this->database_table_name SET ";

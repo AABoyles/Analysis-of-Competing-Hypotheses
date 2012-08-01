@@ -992,7 +992,7 @@ function usleepWindows($usec)
 	while ($timePassed < $usec);
 }
 
-?><?php
+
 
 
 
@@ -1079,7 +1079,7 @@ class nusoap_fault extends nusoap_base {
 class soap_fault extends nusoap_fault {
 }
 
-?><?php
+
 
 
 
@@ -2049,7 +2049,7 @@ class nusoap_xmlschema extends nusoap_base  {
 class XMLSchema extends nusoap_xmlschema {
 }
 
-?><?php
+
 
 
 
@@ -2153,7 +2153,7 @@ class soapval extends nusoap_base {
 
 
 
-?><?php
+
 
 
 
@@ -3457,7 +3457,7 @@ class soap_transport_http extends nusoap_base {
   }
 }
 
-?><?php
+
 
 
 
@@ -4581,7 +4581,7 @@ class nusoap_server extends nusoap_base {
 class soap_server extends nusoap_server {
 }
 
-?><?php
+
 
 
 
@@ -6516,7 +6516,7 @@ class wsdl extends nusoap_base {
 		return true;
 	} 
 }
-?><?php
+
 
 
 
@@ -7156,7 +7156,7 @@ class nusoap_parser extends nusoap_base {
 class soap_parser extends nusoap_parser {
 }
 
-?><?php
+
 
 
 

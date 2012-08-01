@@ -561,7 +561,9 @@ class Project extends FrameworkDatabase {
 
 			$this_rating_style = strtolower(str_replace(" ", "_", str_replace("/", "", $this_rating)));
 			
-			echo("<td class='colgroup_" . $sort . "' id='"); ?>td_rating_<?php $evidence->id?>-<?php $this_hypothesis->id?>_<?php $sort?><?php echo("' ");
+			echo("<td class='colgroup_" . $sort . "' id='"); ?> td_rating_ <?php $evidence->id ?>-<?php $this_hypothesis->id ?>_<?php $sort;
+			echo("' ");
+			
 			if( !$display ) { echo('style="display: none;" '); }
 			echo(" >");
 			

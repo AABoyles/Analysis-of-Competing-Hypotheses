@@ -20,8 +20,7 @@
 **    You should have received a copy of the GNU General Public License
 **    along with Open Source ACH. If not, see <http://www.gnu.org/licenses/>.
 //////////////////////////////////////////////////////////////////////////////// */
-?>
-<?php
+
 
 $dccDateAdded = 0;
 $dccDateOfSource = 0;
@@ -156,9 +155,7 @@ for( $i = 0; $i < count($evidence); $i++ ) {
 	<td class="dcCred"><?php if( $this_credibility->value == "n" ) { echo("Suspect"); } else { echo("Credible"); } ?></td>
 	<td class="dcCredWeight" style="<?php if( $dccCredWeight == 0 ) { ?>display: none;<?php } ?>"><?php if( $this_credibility->weight == "2" ) { echo("High"); } else if($this_credibility->weight == "1" || $this_credibility->weight == "" || $this_credibility->weight == "0" ) { echo("Med"); } else if( $this_credibility->weight == "0.5" ) { echo("Low"); } ?></td>
 	
-<?php } ?>
-
-<?php if( $kind == "personal" || $kind == "edit" ) { ?>
+<?php }  if( $kind == "personal" || $kind == "edit" ) { ?>
 
 	<td class="dcDiag" style="<?php if( $dccDiag == 0 ) { ?>display: none;<?php } ?>"><?php $evidence[$i]->getDiag($evidence[$i], $active_project)?></td>
 
@@ -170,9 +167,7 @@ for( $i = 0; $i < count($evidence); $i++ ) {
 
 	<td class="dcDiag" style="<?php if( $dccDiag == 0 ) { ?>display: none;<?php } ?>"><?php $evidence[$i]->getDiagGroup($evidence[$i]->id, $active_project)?></td>
 
-<?php } ?>
-
-<?php
+<?php } 
 
 if( $kind == "personal" ) {
 	$active_project->showCellPersonal($evidence[$i], "least_likely_personal", $sortColsBy == "least_likely_personal");
