@@ -33,7 +33,7 @@ foreach ($_REQUEST as $field => $value) {
 	$active_user->$field = addslashes($value);
 }
 
-
+#TODO: Replace all form validation with Javascript!
 if( $_REQUEST['username'] ) {
 	$escaped = mysqli_real_escape_string(achconnect(), $_REQUEST['username']);
 	$result = achquery("SELECT * FROM users WHERE username = '".$escaped."'");
