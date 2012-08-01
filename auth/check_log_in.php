@@ -7,10 +7,14 @@ include (__DIR__."/../code/includes.php");
 
 if(! (array_key_exists('cookie_user_username', $_POST) || 
 	  array_key_exists('cookie_user_password', $_POST))){
-	  	die(); }
+	echo "<meta http-equiv=Refresh content='0; url=/'>
+<script language='JavaScript'>createCookie('cachchat', 'y', 7);</script>
+</head><body></body></html>";
+	$failedlogin = "That username/password combination is not correct";
+	  }
 
-$cookie_user_username =     $_REQUEST['cookie_user_username'];
-$cookie_user_password = md5($_REQUEST['cookie_user_password']);
+$cookie_user_username =     $_POST['cookie_user_username'];
+$cookie_user_password = md5($_POST['cookie_user_password']);
 
 $success = FALSE;
 $result = achquery("SELECT password FROM users WHERE username='$cookie_user_username' LIMIT 1;");
