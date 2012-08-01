@@ -24,6 +24,6 @@ error_reporting(E_ALL);
 
 # END USER CONFIGURATION OPTIONS.  DO NOT EDIT ANYTHING BEYOND THIS LINE.
 
-$base_URL="$domain/$path";
+$baseURL="http://$domain/$path";
 
 $versionNumber="1.1beta";
