@@ -25,7 +25,7 @@ else {
 	echo '</div>';}
 
 echo '<div class="mainContainer"><div class="ydsf left"><div class="inner"><div class="help">
-<div class="fontSize"><a href="javascript:changeFontSize(1)" style:font-size="14px">Enlarge font</a><br /><a href="javascript:changeFontSize(-1)" style:font-size="8px">Shrink font</a></p></div>
+
 
 <h2>Hypotheses</h2> 
 <p>Hypotheses are added via <a href="howto_hypotheses.php">a simple tool (called Enter Hypotheses)</a> that asks for a short, descriptive label and a more detailed explanation. <b>Note:</b> You may only add, remove, and edit hypotheses if you are the project owner, the person designated as the administrator.</p>

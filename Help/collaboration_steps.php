@@ -32,7 +32,7 @@ else {
 <div class="mainContainer">
 <div class="ydsf left"><div class="inner">
 <div class="help">
-<div class="fontSize"><a href="javascript:changeFontSize(1)" style:font-size="14px">Enlarge font</a><br /><a href="javascript:changeFontSize(-1)" style:font-size="8px">Shrink font</a></p></div>
+
 
 <h2>ACH as a Collaborative Process</h2>
 

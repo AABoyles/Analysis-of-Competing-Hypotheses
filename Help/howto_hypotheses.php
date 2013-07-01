@@ -25,7 +25,7 @@ else {
 	echo '</div>';}
 
 echo '<div class="mainContainer"><div class="ydsf left"><div class="inner"><div class="help">
-<div class="fontSize"><a href="javascript:changeFontSize(1)" style:font-size="14px">Enlarge font</a><br /><a href="javascript:changeFontSize(-1)" style:font-size="8px">Shrink font</a></p></div>
+
 
 <h2>Entering and Editing Hypotheses</h2>
 <p>Only the Project Owner has permission to add hypotheses. You may do so immediately after creating a project, or by clicking the Enter Hypotheses tab underneath the large Project heading.</p>

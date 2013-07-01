@@ -25,7 +25,7 @@ else {
 	echo '</div>';}
 
 echo '<div class="mainContainer"><div class="ydsf left"><div class="inner"><div class="help">
-<div class="fontSize"><a href="javascript:changeFontSize(1)" style:font-size="14px">Enlarge font</a><br /><a href="javascript:changeFontSize(-1)" style:font-size="8px">Shrink font</a></p></div>
+
 
 <h2>The Matrices</h2>
 <p>The core of an ACH project is a matrix of hypotheses and evidence. There are a few different ways to look at the matrix:

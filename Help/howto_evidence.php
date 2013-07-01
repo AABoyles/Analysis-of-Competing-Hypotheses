@@ -28,7 +28,7 @@ echo '
 <div class="mainContainer">
 <div class="ydsf left"><div class="inner">
 <div class="help">
-<div class="fontSize"><a href="javascript:changeFontSize(1)" style:font-size="14px">Enlarge font</a><br /><a href="javascript:changeFontSize(-1)" style:font-size="8px">Shrink font</a></p></div>
+
 
 <h2>Entering and Editing Evidence and Arguments</h2> 
 <p>To enter evidence, click on the Enter Evidence/Arguments link beneath the project header on any page. On the next page, you\'ll be given two options: Single and Multiple. By default, you are given the single item entry form. Details on some of the different evidence information fields--Notes, Type, Date/Time, and Code--are below.</p>

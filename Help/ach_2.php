@@ -28,7 +28,7 @@ echo '
 <div class="mainContainer">
 <div class="ydsf left"><div class="inner">
 <div class="help">
-<div class="fontSize"><a href="javascript:changeFontSize(1)" style:font-size="14px">Enlarge font</a><br /><a href="javascript:changeFontSize(-1)" style:font-size="8px">Shrink font</a></p></div>
+
 
 <h2>ACH Is a 9-Step Process</h2> 
 <p>The full ACH process follows these nine steps:</p>

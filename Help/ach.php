@@ -29,7 +29,7 @@ echo '
 <div class="mainContainer">
 <div class="ydsf left"><div class="inner">
 <div class="help">
-<div class="fontSize"><a href="javascript:changeFontSize(1)" style:font-size="14px">Enlarge font</a><br /><a href="javascript:changeFontSize(-1)" style:font-size="8px">Shrink font</a></p></div>
+
 
 <h2> What Is ACH?</h2> 
 <p>Analysis of Competing Hypotheses (ACH) is a simple model for how to think about a complex problem. It is an analytic process that identifies a complete set of alternative hypotheses, systematically evaluates data that is consistent and inconsistent with each hypothesis, and rejects hypotheses that contain too much inconsistent data. </p>

@@ -28,7 +28,7 @@ echo '
 <div class="mainContainer">
 <div class="ydsf left"><div class="inner">
 <div class="help">
-<div class="fontSize"><a href="javascript:changeFontSize(1)" style:font-size="14px">Enlarge font</a><br /><a href="javascript:changeFontSize(-1)" style:font-size="8px">Shrink font</a></p></div>
+
 
 <h2>Evidence</h2> 
 <p>As it does with each hypothesis, the ACH software creates a dedicated page for each item of evidence. This page includes details about the  evidence like the time of event and the type of source, and a section where members can discuss the evidence. New evidence items are added  via the <a href="howto_evidence.php">Enter Evidence/Arguments tool</a>.</p>

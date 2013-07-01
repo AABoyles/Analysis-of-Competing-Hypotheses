@@ -29,8 +29,6 @@ if ($query_data !== NULL) {
 		$failedlogin = "That username/password combination is not correct"; }
 }
 
-#$goto = $_REQUEST['goto'] . $active_user -> users[0];
-
 if ($success === TRUE) {
 	$active_user = new User();
 	$active_user -> populateFromUsername($_REQUEST['cookie_user_username']);
@@ -49,5 +47,4 @@ echo "<meta http-equiv=Refresh content='0; url=$goto'>";
 
 include (__DIR__."/../parts/includes.php");
 
-echo "<script language='JavaScript'>createCookie('cachchat', 'y', 7);</script>
-</head><body></body></html>";
+echo "</head><body></body></html>";

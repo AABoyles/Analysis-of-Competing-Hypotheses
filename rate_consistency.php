@@ -25,7 +25,7 @@ else {
 	echo '</div>';}
 
 echo '<div class="mainContainer"><div class="ydsf left"><div class="inner"><div class="help">
-<div class="fontSize"><a href="javascript:changeFontSize(1)" style:font-size="14px">Enlarge font</a><br /><a href="javascript:changeFontSize(-1)" style:font-size="8px">Shrink font</a></p></div>
+
 
 <h2>Rate Consistency of Evidence </h2> 
 <p>After entering your evidence and hypotheses, the next step is to assess whether each item of evidence is Consistent or Inconsistent with each hypothesis. For each hypothesis, ask yourself: if this hypothesis were true, is it likely that I would see this evidence? If the answer is "Yes," change the consistency rating to show that the evidence is Consistent (C) with the hypothesis; if "No," mark it as Inconsistent (I). If it is Very Consistent or Very Inconsistent, mark it CC or II. The Very Consistent (CC) and Very Inconsistent (II) ratings are used when you have a high degree of confidence in providing the rating or believe the item of evidence makes a compelling case supporting or contradicting a hypothesis.</p>
