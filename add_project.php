@@ -77,19 +77,18 @@ function validateTitle(fld) {
 //this function grays out the Open Project options if Private Project is selected
 
 function Disab (val) {
-if(val=="1")
-{nav.public[0].disabled=true;nav.public[0].checked=false;
-nav.public[1].disabled=true;nav.public[1].checked=false;
-nav.open[0].disabled=true;nav.open[0].checked=false;
-nav.open[1].disabled=true;nav.open[1].checked=false;
-}
-if(val=="2")
-{
-nav.public[0].disabled=false; nav.public[1].checked=true
-nav.public[1].disabled=false;
-nav.open[0].disabled=false; nav.open[0].checked=true;
-nav.open[1].disabled=false
-}
+	if(val=="1"){
+		nav.public[0].disabled=true;nav.public[0].checked=false;
+		nav.public[1].disabled=true;nav.public[1].checked=false;
+		nav.open[0].disabled=true;nav.open[0].checked=false;
+		nav.open[1].disabled=true;nav.open[1].checked=false;
+	}
+	if(val=="2"){
+		nav.public[0].disabled=false; nav.public[1].checked=true
+		nav.public[1].disabled=false;
+		nav.open[0].disabled=false; nav.open[0].checked=true;
+		nav.open[1].disabled=false
+	}
 }
 </script></head><body>';
 

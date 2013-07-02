@@ -1,3 +1,5 @@
+<div class="container">
+
 <?php
 /* ////////////////////////////////////////////////////////////////////////////////
  **    Copyright 2010 Matthew Burton, http://matthewburton.org
@@ -21,8 +23,6 @@
  **    You should have received a copy of the GNU General Public License
  **    along with Open Source ACH. If not, see <http://www.gnu.org/licenses/>.
  //////////////////////////////////////////////////////////////////////////////// */
-
-echo '<div class="container">';
 
 if (!$print_mode) {
 
@@ -58,5 +58,8 @@ if (!$print_mode) {
 
 	echo "<div class=\"" . $classificationBannerStyle . " projectClassificationPrintBanner\">";
 	echo "<p>Overall Project Classification: <b>" . Project::classificationText($active_project -> classification) . "</b></p>";
-	echo "</div>";
 }
+
+?>
+
+</div>
